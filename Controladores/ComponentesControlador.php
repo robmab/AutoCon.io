@@ -397,6 +397,3 @@ if ( $mem&&$mem->num_rows>0 ) {
    
 
 ?>
-
-
-

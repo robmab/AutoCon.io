@@ -39,6 +39,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
     <!-- ********** Hero Area End ********** -->
 
@@ -69,7 +70,6 @@
                             
                             <!-- Post Tags -->
                            
-                            <!-- Post Meta -->
                            
                             <div class="post-a-comment-area2 ">
                         
@@ -158,4 +158,34 @@
 
 </body>
 
-</html>
+=======
+        <!-- ********** Hero Area End ********** -->
+        <div class="main-content-wrapper section-padding-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- ============= Post Content Area ============= -->
+                    <div class="col-12 col-lg-8">
+                        <div class="single-blog-content mb-100">
+                            <!-- Post Meta -->
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <h6>El futuro ya está aquí: nuevo BMW i8 Coupé. Energético, fascinante y listo para una movilidad redefinida; para disfrutar al máximo del placer de conducir en la carretera.</h6>
+                                <h6>No solo la adrenalina se dispara al instante con su icónico diseño, sino también el velocímetro con el innovador motor de este híbrido enchufable que genera 374 CV y 570 Nm. Además, el nuevo BMW i8 Coupé acelera de 0 a 100 km en tan solo 4,4 segundos. La vía más rápida hacia la nueva era.</h6>
+                                <blockquote class="mb-30">
+                                    <h6>BMW i8 Coupé: </h6>
+                                    <h6>Consumo Promedio (combinado) según WLTP1: 2,1-2,2 l/100km</h6>
+                                    <h6>Emisiones CO2 (combinado) según WLTP1: 48-49 g/km</h6>
+                                    <h6>Emisiones CO2 según NEDC2: 42 - 42 g/km</h6>
+                                    <h6>Autonomía eléctrica en km (promedio): 52 - 53 km</h6>
+                                </blockquote>
+                                <!-- Post Tags -->
+                                <!-- Post Meta -->
+                                <div class="post-a-comment-area mt-70">
+                                    <!-- Contact Form -->
+                                    <form action="../Controladores/VehiculoCompra.php?comprar=1" method="post">
+                                        <div class="row">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn world-btn">Reservalo en tienda por <?php echo $_SESSION['listaVeh'][$ModeloVeh]['precioRebajado']  ?>  €</button>
+                                        </div>
+                                    </form>
