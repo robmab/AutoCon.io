@@ -1,0 +1,2 @@
+[1208/110630.867:ERROR:http_transport_win.cc(170)] WinHttpCrackUrl: La dirección URL no usa un protocolo reconocido  (0x2ee6)
+[1208/132310.281:ERROR:http_transport_win.cc(170)] WinHttpCrackUrl: La dirección URL no usa un protocolo reconocido  (0x2ee6)
