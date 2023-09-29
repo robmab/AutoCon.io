@@ -15,7 +15,7 @@
         ">
     <h1 style="font-size: 85px; color: white; text-shadow: 3px 3px 3px black">
 
-      <p style="font-size: 85px; color: white; display: inline; color:#00ADED;
+      <p style="font-size: 85px; display: inline; color:#629CFC;
                  text-shadow: 3px 3px 3px black">BMW</p> AutoCon
     </h1>
   </div>
