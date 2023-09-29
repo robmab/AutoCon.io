@@ -14,7 +14,7 @@
   height:150px" ?>>
   </div>
 
-  <section class="contact-area section-padding-100" style="padding:0;margin:0;"">
+  <section class="contact-area section-padding-100" style="padding:0;margin:2em 0;"">
     <div class=" container">
     <div class=" row justify-content-center">
 
