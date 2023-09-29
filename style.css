@@ -1488,3 +1488,8 @@ textarea:focus ~ .highlight {
         color: #959595; }
 
 /*# sourceMappingURL=style.css.map */
+
+
+div {
+  color: #0095ff;
+}
