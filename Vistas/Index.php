@@ -10,14 +10,18 @@
 <body>
   <?php include "../Tema/Menu.php"; ?>
 
-  <div style="position:absolute ; z-index: 1000; display: flex; justify-content: center;
-        top:20%; right:0;left:0; width:70em; margin: auto;
-        ">
-    <h1 style="font-size: 85px; color: white; text-shadow: 3px 3px 3px black">
+  <div style="position:absolute ; z-index: 10; display: flex; justify-content: center;
+        top:20%; right:0;left:0; width:70em; margin: auto;display:flex;align-items: center;
+        flex-direction: column; ">
+    <p style="font-size: 45px; display: block; color:#629CFC;line-height: 0.25em;
+                 text-shadow: 3px 3px 3px black;  margin-bottom: 0.75em;">BMW</p>
 
-      <p style="font-size: 85px; display: inline; color:#629CFC;
-                 text-shadow: 3px 3px 3px black">BMW</p> AutoCon
+    <div style="width: 18em; border-bottom: 2px solid #9fb6dc""  ></div>
+    <h1 style="font-size: 65px; color: white; text-shadow: 3px 3px 3px black">
+      AUTOCON
     </h1>
+
+
   </div>
 
   <!-- ********** Hero Area Start ********** -->
@@ -90,8 +94,8 @@
               background-image: url('../img/blog-img/bmw.jpg'); display: flex;
               align-items:center; flex-direction: column;">
     <p class="pt-0 mt-0" style="font-size: 35px; color:black; text-shadow: 2px 2px 2px white;
-                                font-weight: 600;" >¡Localízanos!</p>
-    <div style="height: 5%; width: 50%; border-bottom: 1px solid black; margin-bottom: 2em;"  ></div>
+                                font-weight: 600;">¡Localízanos!</p>
+    <div style="height: 5%; width: 50%; border-bottom: 1px solid black; margin-bottom: 2em;"></div>
 
     <div style="display: flex; justify-content: center; padding: 0 10em; margin: 0; width: 100%; ">
       <iframe
