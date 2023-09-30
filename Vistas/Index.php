@@ -92,12 +92,14 @@
 
   <div class="main-content-wrapper section-padding-100 pt-5 mt-0" style="height: 95vh;
               background-image: url('../img/blog-img/bmw.jpg'); display: flex;
+              background-size: cover;
               align-items:center; flex-direction: column;">
     <p class="pt-0 mt-0" style="font-size: 35px; color:black; text-shadow: 2px 2px 2px white;
                                 font-weight: 600;">¡Localízanos!</p>
     <div style="height: 5%; width: 50%; border-bottom: 1px solid black; margin-bottom: 2em;"></div>
 
-    <div style="display: flex; justify-content: center; padding: 0 10em; margin: 0; width: 100%; ">
+    <div style="display: flex; justify-content: center; padding: 0 10em; margin: 0; width: 90%;
+                height: 23vh; ">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.970879513495!2d-1.8841090845740516!3d39.01597777955259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd665ef7be827c67%3A0x7bc569d31447a077!2sAv.%20Gregorio%20Arcos%2C%2041%2C%2002007%20Albacete!5e0!3m2!1ses!2ses!4v1575763094365!5m2!1ses!2ses"
         frameborder="0" style="border:0;width: 100%;height: 280%;box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.723);"
