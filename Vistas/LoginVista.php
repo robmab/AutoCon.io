@@ -9,11 +9,11 @@
 <body>
   <?php include "../Tema/Menu.php" ?>
 
-  <!-- ********** Hero Area ********** -->
+  <!-- HERO -->
   <div class="hero-area bg-img background-overlay" style="background-image:url(../img/blog-img/login.jpg);
-  height:150px" ?>>
-  </div>
+  height:150px" ?>></div>
 
+  <!-- BODY -->
   <section class="contact-area section-padding-100" style="padding:0;margin:2em 0;"">
     <div class=" container">
     <div class=" row justify-content-center">
@@ -30,19 +30,16 @@
             if ($_SESSION['mensajeBD'] == 'Tienes que registrarte antes de poder comprar o alquilar un vehículo.') {
               echo "?compraV=1";
             }
-            ;
-          }
-          ; ?>" method="post">
+          } ?> method=" post">
+
             <div class="row" style="display: flex; justify-content: center; 
             align-items:center; flex-direction: column; width: 100%; margin: 0;">
 
               <!-- ERROR MESSAGE -->
               <?php if (isset($_SESSION['mensajeBD'])) {
-
                 echo "<p style='color:red;font-weight:800;'> " . $_SESSION['mensajeBD'] . "</p> ";
                 unset($_SESSION['mensajeBD']);
-              }
-              ; ?>
+              } ?>
 
               <div class="col-12 col-md-6">
                 <div class="group">
@@ -64,7 +61,6 @@
               <a href="RegistroVista.php">
                 <p style='color:blue; font-size: 12px;' ;>¡Regístrate si aún no lo estás!</p>
               </a>
-
             </div>
 
             <!-- BUTTON -->
@@ -73,13 +69,11 @@
             </div>
           </form>
         </div>
-
       </div>
-
     </div>
     </div>
-
   </section>
+
   <?php include "../Tema/Scripts.php" ?>
 </body>
 

@@ -3,56 +3,43 @@
 
 <head>
   <?php include "../Tema/CSS.php"; ?>
-  <!-- Title  -->
   <title>Home - AutoCon</title>
 </head>
 
 <body>
   <?php include "../Tema/Menu.php"; ?>
-
   <div style="position:absolute ; z-index: 10; display: flex; justify-content: center;
         top:20%; right:0;left:0; width:70em; margin: auto;display:flex;align-items: center;
-        flex-direction: column; ">
+        flex-direction: column">
     <p style="font-size: 45px; display: block; color:#629CFC;line-height: 0.25em;
-                 text-shadow: 3px 3px 3px black;  margin-bottom: 0.75em;">BMW</p>
-
-    <div style="width: 18em; border-bottom: 2px solid #9fb6dc""  ></div>
-    <h1 style="font-size: 65px; color: white; text-shadow: 3px 3px 3px black">
-      AUTOCON
-    </h1>
-
-
+              text-shadow: 3px 3px 3px black;  margin-bottom: 0.75em;">BMW</p>
+    <div style="width: 18em; border-bottom: 2px solid #9fb6dc"></div>
+    <h1 style=" font-size: 65px; color: white; text-shadow: 3px 3px 3px black">
+      AUTOCON </h1>
   </div>
 
-  <!-- ********** Hero Area Start ********** -->
+  <!-- HERO AREA -->
   <div class="hero-area" style="height: 100vh">
-
 
     <!-- Hero Slides Area -->
     <div class="hero-slides owl-carousel">
-
-      <!-- Single Slide -->
       <div class="single-hero-slide bg-img background-overlay"
         style="background-image: url(../img/blog-img/bg2.jpg); height: 100vh">
       </div>
       <div class="single-hero-slide bg-img background-overlay"
         style="background-image: url(../img/blog-img/bg3.jpg); height: 100vh">
       </div>
-      <!-- Single Slide -->
       <div class="single-hero-slide bg-img background-overlay"
         style="background-image: url(../img/blog-img/bg1.jpg); height: 100vh">
       </div>
     </div>
 
-
     <!-- Hero Post Slide -->
     <div class="hero-post-area">
       <div class="container">
-
         <div class="row">
           <div class="col-12">
             <div class="hero-post-slide" style="padding-bottom: 5em;">
-              <!-- Single Slide -->
               <div class="single-slide d-flex align-items-center">
                 <div class="post-number">
                   <p>1 </p>
@@ -61,7 +48,6 @@
                   <a href="../Controladores/VehiculosControlador.php">Descubre nuestros vehículos.</a>
                 </div>
               </div>
-              <!-- Single Slide -->
               <div class="single-slide d-flex align-items-center">
                 <div class="post-number">
                   <p>2</p>
@@ -71,7 +57,6 @@
                     Descúbrelas ahora mismo.</a>
                 </div>
               </div>
-
               <div class="single-slide d-flex align-items-center">
                 <div class="post-number">
                   <p>3</p>
@@ -81,15 +66,14 @@
                     servicios.</a>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- ********** Hero Area End ********** -->
 
+  <!-- BODY -->
   <div class="main-content-wrapper section-padding-100 pt-5 mt-0" style="height: 95vh;
               background-image: url('../img/blog-img/bmw.jpg'); display: flex;
               background-size: cover;
@@ -106,26 +90,14 @@
         allowfullscreen=""></iframe>
     </div>
 
-
-
-    <center>
-      <?php if (isset($_SESSION['mensajeBD'])) {
-
-        echo " <h6 style='color:red;'> " . $_SESSION['mensajeBD'] . "";
-        unset($_SESSION['mensajeBD']);
-      }
-      ; ?>
-      </h6>
-    </center>
+    <!-- ERROR MESSAGE -->
+    <?php if (isset($_SESSION['mensajeBD'])) {
+      echo " <h6 style='color:red;'> " . $_SESSION['mensajeBD'] . "</h6>";
+      unset($_SESSION['mensajeBD']);
+    } ?>
 
   </div>
-
-
-
   <?php include "../Tema/Scripts.php"; ?>
-
 </body>
-
-<!--scaffolding-->
 
 </html>
