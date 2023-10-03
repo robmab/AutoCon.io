@@ -3,6 +3,7 @@
 
 <head>
   <?php include "../Tema/CSS.php";
+
   /* Check Controler  */
   if (isset($_SESSION['check']))
     unset($_SESSION['check']);
@@ -39,7 +40,7 @@
           <?php foreach ($_SESSION['listaVeh'] as $vehiculo => $num) { ?>
             <div class="col-12 col-md-6">
 
-              <div id="<?php echo $vehiculo ?>" class="single-blog-post wow" data-wow-delay="0.5s">
+              <div id="<?php echo $vehiculo ?>" class="single-blog-post">
 
                 <!-- Post Thumbnail -->
                 <div class="post-thumbnail">
@@ -48,9 +49,10 @@
                     ?> onclick="window.location='Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php'" <?php
                   } ?> src="../img/bmw<?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] == 0)
                       echo "Off";
-                    echo $_SESSION['listaVeh'][$vehiculo]['img'] ?>" alt="">
+                    echo $_SESSION['listaVeh'][$vehiculo]['img'] ?>" alt="" style="<?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] == 0)
+                        echo "cursor: auto;" ?>">
 
-                  <!-- Offer -->
+                    <!-- Offer -->
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['rebaja'] > 0) { ?>
                     <div class="post-cta">
                       <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) { ?>
@@ -72,29 +74,40 @@
                 <div class="post-content">
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) { ?>
                     <a href="Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php" class="headline">
-                      <h5>
+                      <h3 style="font-weight: 400;">
                         <?php echo $vehiculo ?>
-                      </h5>
+                      </h3>
                     </a>
                   <?php } else { ?>
-                    <h5>
+                    <h3>
                       <?php echo $vehiculo ?>
-                    </h5>
+                    </h3>
                   <?php } ?>
 
-                  <p style="line-height: 10px; margin: 0.5em 0; padding: 0; display:inline">
-                    <?php echo "Precio: " . $_SESSION['listaVeh'][$vehiculo]['precioRebajado'] . "€" ?>
-                    <?php
-                    if ($_SESSION['listaVeh'][$vehiculo]['precioRebajado'] != $_SESSION['listaVeh'][$vehiculo]['precio']) {
-                      echo "<p style='display:inline;text-decoration:line-through'>" .
-                        $_SESSION['listaVeh'][$vehiculo]['precio'] .
-                        "</p>";
-                    } ?>
+                  <p style="line-height: 10px; margin: 0.5em 0; padding: 0; display:inline;
+                  font-size: 20px;">
+                    <?php echo "Precio: " . $_SESSION['listaVeh'][$vehiculo]['precioRebajado'] . "€"; ?>
                   </p>
-                  
+                  <?php if ($_SESSION['listaVeh'][$vehiculo]['precioRebajado'] != $_SESSION['listaVeh'][$vehiculo]['precio']) {
+                    echo " | <p style='font-size: 20px;display:inline;text-decoration:line-through'>" .
+                      $_SESSION['listaVeh'][$vehiculo]['precio'] .
+                      "€</p>";
+                  } ?>
+
                   <!-- Post Meta -->
                   <div class="post-meta mb-0 pb-0">
                     <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0 and isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
+                      <div class="single-vehicle-stats">
+                        <p style="color: cadetblue;font-size: 15px">
+                          <?php echo $_SESSION['listaVeh'][$vehiculo]['disponibles'] ?> disponibles
+                        </p>
+                        <p style="color: #E1B42B;font-size: 15px">
+                          <?php echo $_SESSION['listaVeh'][$vehiculo]['alquilados'] ?> alquilados
+                        </p>
+                        <p style="color: cornflowerblue;font-size: 15px">
+                          <?php echo $_SESSION['listaVeh'][$vehiculo]['vendidos'] ?> vendidos
+                        </p>
+                      </div>
                       <button
                         onclick="window.location='../Controladores/VehiculosControlador.php?a=1&model=<?php echo $vehiculo ?>'"
                         class="icon-btn add-btn">
@@ -106,24 +119,21 @@
                         class="icon-btn add-btn">
                         <div class="btn-txt">Quitar</div>
                       </button>
-                      <p style="color: transparent">_</p>
 
-                      <p style="color: cadetblue;font-size: 15px">
-                        <?php echo $_SESSION['listaVeh'][$vehiculo]['disponibles'] ?> disponibles
-                      </p>
-                      <p style="color: #E1B42B;font-size: 15px">
-                        <?php echo $_SESSION['listaVeh'][$vehiculo]['alquilados'] ?> alquilados
-                      </p>
-                      <p style="color: cornflowerblue;font-size: 15px">
-                        <?php echo $_SESSION['listaVeh'][$vehiculo]['vendidos'] ?> vendidos
-                      </p>
+                    <?php } elseif ($_SESSION['listaVeh'][$vehiculo]['disponibles'] == 0) {
 
-
-
-                      <?php
-
-                    } elseif ($_SESSION['listaVeh'][$vehiculo]['disponibles'] == 0) { ?>
-                      <?php if (isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?><button
+                      if (isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
+                        <div class="single-vehicle-stats">
+                          <p style="color: #E1B42B;font-size: 15px">
+                            <?php echo $_SESSION['listaVeh'][$vehiculo]['alquilados'] ?> alquilados
+                          </p>
+                          <p style="color: cornflowerblue;font-size: 15px">
+                            <?php echo $_SESSION['listaVeh'][$vehiculo]['vendidos'] ?> vendidos
+                          </p>
+                        </div>
+                      <?php }
+                      if (isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
+                        <button
                           onclick="window.location='../Controladores/VehiculosControlador.php?a=1&model=<?php echo $vehiculo ?>'"
                           class="icon-btn add-btn">
                           <div class="add-icon"></div>
@@ -134,55 +144,20 @@
                             class="icon-btn add-btn">
                             <div class="btn-txt">Quitar</div>
                           </button>
-                        <?php } ?>
-                      <?php } ?>
-
-
-                      <?php if (isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
-                        <p style="color: #E1B42B;font-size: 15px">
-                          <?php echo $_SESSION['listaVeh'][$vehiculo]['alquilados'] ?> alquilados
-                        </p>
-                        <p style="color: cornflowerblue;font-size: 15px">
-                          <?php echo $_SESSION['listaVeh'][$vehiculo]['vendidos'] ?> vendidos
-                        </p>
-
-                      <?php } ?>
-                    <?php } ?>
+                        <?php }
+                      }
+                    } ?>
                   </div>
-
-
-
                 </div>
               </div>
             </div>
-            <?php
-
-
-          }
-          ;
-          ?>
-
-
-
+          <?php } ?>
         </div>
-
       </div>
     </div>
   </div>
   </div>
-
-
-
-
-  <!-- Google Maps: If you want to google map, just uncomment below codes -->
-  <!--
-    <div class="map-area">
-        <div id="googleMap" class="googleMap"></div>
-    </div>
-    -->
-
   <?php include "../Tema/Scripts.php" ?>
-
 </body>
 
 </html>

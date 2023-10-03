@@ -639,7 +639,7 @@ img {
   display: inline-block;
   height: 20px;
   background-color: #ffffff98;
-  
+
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.858);
   text-transform: uppercase;
   font-size: 10px;
@@ -1881,5 +1881,25 @@ textarea:focus ~ .highlight {
   font-size: 14px;
   color: #959595;
 }
+.single-vehicle-stats {
+  display: flex;
+  margin: 1em 0 0.5em;
+}
+
+.single-vehicle-stats p {
+  margin-right: 1em !important;
+  padding: 0.5em 1em;
+  background-color: #232323;
+  border-radius: 5px;
+  text-shadow: 0 0 1px white;
+}
 
 /*# sourceMappingURL=style.css.map */
+
+.post-thumbnail img, .world-catagory-area button {
+  cursor: pointer;
+}
+
+.single-blog-post{
+  margin-bottom: 2em;
+}
