@@ -10,8 +10,9 @@
   <?php include "../Tema/Menu.php" ?>
 
   <!-- HERO -->
-  <div class="hero-area bg-img background-overlay" style="background-image:url(../img/blog-img/login.jpg);
-  height:150px" ?>></div>
+  <div class="hero-area bg-img background-overlay" 
+      style="background-image:url(../img/blog-img/login.jpg);
+      height:150px" ?>></div>
 
   <!-- BODY -->
   <section class="contact-area section-padding-100" style="padding:0;margin:2em 0;"">
@@ -24,14 +25,12 @@
       justify-content:center;flex-direction:column;">
           <h1 style=" display: flex; justify-content: center; margin-bottom: 1em;  ">Iniciar Sesión</h1>
 
-
           <!-- Contact Form -->
           <form action="../Controladores/LoginControlador.php<?php if (isset($_SESSION['mensajeBD'])) {
             if ($_SESSION['mensajeBD'] == 'Tienes que registrarte antes de poder comprar o alquilar un vehículo.') {
               echo "?compraV=1";
-            }
-          } ?> method=" post">
-
+            }} ?>" method="post">
+          
             <div class="row" style="display: flex; justify-content: center; 
             align-items:center; flex-direction: column; width: 100%; margin: 0;">
 
