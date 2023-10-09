@@ -17,7 +17,7 @@
   <body>
   <?php include "../Tema/Menu.php" ?>
 
-  <!-- HERO -->
+  <!-- HEROd -->
   <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/vehiculos.jpg); 
       display: flex; justify-content: center; align-items: end; height:180px">
     <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black;">Vehículos BMW</h1>
