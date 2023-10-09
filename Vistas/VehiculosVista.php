@@ -36,10 +36,8 @@
     <div class="tab-content" id="myTabContent2">
       <div class="tab-panel fade show active" id="world-tab-10" role="tabpanel" aria-labelledby="tab10">
         <div class="row">
-
           <?php foreach ($_SESSION['listaVeh'] as $vehiculo => $num) { ?>
             <div class="col-12 col-md-6">
-
               <div id="<?php echo $vehiculo ?>" class="single-blog-post">
 
                 <!-- Post Thumbnail -->
@@ -83,7 +81,6 @@
                       <?php echo $vehiculo ?>
                     </h3>
                   <?php } ?>
-
                   <p style="line-height: 10px; margin: 0.5em 0; padding: 0; display:inline;
                   font-size: 20px;">
                     <?php echo "Precio: " . $_SESSION['listaVeh'][$vehiculo]['precioRebajado'] . "€"; ?>
@@ -96,6 +93,8 @@
 
                   <!-- Post Meta -->
                   <div class="post-meta mb-0 pb-0">
+
+                    <!-- AVAILABLE VEHICLES -->
                     <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0 and isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
                       <div class="single-vehicle-stats">
                         <p style="color: cadetblue;font-size: 15px">
@@ -120,6 +119,7 @@
                         <div class="btn-txt">Quitar</div>
                       </button>
 
+                      <!-- NO AVAILABLE VEHICLES -->
                     <?php } elseif ($_SESSION['listaVeh'][$vehiculo]['disponibles'] == 0) {
 
                       if (isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
