@@ -741,6 +741,7 @@ img {
 }
 .single-blog-post.post-style-3 .post-thumbnail {
   position: relative;
+  height: 100%;
   z-index: 1;
 }
 .single-blog-post.post-style-3 .post-thumbnail::after {

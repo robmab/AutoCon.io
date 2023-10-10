@@ -4,7 +4,7 @@
 <head>
   <?php include "../Tema/CSS.php";
 
-  /* Check Controler  */
+  /* Check Controler */
   if (isset($_SESSION['check']))
     unset($_SESSION['check']);
   else
