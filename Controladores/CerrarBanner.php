@@ -1,12 +1,5 @@
 <?php
-session_start(); 
-
+session_start();
 $_SESSION['banner'] = 1;
-
-
-
-header("Location:../Vistas/Index.php"); 
+header("Location:../Vistas/Index.php");
 ?>
-
-
-

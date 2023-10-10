@@ -5,7 +5,8 @@ include '../ConexiónBD.php';
 //Recoger variables // Registro - Login
 if (isset($_REQUEST["email"])) {
   $email = ucwords($_REQUEST["email"]);
-  if (isset($_REQUEST["pass"])) $pass = $_REQUEST["pass"];
+  if (isset($_REQUEST["pass"]))
+    $pass = $_REQUEST["pass"];
 
   //Comprobación de Usuario en la base de datos.
   $sql = "SELECT count(*) FROM usuarios";
@@ -44,10 +45,11 @@ if (isset($_REQUEST["email"])) {
         $info = $mem->fetch_array();
         $_SESSION['user'] = $info['nombreUsuario'];
         $email = $info['nombreUsuario'];
-      };
+      }
+      ;
       $contador = 0;
-    };
-  };
+    }
+  }
 
   foreach ($listaCorreo as $correo) {
     if ($correo == $email) {
@@ -57,10 +59,10 @@ if (isset($_REQUEST["email"])) {
         $info = $mem->fetch_array();
         $_SESSION['user'] = $info['nombreUsuario'];
         $email = $info['nombreUsuario'];
-      };
+      }
       $contador = 0;
-    };
-  };
+    }
+  }
 
   if ($contador == 1) {
     echo $email;
@@ -69,7 +71,7 @@ if (isset($_REQUEST["email"])) {
     $contador2 = 0;
     header("Location:../Vistas/LoginVista.php");
     exit;
-  };
+  }
 
   //Comprobación Contraseña
   $sql = "SELECT contraseña FROM usuarios WHERE nombreUsuario='" . $email . "' OR correo='" . $email . "'  ";
@@ -103,5 +105,7 @@ if (isset($_REQUEST["email"])) {
   } else {
     header("Location:../Vistas/index.php");
     exit;
-  };
+  }
 }
+
+?>
