@@ -24,8 +24,6 @@
     <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black;">Componentes de repuesto</h1>
   </div>
 
-
-
   <!-- ********** BODY ********** -->
   <div id="1" style="margin: 0; padding: 0; display: flex;
   flex-direction: column; align-items: center;">
@@ -33,11 +31,11 @@
     <!-- Admin Controller -->
     <?php if (isset($_SESSION['rol'])) {
       if ($_SESSION['rol'] == 'Admin') { ?>
-        <div style="display: flex; justify-content: center;">
+        <div style="display: flex; justify-content: center; margin-bottom: 2em;">
           <label class="switch">
             <input class="switch-input" type="checkbox" />
             <span onclick="window.location='../Controladores/ComponentesControlador.php?Adm2=1#1'" class="switch-label"
-              data-on="Adm" data-off="Usu"></span>
+              data-on="Adm" data-off="Usr"></span>
             <span onclick="window.location='../Controladores/ComponentesControlador.php?Adm2=1#1'"
               class="switch-handle"></span>
           </label>
@@ -57,33 +55,25 @@
     <div class="row justify-content-center" style="display: flex;width: 100%;
     justify-content: center; padding: 0em 1em 2em 1em; ">
 
-
-
       <?php $cont = "";
 
       foreach ($listaComponentes as $nombre => $num) {
         foreach ($num as $tipo => $num2) {
 
           if ($cont != $nombre) { ?>
-            <div class="col-12 col-md-6 col-lg-4" >
-              <div class="single-blog-post post-style-3 " >
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="single-blog-post post-style-3 " style="box-shadow: 0 0 5px 3px rgba(44, 44, 44, 0.348);">
 
-              <div class="pt-1 m-0" style="background-color: #131313; width: 100% !important; ">
-                      <h4 style="color: white; text-align: center;">
-                        <?php echo $nombre ?>
-                      </h4>
-                <!-- CARD -->
-                <div style="display: flex; flex-direction: column; align-items: center;
+                <div class="pt-1 m-0" style="background-image:linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.65)) ,
+                 url(../img/bg6.jpg); width: 100% !important; ">
+                  <h4 style="color: white; text-align: center;">
+                    <?php echo $nombre ?>
+                  </h4>
+                  <!-- CARD -->
+                  <div style="display: flex; flex-direction: column; align-items: center;
                 background-image: linear-gradient(rgba(0, 0, 0, 0.427),rgba(0, 0, 0, 0.9)) ,
                   url(../img/componentes/<?php echo $listaComponentes[$nombre][$tipo]['ruta'] ?>);
                 background-repeat: no-repeat; background-size: cover; padding:1em 2em ; height: 13em;">
-
-                  <div style="margin-bottom: auto; display: flex; flex-direction: column;
-                  ">
-                    <!-- Title -->
-                    
-                    </div>
-
 
                     <!-- Content display -->
                     <div style="display: flex; align-items: center; justify-content: center; height: 100%; ">
@@ -98,38 +88,27 @@
                             <?php if ($listaComponentes[$nombre][$tipo]['cantidad'] > 0) { ?>
                               <input style="width: 1.5em;height: 1.5em" type=radio name='tipo'
                                 value="<?php echo $tipo ?>-<?php echo $listaComponentes[$nombre][$tipo]['precioR'] ?>">
-                              <?php ;
-                              $check = true;
+                              <?php $check = true;
                             }
-                            echo $tipo ?>
+                            echo $tipo;
 
-                            <?php
                             if ($listaComponentes[$nombre][$tipo]['cantidad'] == 0) { ?>-
-                              No disponible
+                              <s>No disponible</s>
 
-                              <?php ;
-                            } elseif ($listaComponentes[$nombre][$tipo]['descuento'] == 0) { ?>
+                            <?php } elseif ($listaComponentes[$nombre][$tipo]['descuento'] == 0) { ?>
                               por <i style="color: #3399ff; font-size: 18px; text-shadow: 0.1em 0.1em #000000">
-                                <?php echo $listaComponentes[$nombre][$tipo]['precio'] ?>
-                                €
+                                <?php echo $listaComponentes[$nombre][$tipo]['precio'] ?> €
                               </i>
                             <?php } else { ?>
-                              por <strike>
+                              por <s>
                                 <?php echo $listaComponentes[$nombre][$tipo]['precioO'] ?> €
-                              </strike>
+                              </s>
                               <i style="color: red; font-size: 22px;text-shadow: 0.1em 0.1em #000000">
-                                <?php echo $listaComponentes[$nombre][$tipo]['precioR'] ?>
-                                €
+                                <?php echo $listaComponentes[$nombre][$tipo]['precioR'] ?> €
                               </i>
-                            <?php }
-                            ; ?>
-
-
+                            <?php } ?>
                           </h6>
-
-                        <?php }
-                        ; ?>
-
+                        <?php } ?>
                     </div>
 
                     <!-- Button -->

@@ -2,223 +2,141 @@
 <html lang="en">
 
 <head>
-    <?php include "../Tema/CSS.php" ;
-    
-    
-    
-    
-    
-     if (isset($_SESSION['chekonn'])){
-       unset($_SESSION['chekonn']);
-   }else{
-            
-       header("Location:../Controladores/ComponentesControlador.php?Adm=1");
-       exit;       
-       
-   };
-   
-         if (isset($_SESSION['rol'])){
-       
-             if($_SESSION['rol']!='Admin'){
-                 
-                 header("Location:Index.php");
-                 
-             }
-             
-   }else{
-             
-       header("Location:Index.php");
-          
-       
-   };
-    
-   
-   ?>
-    <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
-    <link href='../Tema/Button/+-.css' rel='stylesheet' type='text/css'>
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <?php include "../Tema/CSS.php";
 
-    <!-- Title  -->
-    <title>Componentes Adm- AutoCon</title>
+  /* CHECK CONTROLER */
+  if (isset($_SESSION['chekonn']))
+    unset($_SESSION['chekonn']);
+  else
+    header("Location:../Controladores/ComponentesControlador.php"); ?>
 
-    <!-- Favicon  -->
-   
+  <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
+  <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
 
+  <title>Componentes Adm- AutoCon</title>
 </head>
 
 <body>
-   <?php  include "../Tema/Menu.php"  ;
-       
-   
-  
-   
-   
-   $listaComponentes= $_SESSION['listaComponentes'];
-   ?>
-    <!-- ***** Header Area End ***** -->
+  <?php include "../Tema/Menu.php";
+  $listaComponentes = $_SESSION['listaComponentes'] ?>
 
-    <!-- ********** Hero Area Start ********** -->
-    <div  class="hero-area height-400 bg-img background-overlay" style="background-image: url(../img/blog-img/componentes.jpg);"></div>
-    <!-- ********** Hero Area End ********** -->
+  <!-- ********** HERO ********** -->
+  <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/componentes.jpg); 
+      display: flex; justify-content: center; align-items: end; height:180px; margin-bottom:3em">
+    <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black;">Componentes de repuesto</h1>
+  </div>
 
-    <div class="world-catagory-area mt-50" id="1">
-                                    <center> <h1>Componentes</h1><p>_________________________________________________________________________________________________________________</p></center>
-    
-<center>
-<?php if(isset($_SESSION['rol'])){
-      if($_SESSION['rol']=='Admin'){
-    ?>
-<label class="switch">
-                                        
-    <input  class="switch-input" type="checkbox" checked="" />
-                                       
-                                          <span onclick="window.location='../Controladores/ComponentesControlador.php#1'"  class="switch-label" data-on="Adm" data-off="Usu"></span>
-                                        <span onclick="window.location='../Controladores/ComponentesControlador.php#1'"  class="switch-handle"></span> 
-                                        </label>
-<?php }} ?>
-  <?php   if (isset($_SESSION['mensajeBD'])){
-    ?> <br><br>  <?php
-                    echo  " <h5 style='color:red;'> ". $_SESSION['mensajeBD'].""  ;
-                    unset($_SESSION['mensajeBD']);
-                    }   ;  ?></b> </center>  
-    
-    
-    <div class="row justify-content-center">
-                <!-- ========== Single Blog Post ========== -->     
-                
-                
-                       <?php                         
-                       $cont="" ;
-                                    foreach ($listaComponentes as $nombre => $num){                                                       
-                                    foreach ($num as $tipo => $num2){
-                                   
-                                        if ($cont != $nombre){                                
-                                                                                            ?> 
-                
-                  <div class="col-12 col-md-6 col-lg-4">
-                      <div id="<?php echo $nombre ?>" class="single-blog-post post-style-3 mt-50 wow " >
-                        <!-- Post Thumbnail -->
-                        <div class="post-thumbnail">
-                            <img width="" src="../img/componentes/<?php  echo $listaComponentes[$nombre][$tipo]['ruta']  ?>" alt="">
-                            <!-- Post Content -->
-                            <div class="post-content d-flex align-items-center justify-content-between">
-                                <!-- Catagory -->
-                              
-                                <div class="post-tag"></div>    
-                                <!-- Headline -->
-                                
-                                    <h2 style="color: white"><?php echo $nombre  ?></h2>
-                                
-                                <!-- Post Meta -->
-                  
-                                <div class="post-meta">
-                                    
-                                   
-                                    
-                                 <?php   
-                                
-                                 
-                                 foreach ($listaComponentes[$nombre] as $tipo => $num){
-                                                     
-                                               ?>
-                                        
-                                        <h6 style="color: white">
-                                           <?php if ($listaComponentes[$nombre][$tipo]['cantidad'] > 0){   ?>
-                                           <?php ;
-                                            
-                                           }    echo $tipo    ?>       
-                                            
-                                            <?php   
-                                            if($listaComponentes[$nombre][$tipo]['cantidad'] == 0){ ?>- No disponible  
-                                                                                             <button  onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $nombre  ?>&tip=<?php echo $tipo ?>'" class="icon-btn add-btn">
-    <div class="add-icon"></div>
-    <div class="btn-txt">Añadir</div>
-  </button>
-                                           <?php ;} elseif ($listaComponentes[$nombre][$tipo]['cantidad'] > 0){ ?> - 
-                                           <i style="color: greenyellow"> <?php echo $listaComponentes[$nombre][$tipo]['cantidad'] ?> 
-                                               disponibles </i>
-                                             <button  onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $nombre  ?>&tip=<?php echo $tipo ?>'" class="icon-btn add-btn">
-                                                  <div class="add-icon"></div>
-    <div class="btn-txt">Añadir</div>
-  </button>
-  <button  onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&q=1&nom=<?php echo $nombre  ?>&tip=<?php echo $tipo ?>'" class="icon-btn add-btn">  
-    <div  class="btn-txt">Quitar</div>
-  </button><p style="color: transparent">_</p>
-                                             <?php };  ?>
-                                        
-                                        
-                                        </h6>                           
-                                    
-                                 <?php        };       ?>  <br>
-                                    
-                                        
-                                        <div class="col-12">
-                                
-                                            
-                                </div>
-                           
-                                        
-                                        
-                                        
-                                        
-                                  
-                                
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
+  <!-- ********** BODY ********** -->
+  <div id="1" style="margin: 0; padding: 0; display: flex;
+  flex-direction: column; align-items: center;">
+
+    <!-- Admin Controller -->
+    <?php if (isset($_SESSION['rol'])) {
+      if ($_SESSION['rol'] == 'Admin') { ?>
+        <div style="display: flex; justify-content: center; margin-bottom: 2em;">
+          <label class="switch">
+            <input class="switch-input" type="checkbox" checked="" />
+            <span onclick="window.location='../Controladores/ComponentesControlador.php#1'" class="switch-label"
+              data-on="Adm" data-off="Usr"></span>
+            <span onclick="window.location='../Controladores/ComponentesControlador.php#1'" class="switch-handle"></span>
+          </label>
+        </div>
+      <?php }
+    } ?>
+
+    <?php
+    /* Error Message */
+    if (isset($_SESSION['mensajeBD'])) { ?>
+      <div style="padding-bottom: 0.5em;">
+        <?php echo " <h5 style='color:red;'> " . $_SESSION['mensajeBD'];
+        unset($_SESSION['mensajeBD']); ?>
+      </div>
+    <?php } ?>
+
+    <!-- ========== Components ========== -->
+    <div class="row justify-content-center" style="display: flex;width: 100%;
+    justify-content: center; padding: 0em 1em 2em 1em; ">
+
+      <?php $cont = "";
+
+      foreach ($listaComponentes as $nombre => $num) {
+        foreach ($num as $tipo => $num2) {
+
+          if ($cont != $nombre) { ?>
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="single-blog-post post-style-3 ">
+
+                <div class="pt-1 m-0" style="background-image:linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.65)) ,
+                 url(../img/bg6.jpg);; width: 100% !important; ">
+                  <h4 style="color: white; text-align: center;">
+                    <?php echo $nombre ?>
+                  </h4>
+                  <!-- CARD -->
+                  <div style="display: flex; flex-direction: column; align-items: center;
+                background-image: linear-gradient(rgba(0, 0, 0, 0.427),rgba(0, 0, 0, 0.9)) ,
+                  url(../img/componentes/<?php echo $listaComponentes[$nombre][$tipo]['ruta'] ?>);
+                background-repeat: no-repeat; background-size: cover; padding:1em 2em ; height: 13em;">
+
+                    <!-- Content display -->
+                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; ">
+                      <div>
+
+                        <?php
+                        $check = false;
+
+                        foreach ($listaComponentes[$nombre] as $tipo => $num) { ?>
+                          <h6 style="color: white; line-height: 5px;">
+                            <?php echo $tipo;
+
+                            if ($listaComponentes[$nombre][$tipo]['cantidad'] == 0) { ?>
+                              <s>- No disponible</s>
+                              <button style="height: 30px; width: 30px;  color: red; border-radius: 50%;
+                              font-weight: 900; cursor: pointer;"
+                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $nombre ?>&tip=<?php echo $tipo ?>'">
+                                <div class="add-icon"></div>
+                                <div class="btn-txt">+</div>
+                              </button>
+
+                            <?php } elseif ($listaComponentes[$nombre][$tipo]['cantidad'] > 0) { ?>
+                              - <i style="color: greenyellow">
+                                <?php echo $listaComponentes[$nombre][$tipo]['cantidad'] ?> disponibles
+                              </i>
+                              <button style="height: 30px; width: 30px;  color: red; border-radius: 50%;
+                              font-weight: 900; cursor: pointer;"
+                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $nombre ?>&tip=<?php echo $tipo ?>'">
+                                <div class="add-icon"></div>
+                                <div class="btn-txt">+</div>
+                              </button>
+                              <button style="height: 30px; width: 30px; color: red; border-radius: 50%;
+                              font-weight: 900;cursor: pointer;"
+                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&q=1&nom=<?php echo $nombre ?>&tip=<?php echo $tipo ?>'">
+                                <div class="btn-txt">-</div>
+                              </button>
+                            <?php } ?>
+                          </h6>
+                        <?php } ?>
+                      </div>
+
+                      <!-- Button -->
+                      <div style="margin: auto auto 0;">
+                        <?php if ($check) { ?> <button type="submit" name="submit" value="Submit"
+                            class="btn world-btn">Comprar</button>
+                          <?php ;
+                        } ?>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                                <?php       
-                                        
-                
-                
-               
-                                        };
-                
-                
-                
-
-    
-           
-                         $cont=$nombre  ;
-                                            
-                                    
-                                    
-                                    }; 
-                                    }
-                                    ;
-                                     ?>    
-                                    
-                
-                
-                
-                
+              </div>
             </div>
-
-        
-
-                                        
-                             
-                                           
-                                        
-                                       
-                                        
-                                        
-                              
-
-                
-                                      
-    
-    
-
-    <!-- Google Maps: If you want to google map, just uncomment below codes -->
-    <!--
-    <div class="map-area">
-        <div id="googleMap" class="googleMap"></div>
+          <?php }
+          $cont = $nombre;
+        }
+      } ?>
     </div>
-    -->
+  </div>
 
- <?php include "../Tema/Scripts.php"  ?>
+  <?php include "../Tema/Scripts.php" ?>
 
 </body>
 
