@@ -1904,3 +1904,7 @@ textarea:focus ~ .highlight {
 .single-blog-post{
   margin-bottom: 2em;
 }
+
+.world-btn {
+  background-color: #006EEC !important
+}
