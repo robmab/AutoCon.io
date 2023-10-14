@@ -1905,6 +1905,6 @@ textarea:focus ~ .highlight {
   margin-bottom: 2em;
 }
 
-.world-btn {
+.col-12 > .world-btn {
   background-color: #006EEC !important
 }

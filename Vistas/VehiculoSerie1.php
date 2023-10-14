@@ -37,12 +37,12 @@
   </div>
 
   <!-- ********** BODY ********** -->
-  <div class="main-content-wrapper" style="margin-top: 0.5em;">
+  <div class="main-content-wrapper" style="margin: 0.5em 0;">
     <div class="container">
       <div class="row justify-content-center">
         <!-- ============= Post Content Area ============= -->
         <div class="col-12 col-lg-8">
-          <div class="single-blog-content mb-100">
+          <div class="single-blog-content ">
             <!-- Post Content -->
             <div class="post-content">
               <h6>El nuevo BMW Serie 1 ha llegado para atraer todas las miradas de admiración. Su
@@ -92,7 +92,7 @@
 
         <!-- ========== Sidebar Area ========== -->
         <div class="col-12 col-md-8 col-lg-4">
-          <div class="post-sidebar-area mb-100">
+          <div class="post-sidebar-area">
             <!-- Widget Area -->
             <div class="sidebar-widget-area">
               <h5 class="title">Máxima confianza</h5>
