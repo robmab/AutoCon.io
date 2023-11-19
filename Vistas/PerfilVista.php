@@ -20,12 +20,13 @@
 
   if (isset($_REQUEST['editar'])) { ?>
 
-  <!-----  | EDIT PROFILE |  ----->
+    <!-----  | EDIT PROFILE |  ----->
 
   <!------ HERO ------>
     <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/perfil.jpg); 
       display: flex; justify-content: center; align-items: end; height:180px">
-      <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black; text-align: center; ">Editar datos personales
+      <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black; text-align: center; ">
+        Editar datos personales
       </h1>
     </div>
 
@@ -113,7 +114,7 @@
 
                   <div class="col-12 col-md-6" style="padding-top: -1.1em; margin-top: -1.1em;">
                     <div class="group">
-                      <p style="color:blue; font-size: 15px; padding-bottom:0.5em; margin:0;
+                      <p style="color:#006EEC; font-size: 15px; padding-bottom:0.5em; margin:0;
                       font-weight: 500;">Provincia </p>
                       <select name="provincia" id="provincia">
                         <option selected="true" disabled="disabled">

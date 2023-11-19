@@ -58,7 +58,7 @@
 
               </div>
               <a href="RegistroVista.php">
-                <p style='color:blue; font-size: 12px;' ;>¡Regístrate si aún no lo estás!</p>
+                <p style='color:royalblue; font-size: 12px;' ;>¡Regístrate si aún no lo estás!</p>
               </a>
             </div>
 
