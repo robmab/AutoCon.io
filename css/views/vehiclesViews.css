@@ -1,0 +1,17 @@
+.individualVehicle .hero-area h5 {
+  color: white;
+}
+
+.individualVehicle .hero-area {
+  height: 280px !important;
+}
+
+.individualVehicle .main-content-wrapper {
+  margin: 0.5em 0;
+}
+
+.individualVehicle .post-a-comment-area2 {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}

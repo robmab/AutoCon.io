@@ -43,7 +43,7 @@
                 <div class="post-thumbnail">
                   <img <?php
                   if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) {
-                    ?> onclick="window.location='Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php'" <?php
+                    ?> onclick="window.location='../Vehicles/Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php'" <?php
                   } ?> src="../img/bmw<?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] == 0)
                       echo "Off";
                     echo $_SESSION['listaVeh'][$vehiculo]['img'] ?>" alt="" style="<?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] == 0)
@@ -53,7 +53,7 @@
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['rebaja'] > 0) { ?>
                     <div class="post-cta">
                       <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) { ?>
-                        <a href="Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php">
+                        <a href="../Vehicles/Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php">
                           <?php echo $_SESSION['listaVeh'][$vehiculo]['rebaja'] . "% Descuento" ?>
                         </a>
                       <?php } else { ?>
@@ -68,7 +68,7 @@
                 <!-- Post Content -->
                 <div class="post-content">
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) { ?>
-                    <a href="Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php" class="headline">
+                    <a href="../Vehicles/Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php" class="headline">
                       <h3>
                         <?php echo $vehiculo ?>
                       </h3>
