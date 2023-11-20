@@ -10,6 +10,7 @@
   else
     header("Location:../Controladores/VehiculosControlador.php") ?>
 
+    <link rel="stylesheet" href="../css/views/vehicles.css">
     <link href='../Tema/Button/+-.css' rel='stylesheet' type='text/css'>
     <title>Vehículos - AutoCon</title>
   </head>
@@ -18,18 +19,16 @@
   <?php include "../Tema/Menu.php" ?>
 
   <!-- HERO -->
-  <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/vehiculos.jpg); 
-      display: flex; justify-content: center; align-items: end; height:180px">
-    <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black;">Vehículos BMW</h1>
+  <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/vehiculos.jpg)">
+    <h1>Vehículos BMW</h1>
   </div>
 
   <!-- CONTENT -->
-  <div class="world-catagory-area " id="1" style="display: flex; flex-direction: column; 
-  align-items: center;margin: 0 2em 2em;">
+  <div class="world-catagory-area vehicles" id="1">
 
     <!-- Error Message -->
     <?php if (isset($_SESSION['mensajeBD'])) {
-      echo "<h5 style='color:red;text-align:center;padding-top:1em'>" . $_SESSION['mensajeBD'] . "</h5>";
+      echo "<h5 class='alert'>" . $_SESSION['mensajeBD'] . "</h5>";
       unset($_SESSION['mensajeBD']);
     } ?>
 
@@ -54,14 +53,12 @@
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['rebaja'] > 0) { ?>
                     <div class="post-cta">
                       <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) { ?>
-                        <a style="font-size: 20px;" href="Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php">
+                        <a href="Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php">
                           <?php echo $_SESSION['listaVeh'][$vehiculo]['rebaja'] . "% Descuento" ?>
                         </a>
                       <?php } else { ?>
-                        <div style="background-color: rgba(255,255,255,0.5);
-                           padding:0 0.5em">
-                          <p style="color: red; text-shadow: 1px 1px 1px black;
-                        font-size: 20px; line-height: 20px;">NO DISPONIBLE</p>
+                        <div class="disabled">
+                          <p>NO DISPONIBLE</p>
                         </div>
                       <?php } ?>
                     </div>
@@ -72,7 +69,7 @@
                 <div class="post-content">
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) { ?>
                     <a href="Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php" class="headline">
-                      <h3 style="font-weight: 400;">
+                      <h3>
                         <?php echo $vehiculo ?>
                       </h3>
                     </a>
@@ -81,12 +78,11 @@
                       <?php echo $vehiculo ?>
                     </h3>
                   <?php } ?>
-                  <p style="line-height: 10px; margin: 0.5em 0; padding: 0; display:inline;
-                  font-size: 20px;">
+                  <p>
                     <?php echo "Precio: " . $_SESSION['listaVeh'][$vehiculo]['precioRebajado'] . "€"; ?>
                   </p>
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['precioRebajado'] != $_SESSION['listaVeh'][$vehiculo]['precio']) {
-                    echo " | <p style='font-size: 20px;display:inline;text-decoration:line-through'>" .
+                    echo " | <p class='line-through'>" .
                       $_SESSION['listaVeh'][$vehiculo]['precio'] .
                       "€</p>";
                   } ?>
@@ -94,16 +90,16 @@
                   <!-- Post Meta -->
                   <div class="post-meta mb-0 pb-0">
 
-                    <!-- AVAILABLE VEHICLES -->
+                    <!-- AVAILABLE VEHICLES ADMIN -->
                     <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0 and isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
                       <div class="single-vehicle-stats">
-                        <p style="color: cadetblue;font-size: 15px">
+                        <p class="available">
                           <?php echo $_SESSION['listaVeh'][$vehiculo]['disponibles'] ?> disponibles
                         </p>
-                        <p style="color: #E1B42B;font-size: 15px">
+                        <p class="rented" >
                           <?php echo $_SESSION['listaVeh'][$vehiculo]['alquilados'] ?> alquilados
                         </p>
-                        <p style="color: cornflowerblue;font-size: 15px">
+                        <p class="selled">
                           <?php echo $_SESSION['listaVeh'][$vehiculo]['vendidos'] ?> vendidos
                         </p>
                       </div>
@@ -124,10 +120,10 @@
 
                       if (isset($_SESSION['rol']) and $_SESSION['rol'] == 'Admin') { ?>
                         <div class="single-vehicle-stats">
-                          <p style="color: #E1B42B;font-size: 15px">
+                          <p class="rented">
                             <?php echo $_SESSION['listaVeh'][$vehiculo]['alquilados'] ?> alquilados
                           </p>
-                          <p style="color: cornflowerblue;font-size: 15px">
+                          <p class="selled">
                             <?php echo $_SESSION['listaVeh'][$vehiculo]['vendidos'] ?> vendidos
                           </p>
                         </div>

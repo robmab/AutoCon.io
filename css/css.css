@@ -51,4 +51,5 @@ label {
 .alert {
   color: red;
   text-align: center;
+  padding-top: 1em;
 }
