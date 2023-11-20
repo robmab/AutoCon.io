@@ -3,6 +3,7 @@
 
 <head>
 	<?php include "../Tema/CSS.php" ?>
+	<link rel="stylesheet" href="../css/views/services.css">
 	<link href='../Tema/Button/CSS.css' rel='stylesheet' type='text/css'>
 	<title>Servicios - AutoCon</title>
 </head>
@@ -11,12 +12,11 @@
 	<?php include "../Tema/Menu.php" ?>
 
 	<!-- HERO -->
-	<div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/reparacion.png); 
-	display: flex; justify-content: center; align-items: end; height:180px">
-		<h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black;">Servicios</h1>
+	<div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/reparacion.png)">
+		<h1>Servicios</h1>
 	</div>
 
-	<div class="world-catagory-area" id="1">
+	<div class="world-catagory-area services" id="1">
 		<div class="container">
 			<div class="row justify-content-center">
 
@@ -26,7 +26,7 @@
 
 						<!-- Alert -->
 						<?php if (isset($_SESSION['mensajeBD'])) {
-							echo " <h5 style='color:red;text-align:center'> " . $_SESSION['mensajeBD'] . "";
+							echo " <h5 class='alert'> " . $_SESSION['mensajeBD'] . "";
 							unset($_SESSION['mensajeBD']);
 						} ?>
 

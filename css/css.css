@@ -2,6 +2,7 @@
   border: 1px solid red;
 } */
 
+/* GENERAL */
 #header {
   background: lightsteelblue;
   opacity: 90%;
@@ -33,3 +34,21 @@ label {
   color: #006eec !important ;
 }
 
+/* HERO VIEWS*/
+.hero-area {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 180px;
+}
+
+.hero-area h1 {
+  color: rgb(242, 242, 242);
+  text-shadow: 3px 3px 1px black;
+}
+
+/* ALERTS */
+.alert {
+  color: red;
+  text-align: center;
+}

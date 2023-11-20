@@ -8,4 +8,4 @@ include '../ConexiónBD.php' ?>
 
 <link rel="icon" href="../img/core-img/favicon.ico">
 <link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="../Tema/Banner/css.css">
+<link rel="stylesheet" href="../css/css.css">
