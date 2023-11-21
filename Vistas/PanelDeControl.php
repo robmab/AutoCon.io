@@ -36,11 +36,11 @@
 						} ?>
 
 						<!-- Single Blog Post -->
-						<div class="single-blog-post2 post-style-2 d-flex align-items-center wow ">
+						<div class="single-blog-post2 post-style-2 d-flex align-items-center  ">
 							<div class="post-content">
 								<div class="box">
 									<a href="../Controladores/UsuariosControlador.php" 
-									class="btn">
+									class="btn btn-white btn-animation-1">
 										Usuarios
 									</a>
 								</div>
