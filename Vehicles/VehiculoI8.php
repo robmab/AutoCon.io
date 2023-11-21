@@ -5,7 +5,7 @@
   <?php include "../Tema/CSS.php" ?>
 
   <link rel="stylesheet" href="../css/views/vehiclesViews.css">
-  <title>I8 - AutoCon</title>
+  <title>AutoCon - I8</title>
 </head>
 
 <body>

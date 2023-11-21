@@ -3,7 +3,7 @@
 
 <head>
   <?php include "../Tema/CSS.php" ?>
-  <title>Login - AutoCon</title>
+  <title>AutoCon - Login</title>
 </head>
 
 <body>

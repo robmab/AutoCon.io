@@ -4,7 +4,7 @@
 <head>
   <?php include "../Tema/CSS.php" ?>
   <link rel="stylesheet" href="../css/views/vehiclesViews.css">
-  <title>Serie 5 Berlina - AutoCon</title>
+  <title>AutoCon - Serie 5 Berlina</title>
 </head>
 
 <body>

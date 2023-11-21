@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="../css/views/vehicles.css">
     <link href='../Tema/Button/+-.css' rel='stylesheet' type='text/css'>
-    <title>Vehículos - AutoCon</title>
+    <title>AutoCon - Vehículos</title>
   </head>
 
   <body>

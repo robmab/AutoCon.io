@@ -16,7 +16,7 @@
 	} ?>
 
 	<link rel="stylesheet" href="../Tema/Button/Cancelar.css">
-	<title>Usuarios - AutoCon</title>
+	<title>AutoCon - Usuarios</title>
 </head>
 
 <body>

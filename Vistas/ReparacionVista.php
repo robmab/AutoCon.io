@@ -5,7 +5,7 @@
 	<?php include "../Tema/CSS.php" ?>
 	<link rel="stylesheet" href="../css/views/services.css">
 	<link href='../Tema/Button/CSS.css' rel='stylesheet' type='text/css'>
-	<title>Servicios - AutoCon</title>
+	<title>AutoCon - Servicios</title>
 </head>
 
 <body>

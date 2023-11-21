@@ -8,7 +8,7 @@
   else
     header("Location:../Controladores/PerfilControlador.php");
   ?>
-  <title>Perfil - AutoCon</title>
+  <title>AutoCon - Perfil</title>
 </head>
 
 <body>

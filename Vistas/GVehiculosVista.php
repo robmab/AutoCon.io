@@ -35,7 +35,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Gestión de Vehículos - AutoCon</title>
+    <title>AutoCon - Gestión de Vehículos</title>
 
     <!-- Favicon  -->
     <link rel="stylesheet" href="../Tema/Button/Cancelar.css">

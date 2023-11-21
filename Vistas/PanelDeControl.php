@@ -10,7 +10,7 @@
 
 	<link rel="stylesheet" href="../css/views/admin.css">
 	<link href='../Tema/Button/boton.css' rel='stylesheet' type='text/css'>
-	<title>Panel de Control - AutoCon</title>
+	<title>AutoCon - Panel de Control</title>
 </head>
 
 <body>

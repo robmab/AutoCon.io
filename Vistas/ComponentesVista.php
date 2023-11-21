@@ -11,7 +11,7 @@
     header("Location:../Controladores/ComponentesControlador.php"); ?>
 
   <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
-  <title>Componentes - AutoCon</title>
+  <title>AutoCon - Componentes</title>
 </head>
 
 <body>

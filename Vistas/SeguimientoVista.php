@@ -8,7 +8,7 @@
   } else
     header("Location:../Controladores/SeguimientoControlador.php") ?>
 
-    <title>Seguimientos - AutoCon</title>
+    <title>AutoCon - Seguimientos</title>
     <link rel="stylesheet" href="../Tema/Button/Cancelar.css">
   </head>
 

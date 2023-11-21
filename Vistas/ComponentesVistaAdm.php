@@ -13,7 +13,7 @@
   <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
   <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
 
-  <title>Componentes Adm- AutoCon</title>
+  <title>AutoCon - Componentes Adm</title>
 </head>
 
 <body>

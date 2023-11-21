@@ -16,7 +16,7 @@
 			header("Location:Index.php");
 	} ?>
 
-	<title>Proveedores - AutoCon</title>
+	<title>AutoCon - Proveedores</title>
 	<link rel="stylesheet" href="../Tema/Button/Cancelar.css">
 </head>
 

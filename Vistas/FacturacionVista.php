@@ -5,7 +5,7 @@
   
     <?php  include"../Tema/CSS.php"; ?>
     <!-- Title  -->
-    <title>Facturación - AutoCon</title>
+    <title>AutoCon - Facturación</title>
 
 
 

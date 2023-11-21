@@ -4,7 +4,7 @@
 <head>
   <?php include "../Tema/CSS.php" ?>
   <link rel="stylesheet" href="../css/views/vehiclesViews.css">
-  <title>Serie 1 - AutoCon</title>
+  <title>AutoCon - Serie 1</title>
 </head>
 
 <body>
