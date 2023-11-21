@@ -53,3 +53,22 @@ label {
   text-align: center;
   padding-top: 1em;
 }
+
+/* TABLE */
+
+.table {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: scroll;
+}
+
+.table .role{
+  color: #E2B842
+}
+
+.table .delete{
+  color:red
+}
+

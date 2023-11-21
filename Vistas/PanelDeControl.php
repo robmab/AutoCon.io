@@ -2,208 +2,108 @@
 <html lang="en">
 
 <head>
-    <?php include "../Tema/CSS.php";
-    
-    
-    
-      if (isset($_SESSION['rol'])){
-       
-             if($_SESSION['rol']!='Admin'){
-                 
-                 header("Location:Index.php");
-                 
-             }
-             
-   }else{
-             
-       header("Location:Index.php");
-          
-       
-   };
-    ?>
-    
-    <link href='../Tema/Button/boton.css' rel='stylesheet' type='text/css'>
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<?php include "../Tema/CSS.php";
+	if (isset($_SESSION['rol'])) {
+		if ($_SESSION['rol'] != 'Admin')
+			header("Location:Index.php");
+	} ?>
 
-    <!-- Title  -->
-    <title>Panel de Control - AutoCon</title>
-
-    <!-- Favicon  -->
-   
-
+	<link rel="stylesheet" href="../css/views/admin.css">
+	<link href='../Tema/Button/boton.css' rel='stylesheet' type='text/css'>
+	<title>Panel de Control - AutoCon</title>
 </head>
 
 <body>
-   <?php  include "../Tema/Menu.php"  ;
-       
-   
-  
-   
-  
-   ?>
-    <!-- ***** Header Area End ***** -->
+	<?php include "../Tema/Menu.php" ?>
 
-    <!-- ********** Hero Area Start ********** -->
-    <div class="hero-area height-400 bg-img background-overlay" style="background-image: url(../img/blog-img/paneldecontrol.png);"></div>
-    <!-- ********** Hero Area End ********** -->
+	<!-- HERO -->
+	<div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/paneldecontrol.png)">
+		<h1>Panel de Control</h1>
+	</div>
 
-    <div class="world-catagory-area mt-50">
-        
-        <div class="container">
-            <center> <h1>Panel de Control</h1><br></center>
-            <div class="row justify-content-center">
-                
+	<div class="world-catagory-area admin">
+		<div class="container">
+			<div class="row justify-content-center">
 
-                 
-                      
-                <!-- Contact Form Area -->
-                <div class="col-12 col-md-10 col-lg-8">
-                    <div class="contact-form">
-                                    
-    
-<center>  <?php   if (isset($_SESSION['mensajeBD'])){
-    ?> <br><br>  <?php
-                    echo  " <h5 style='color:red;'> ". $_SESSION['mensajeBD'].""  ;
-                    unset($_SESSION['mensajeBD']);
-                    }   ;  ?></b> </center>  
-    
-    
-    
-                <!-- ========== Single Blog Post ========== -->     
-                
-                
-                  
-                                                        <div class="col-12 ">
-                                            <!-- Single Blog Post -->
-                                            <div class="single-blog-post2 post-style-2 d-flex align-items-center wow " >                    
-                                                <div class="post-content">
-                                                 <br>
-                                                    <div class="box">
-                                                        <a href="../Controladores/UsuariosControlador.php" class="btn btn-white btn-animation-1">Usuarios</a> 
-</div>
-                                                    <!-- Post Meta -->
-                                                   
-                                                </div>
-                                                 <div class="post-thumbnail">
-                                                     <br><br><br>
-                                                </div>
-                                            </div>
-                                            
+				<!-- Contact Form Area -->
+				<div class="col-12 col-md-10 col-lg-8">
+					<div class="contact-form">
 
+						<?php if (isset($_SESSION['mensajeBD'])) { ?>
+							<?php
+							echo " <h5 class='alert'> " . $_SESSION['mensajeBD'] . "";
+							unset($_SESSION['mensajeBD']);
+						} ?>
 
-                                            <!-- Single Blog Post -->
-                                                                                                                      
-                                                                  <div class="single-blog-post2 post-style-2 d-flex align-items-center wow " >                    
-                                                <div class="post-content">
-                                                 <br>
-                                                     <div class="box">
-                                                         <a href="../Controladores/ProveedoresControlador.php" class="btn btn-white btn-animation-1">Proveedores</a> 
-</div>
-                                                    <!-- Post Meta -->
-                                                   
-                                                </div>
-                                                 <div class="post-thumbnail">
-                                                     <br><br><br>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                            
-                                            
-                                                                                <div class="single-blog-post2 post-style-2 d-flex align-items-center wow " >                    
-                                                <div class="post-content">
-                                                 <br>
-                                                     <div class="box">
-                                                         <a href="../Controladores/GVehiculosControlador.php" class="btn btn-white btn-animation-1">Gestión de Vehículos</a> 
-</div>
-                                                    <!-- Post Meta -->
-                                                   
-                                                </div>
-                                                 <div class="post-thumbnail">
-                                                     <br><br><br>
-                                                </div>
-                                            </div>
-                                            
-                                            
-                                                  <div class="single-blog-post2 post-style-2 d-flex align-items-center wow " >                    
-                                                <div class="post-content">
-                                                 <br>
-                                                     <div class="box">
-                                                         <a href="../Controladores/EventosControlador.php" class="btn btn-white btn-animation-1">Eventos de Descuento</a> 
-</div>
-                                                    <!-- Post Meta -->
-                                                   
-                                                </div>
-                                                 <div class="post-thumbnail">
-                                                     <br><br><br>
-                                                </div>
-                                            </div>
-                                            
-               
-                                            
-                                               <div class="single-blog-post2 post-style-2 d-flex align-items-center wow " >                    
-                                                <div class="post-content">
-                                                 <br>
-                                                     <div class="box">
-                                                         <a href="../Controladores/GComponentesControlador.php" class="btn btn-white btn-animation-1">Componentes comprados</a> 
-</div>
-                                                    <!-- Post Meta -->
-                                                   
-                                                </div>
-                                                 <div class="post-thumbnail">
-                                                     <br><br><br>
-                                                </div>
-                                            </div>
-                                            
-                                                                                                               <div class="single-blog-post2 post-style-2 d-flex align-items-center wow " >                    
-                                                <div class="post-content">
-                                                 <br>
-                                                     <div class="box">
-                                                         <a href="../Controladores/GReparacionControlador.php" class="btn btn-white btn-animation-1">Servicios de Reparación Solicitados</a> 
-</div>
-                                                    <!-- Post Meta -->
-                                                   
-                                                </div>
-                                                 <div class="post-thumbnail">
-                                                     <br><br><br>
-                                                </div>
-                                            </div>
-                                            
-     
-                                                                                                                                                                     
-                                                                                        
-                                        </div>
-                
-                    </div>
-                </div>
-              </div>  
-            </div>
+						<!-- Single Blog Post -->
+						<div class="single-blog-post2 post-style-2 d-flex align-items-center wow ">
+							<div class="post-content">
+								<div class="box">
+									<a href="../Controladores/UsuariosControlador.php" 
+									class="btn">
+										Usuarios
+									</a>
+								</div>
+							</div>
+						</div>
 
-        
+						<div class="single-blog-post2 post-style-2 d-flex align-items-center">
+							<div class="post-content">
+								<div class="box">
+									<a href="../Controladores/ProveedoresControlador.php" class="btn btn-white btn-animation-1">
+										Proveedores
+									</a>
+								</div>
+							</div>
+						</div>
 
-                                        
-                      <br>     <br>   <br>    <br>     
-                                           
-                                        
-                                       
-                                        
-                                        
-                              
+						<div class="single-blog-post2 post-style-2 d-flex align-items-center">
+							<div class="post-content">
+								<div class="box">
+									<a href="../Controladores/GVehiculosControlador.php" class="btn btn-white btn-animation-1">
+										Gestión de Vehículos
+									</a>
+								</div>
+							</div>
+						</div>
 
-                
-                                      
-    
-    
+						<div class="single-blog-post2 post-style-2 d-flex align-items-center">
+							<div class="post-content">
+								<div class="box">
+									<a href="../Controladores/EventosControlador.php" class="btn btn-white btn-animation-1">
+										Eventos de Descuento
+									</a>
+								</div>
+							</div>
+						</div>
 
-    <!-- Google Maps: If you want to google map, just uncomment below codes -->
-    <!--
-    <div class="map-area">
-        <div id="googleMap" class="googleMap"></div>
-    </div>
-    -->
+						<div class="single-blog-post2 post-style-2 d-flex align-items-center wow ">
+							<div class="post-content">
+								<div class="box">
+									<a href="../Controladores/GComponentesControlador.php" class="btn btn-white btn-animation-1">
+										Componentes comprados
+									</a>
+								</div>
+							</div>
+						</div>
 
- <?php include "../Tema/Scripts.php"  ?>
+						<div class="single-blog-post2 post-style-2 d-flex align-items-center">
+							<div class="post-content">
+								<div class="box">
+									<a href="../Controladores/GReparacionControlador.php" class="btn btn-white btn-animation-1">
+										Servicios de Reparación Solicitados
+									</a>
+								</div>
+							</div>
+						</div>
 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<?php include "../Tema/Scripts.php" ?>
 </body>
 
 </html>
