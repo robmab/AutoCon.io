@@ -2,3 +2,6 @@
   border-radius: 20%;
 }
 
+.services a {
+  width: 30em !important;
+}
