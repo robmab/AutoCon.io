@@ -233,7 +233,7 @@
               </div>
 
               <?php if (isset($_SESSION['mensajeBD3'])) {
-                echo " <h6 style='color:red;font-align:center'> " . $_SESSION['mensajeBD3'] . "</h6> ";
+                echo " <h6 class='alert'> " . $_SESSION['mensajeBD3'] . "</h6> ";
                 unset($_SESSION['mensajeBD3']);
               } ?>
 

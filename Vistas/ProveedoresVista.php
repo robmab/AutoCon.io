@@ -28,67 +28,61 @@
 		<h1>Proveedores disponibles</h1>
 	</div>
 
-	<section class="contact-area">
-		<div class="container">
-			<div class="row justify-content-center" id="1">
+	<section>
+		<div class="col-12 col-md-10 col-lg-8">
+			<?php if (isset($_SESSION['mensajeBD'])) {
+				echo " <h5 class='alert'> " . $_SESSION['mensajeBD'] . "</h5> ";
+				unset($_SESSION['mensajeBD']);
+			} ?>
+		</div>
 
-				<div class="col-12 col-md-10 col-lg-8">
-					<?php if (isset($_SESSION['mensajeBD'])) {
-						echo " <h5 class='alert'> " . $_SESSION['mensajeBD'] . "</h5> ";
-						unset($_SESSION['mensajeBD']);
-					} ?>
-				</div>
+		<!-- Contact Form Area -->
+		<div class="table">
+			<!-- Datos -->
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Nombre</th>
+						<th>Número</th>
+						<th>Correo</th>
+						<th>Disponibilidad</th>
+						<th></th>
+					</tr>
+				</thead>
 
-				<!-- Contact Form Area -->
-				<div class="contact-form">
-					<!-- Datos -->
-					<table>
-						<thead>
-							<tr>
-								<th></th>
-								<th>Nombre</th>
-								<th>Número</th>
-								<th>Correo</th>
-								<th>Disponibilidad</th>
-								<th></th>
-							</tr>
-						</thead>
+				<tbody>
+					<?php foreach ($_SESSION['datosProveedores'] as $nombre => $num) { ?>
+						<tr>
+							<td><img src="../img/proveedores/<?php echo $num['logo'] ?>"></td>
+							<td>
+								<?php echo $nombre ?>
+							</td>
+							<td>
+								<?php echo $num['numero'] ?>
+							</td>
+							<td>
+								<?php echo $num['correo'] ?>
+							</td>
+							<td>
+								<label class="switch">
 
-						<tbody>
-							<?php foreach ($_SESSION['datosProveedores'] as $nombre => $num) { ?>
-								<tr>
-									<td><img src="../img/proveedores/<?php echo $num['logo'] ?>"></td>
-									<td>
-										<?php echo $nombre ?>
-									</td>
-									<td>
-										<?php echo $num['numero'] ?>
-									</td>
-									<td>
-										<?php echo $num['correo'] ?>
-									</td>
-									<td>
-										<label class="switch">
+									<input class="switch-input" type="checkbox" <?php if ($num['disponibilidad'] == 'Si') { ?>checked <?php } ?> />
 
-											<input class="switch-input" type="checkbox" <?php if ($num['disponibilidad'] == 'Si') { ?>checked
-												<?php } ?> />
+									<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
+									echo $nombre ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
+											?>2<?php } ?>#1'" class="switch-label" data-on="Si" data-off="No"></span>
 
-											<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
-											echo $nombre ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
-													?>2<?php } ?>#1'" class="switch-label" data-on="Si" data-off="No"></span>
+									<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
+									echo $nombre ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
+											?>2<?php } ?>#1'" class="switch-handle"></span>
 
-											<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
-											echo $nombre ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
-													?>2<?php } ?>#1'" class="switch-handle"></span>
-
-										</label>
-									</td>
-								</tr>
-							<?php } ?>
-						</tbody>
-					</table>
-				</div>
-			</div>
+								</label>
+							</td>
+						</tr>
+					<?php } ?>
+				</tbody>
+			</table>
 		</div>
 	</section>
 

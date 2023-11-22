@@ -38,7 +38,7 @@
 		<!-- Contact Form Area -->
 		<div class="table">
 			<!-- Datos -->
-			<table style="scale: 0.9">
+			<table>
 				<thead>
 					<tr>
 						<th>Nombre</th>

@@ -3,6 +3,13 @@
 } */
 
 /* GENERAL */
+.align {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
 #header {
   background: lightsteelblue;
   opacity: 90%;
@@ -63,12 +70,66 @@ label {
   flex-direction: column;
   overflow-x: scroll;
 }
-
-.table .role{
-  color: #E2B842
+.table table {
+  margin: 1.5em 0 0 0;
+  scale: 0.95;
 }
 
-.table .delete{
-  color:red
+.table .role {
+  color: #e2b842;
+}
+.table .delete {
+  color: red;
+}
+.table .buyed {
+  color: greenyellow;
+}
+.table .reserved {
+  color: #e1b42b;
+}
+.table .rented {
+  color: deeppink;
 }
 
+.table .accepted {
+  color: palegoldenrod;
+}
+.table .standby {
+  color: #e2b842;
+}
+.table .ended {
+  color: #218838;
+}
+
+.table .banner {
+  width: 250px;
+  height: 30px;
+}
+.table .fecha {
+  width: 160px;
+  height: 30px;
+}
+.table .porciento {
+  width: 60px;
+  height: 30px;
+}
+
+.table .services {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 0.25em;
+}
+
+.transparent {
+  color: transparent !important;
+}
+
+.table img {
+  height: 50% !important;
+  width: 50% !important;
+}
+
+.table .services-img {
+  height: 30px !important;
+  width: 30px !important;
+}
