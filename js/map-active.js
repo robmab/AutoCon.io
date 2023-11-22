@@ -5,8 +5,8 @@ var stylez = [{
     elementType: "all",
     stylers: [{
         saturation: -25
-            }]
-        }];
+    }]
+}];
 var mapOptions = {
     zoom: 15,
     center: latlng,

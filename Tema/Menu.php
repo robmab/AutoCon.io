@@ -54,7 +54,7 @@
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <?php echo $_SESSION['user'] ?>
                   </a>
-                  
+
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a style="font-size: 17px" class="dropdown-item"
                       href="../Controladores/PerfilControlador.php">Perfil</a>

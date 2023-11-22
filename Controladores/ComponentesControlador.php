@@ -155,7 +155,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
     $listaComponentes[$info['nombre']][$info['tipo']]['descuento'] = $info['descuento'];
     $listaComponentes[$info['nombre']][$info['tipo']]['precioO'] = $info['precio'] * 1;
     $listaComponentes[$info['nombre']][$info['tipo']]['precio'] = $info['precio'] * 1;
-    $precioR = ((($info['descuento'] / 100)-1)*-1) * $info['precio'];
+    $precioR = ((($info['descuento'] / 100) - 1) * -1) * $info['precio'];
 
     //Calculo de rebaja de existir
     $fechaActual = date("Y\-m\-d");

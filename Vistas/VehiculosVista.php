@@ -68,7 +68,8 @@
                 <!-- Post Content -->
                 <div class="post-content">
                   <?php if ($_SESSION['listaVeh'][$vehiculo]['disponibles'] > 0) { ?>
-                    <a href="../Vehicles/Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php" class="headline">
+                    <a href="../Vehicles/Vehiculo<?php echo $_SESSION['listaVeh'][$vehiculo]['ruta'] ?>.php"
+                      class="headline">
                       <h3>
                         <?php echo $vehiculo ?>
                       </h3>
@@ -96,7 +97,7 @@
                         <p class="available">
                           <?php echo $_SESSION['listaVeh'][$vehiculo]['disponibles'] ?> disponibles
                         </p>
-                        <p class="rented" >
+                        <p class="rented">
                           <?php echo $_SESSION['listaVeh'][$vehiculo]['alquilados'] ?> alquilados
                         </p>
                         <p class="selled">

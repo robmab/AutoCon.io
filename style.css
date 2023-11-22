@@ -1897,14 +1897,15 @@ textarea:focus ~ .highlight {
 
 /*# sourceMappingURL=style.css.map */
 
-.post-thumbnail img, .world-catagory-area button {
+.post-thumbnail img,
+.world-catagory-area button {
   cursor: pointer;
 }
 
-.single-blog-post{
+.single-blog-post {
   margin-bottom: 2em;
 }
 
 .col-12 > .world-btn {
-  background-color: #006EEC !important
+  background-color: #006eec !important;
 }
