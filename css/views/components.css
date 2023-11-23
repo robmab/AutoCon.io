@@ -1,0 +1,80 @@
+.components {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.components .switch-role {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+}
+
+.components .component-panel {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 0em 1em 2em 1em;
+}
+
+.components .single-blog-post {
+  box-shadow: 0 0 5px 3px rgba(44, 44, 44, 0.348);
+}
+
+.components .single-component {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url(../../img/bg6.jpg);
+  width: 100% !important;
+}
+
+.components .single-component h4 {
+  color: white;
+  text-align: center;
+}
+
+.components .inside-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 1em 2em;
+  height: 13em;
+}
+
+.components .component-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.components .component-content h6 {
+  color: white;
+}
+
+.components .component-content input {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.components .price,
+.components .discount {
+  text-shadow: 0.1em 0.1em #000000;
+}
+
+.components .price {
+  color: #3399ff;
+  font-size: 18px;
+}
+
+.components .discount {
+  color: red;
+  font-size: 22px;
+}
+
+.components .button {
+  margin: auto auto 0;
+}

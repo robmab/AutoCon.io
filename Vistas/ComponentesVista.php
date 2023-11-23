@@ -10,6 +10,7 @@
   else
     header("Location:../Controladores/ComponentesControlador.php"); ?>
 
+  <link rel="stylesheet" href="../css/views/components.css">
   <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
   <title>AutoCon - Componentes</title>
 </head>
@@ -19,19 +20,16 @@
   $listaComponentes = $_SESSION['listaComponentes'] ?>
 
   <!-- ********** HERO ********** -->
-  <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/componentes.jpg); 
-      display: flex; justify-content: center; align-items: end; height:180px; margin-bottom:3em">
-    <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black;">Componentes de repuesto</h1>
+  <div class="hero-area bg-img background-overlay mb-4" style="background-image: url(../img/blog-img/componentes.jpg)">
+    <h1>Componentes de repuesto</h1>
   </div>
 
   <!-- ********** BODY ********** -->
-  <div id="1" style="margin: 0; padding: 0; display: flex;
-  flex-direction: column; align-items: center;">
-
+  <div class="components" id="1">
     <!-- Admin Controller -->
     <?php if (isset($_SESSION['rol'])) {
       if ($_SESSION['rol'] == 'Admin') { ?>
-        <div style="display: flex; justify-content: center; margin-bottom: 2em;">
+        <div class="switch-role">
           <label class="switch">
             <input class="switch-input" type="checkbox" />
             <span onclick="window.location='../Controladores/ComponentesControlador.php?Adm2=1#1'" class="switch-label"
@@ -45,16 +43,14 @@
 
     /* Error Message */
     if (isset($_SESSION['mensajeBD'])) { ?>
-      <div style="padding-bottom: 0.5em;">
-        <?php echo " <h5 style='color:red;'> " . $_SESSION['mensajeBD'];
+      <div class="pb-3">
+        <?php echo " <h5 class='alert'> " . $_SESSION['mensajeBD'];
         unset($_SESSION['mensajeBD']); ?>
       </div>
     <?php } ?>
 
     <!-- ========== Components ========== -->
-    <div class="row justify-content-center" style="display: flex;width: 100%;
-    justify-content: center; padding: 0em 1em 2em 1em; ">
-
+    <div class="row component-panel">
       <?php $cont = "";
 
       foreach ($listaComponentes as $nombre => $num) {
@@ -62,21 +58,18 @@
 
           if ($cont != $nombre) { ?>
             <div class="col-12 col-md-6 col-lg-4">
-              <div class="single-blog-post post-style-3 " style="box-shadow: 0 0 5px 3px rgba(44, 44, 44, 0.348);">
+              <div class="single-blog-post post-style-3">
 
-                <div class="pt-1 m-0" style="background-image:linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.65)) ,
-                 url(../img/bg6.jpg); width: 100% !important; ">
-                  <h4 style="color: white; text-align: center;">
+                <div class="single-component pt-1 m-0">
+                  <h4>
                     <?php echo $nombre ?>
                   </h4>
                   <!-- CARD -->
-                  <div style="display: flex; flex-direction: column; align-items: center;
-                background-image: linear-gradient(rgba(0, 0, 0, 0.427),rgba(0, 0, 0, 0.9)) ,
-                  url(../img/componentes/<?php echo $listaComponentes[$nombre][$tipo]['ruta'] ?>);
-                background-repeat: no-repeat; background-size: cover; padding:1em 2em ; height: 13em;">
+                  <div class="inside-component" style="background-image: linear-gradient(rgba(0, 0, 0, 0.427),rgba(0, 0, 0, 0.9)) ,
+                  url(../img/componentes/<?php echo $listaComponentes[$nombre][$tipo]['ruta'] ?>);">
 
                     <!-- Content display -->
-                    <div style="display: flex; align-items: center; justify-content: center; height: 100%; ">
+                    <div class="component-content">
                       <form action="../Controladores/ComponentesControlador.php?comprar=1&nombre=<?php echo $nombre ?>#1"
                         method="post">
 
@@ -84,9 +77,9 @@
                         $check = false;
 
                         foreach ($listaComponentes[$nombre] as $tipo => $num) { ?>
-                          <h6 style="color: white">
+                          <h6>
                             <?php if ($listaComponentes[$nombre][$tipo]['cantidad'] > 0) { ?>
-                              <input style="width: 1.5em;height: 1.5em" type=radio name='tipo'
+                              <input type=radio name='tipo'
                                 value="<?php echo $tipo ?>-<?php echo $listaComponentes[$nombre][$tipo]['precioR'] ?>">
                               <?php $check = true;
                             }
@@ -96,14 +89,14 @@
                               <s>No disponible</s>
 
                             <?php } elseif ($listaComponentes[$nombre][$tipo]['descuento'] == 0) { ?>
-                              por <i style="color: #3399ff; font-size: 18px; text-shadow: 0.1em 0.1em #000000">
+                              por <i class="price">
                                 <?php echo $listaComponentes[$nombre][$tipo]['precio'] ?> €
                               </i>
                             <?php } else { ?>
                               por <s>
                                 <?php echo $listaComponentes[$nombre][$tipo]['precioO'] ?> €
                               </s>
-                              <i style="color: red; font-size: 22px;text-shadow: 0.1em 0.1em #000000">
+                              <i class="discount">
                                 <?php echo $listaComponentes[$nombre][$tipo]['precioR'] ?> €
                               </i>
                             <?php } ?>
@@ -112,11 +105,12 @@
                     </div>
 
                     <!-- Button -->
-                    <div style="margin: auto auto 0;">
-                      <?php if ($check) { ?> <button type="submit" name="submit" value="Submit"
-                          class="btn world-btn">Comprar</button>
-                        <?php ;
-                      } ?>
+                    <div class="button">
+                      <?php if ($check) { ?>
+                        <button type="submit" name="submit" value="Submit" class="btn world-btn">
+                          Comprar
+                        </button>
+                      <?php } ?>
                       </form>
                     </div>
                   </div>
@@ -131,7 +125,6 @@
   </div>
 
   <?php include "../Tema/Scripts.php" ?>
-
 </body>
 
 </html>
