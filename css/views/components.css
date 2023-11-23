@@ -60,6 +60,15 @@
   height: 1.5em;
 }
 
+.components .component-content button {
+  height: 30px;
+  width: 30px;
+  color: red;
+  border-radius: 50%;
+  font-weight: 900;
+  cursor: pointer;
+}
+
 .components .price,
 .components .discount {
   text-shadow: 0.1em 0.1em #000000;
@@ -68,6 +77,10 @@
 .components .price {
   color: #3399ff;
   font-size: 18px;
+}
+
+.components .available {
+  color: greenyellow;
 }
 
 .components .discount {
