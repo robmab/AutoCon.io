@@ -3,34 +3,26 @@
 
 <head>
   <?php include "../Tema/CSS.php"; ?>
+  <link rel="stylesheet" href="../css/views/home.css">
   <title>AutoCon - Home</title>
 </head>
 
 <body>
   <?php include "../Tema/Menu.php"; ?>
-  <div style="position:absolute ; z-index: 10; display: flex; justify-content: center;
-        top:20%; right:0;left:0; width:70em; margin: auto;display:flex;align-items: center;
-        flex-direction: column">
-    <p style="font-size: 45px; display: block; color:#629CFC;line-height: 0.25em;
-              text-shadow: 3px 3px 3px black;  margin-bottom: 0.75em;">BMW</p>
-    <div style="width: 18em; border-bottom: 2px solid #9fb6dc"></div>
-    <h1 style=" font-size: 65px; color: white; text-shadow: 3px 3px 3px black">
-      AUTOCON </h1>
+  <div class="hero-title">
+    <p>BMW</p>
+    <h1> AUTOCON </h1>
   </div>
 
   <!-- HERO AREA -->
-  <div class="hero-area" style="height: 100vh">
-
+  <div class="hero-area">
     <!-- Hero Slides Area -->
     <div class="hero-slides owl-carousel">
-      <div class="single-hero-slide bg-img background-overlay"
-        style="background-image: url(../img/blog-img/bg2.jpg); height: 100vh">
+      <div class="single-hero-slide bg-img background-overlay" style="background-image: url(../img/blog-img/bg2.jpg) ">
       </div>
-      <div class="single-hero-slide bg-img background-overlay"
-        style="background-image: url(../img/blog-img/bg3.jpg); height: 100vh">
+      <div class="single-hero-slide bg-img background-overlay" style="background-image: url(../img/blog-img/bg3.jpg)">
       </div>
-      <div class="single-hero-slide bg-img background-overlay"
-        style="background-image: url(../img/blog-img/bg1.jpg); height: 100vh">
+      <div class="single-hero-slide bg-img background-overlay" style="background-image: url(../img/blog-img/bg1.jpg)">
       </div>
     </div>
 
@@ -39,10 +31,10 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <div class="hero-post-slide" style="padding-bottom: 5em;">
+            <div class="hero-post-slide">
               <div class="single-slide d-flex align-items-center">
                 <div class="post-number">
-                  <p>1 </p>
+                  <p>1</p>
                 </div>
                 <div class="post-title">
                   <a href="../Controladores/VehiculosControlador.php">Descubre nuestros vehículos.</a>
@@ -74,25 +66,19 @@
   </div>
 
   <!-- BODY -->
-  <div class="main-content-wrapper section-padding-100 pt-5 mt-0" style="height: 95vh;
-              background-image: url('../img/blog-img/bmw.jpg'); display: flex;
-              background-size: cover;
-              align-items:center; flex-direction: column;">
-    <p class="pt-0 mt-0" style="font-size: 35px; color:black; text-shadow: 2px 2px 2px white;
-                                font-weight: 600;">¡Localízanos!</p>
-    <div style="height: 5%; width: 50%; border-bottom: 1px solid black; margin-bottom: 2em;"></div>
+  <div class="main-content-wrapper section-padding-100 pt-5 mt-0">
+    <p class="pt-0 mt-0">¡Localízanos!</p>
+    <div class="border"></div>
 
-    <div style="display: flex; justify-content: center; padding: 0 10em; margin: 0; width: 90%;
-                height: 23vh; ">
+    <div class="map">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3099.970879513495!2d-1.8841090845740516!3d39.01597777955259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd665ef7be827c67%3A0x7bc569d31447a077!2sAv.%20Gregorio%20Arcos%2C%2041%2C%2002007%20Albacete!5e0!3m2!1ses!2ses!4v1575763094365!5m2!1ses!2ses"
-        frameborder="0" style="border:0;width: 100%;height: 280%;box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.723);"
-        allowfullscreen=""></iframe>
+        frameborder="0" allowfullscreen=""></iframe>
     </div>
 
     <!-- ERROR MESSAGE -->
     <?php if (isset($_SESSION['mensajeBD'])) {
-      echo " <h6 style='color:red;'> " . $_SESSION['mensajeBD'] . "</h6>";
+      echo " <h6 class='alert'> " . $_SESSION['mensajeBD'] . "</h6>";
       unset($_SESSION['mensajeBD']);
     } ?>
 
