@@ -52,11 +52,11 @@
 				</thead>
 
 				<tbody>
-					<?php foreach ($_SESSION['datosProveedores'] as $nombre => $num) { ?>
+					<?php foreach ($_SESSION['datosProveedores'] as $name => $num) { ?>
 						<tr>
 							<td><img src="../img/proveedores/<?php echo $num['logo'] ?>"></td>
 							<td>
-								<?php echo $nombre ?>
+								<?php echo $name ?>
 							</td>
 							<td>
 								<?php echo $num['numero'] ?>
@@ -70,11 +70,11 @@
 									<input class="switch-input" type="checkbox" <?php if ($num['disponibilidad'] == 'Si') { ?>checked <?php } ?> />
 
 									<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
-									echo $nombre ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
+									echo $name ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
 											?>2<?php } ?>#1'" class="switch-label" data-on="Si" data-off="No"></span>
 
 									<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
-									echo $nombre ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
+									echo $name ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
 											?>2<?php } ?>#1'" class="switch-handle"></span>
 
 								</label>

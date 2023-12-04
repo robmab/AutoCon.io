@@ -5,56 +5,56 @@ include '../ConexiónBD.php';
 $_SESSION['check'] = 1;
 if (isset($_REQUEST['model'])) {
   $sql = "SELECT * FROM vehiculos WHERE modelo='" . $_REQUEST['model'] . "'";
-  $memi = $conexion->query($sql);
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
-    $disponibles = $info['disponibles'];
+  $memory = $connection->query($sql);
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
+    $available = $info['disponibles'];
   }
   if (isset($_REQUEST['a'])) {
-    $disponibles = $disponibles + 1;
-    $sql = "UPDATE vehiculos SET disponibles='" . $disponibles . "' WHERE modelo='" . $_REQUEST['model'] . "'";
-    $comprobar = $conexion->query($sql);
+    $available = $available + 1;
+    $sql = "UPDATE vehiculos SET disponibles='" . $available . "' WHERE modelo='" . $_REQUEST['model'] . "'";
+    $check = $connection->query($sql);
   }
   if (isset($_REQUEST['q'])) {
-    $disponibles = $disponibles - 1;
-    $sql = "UPDATE vehiculos SET disponibles='" . $disponibles . "' WHERE modelo='" . $_REQUEST['model'] . "'";
-    $comprobar = $conexion->query($sql);
+    $available = $available - 1;
+    $sql = "UPDATE vehiculos SET disponibles='" . $available . "' WHERE modelo='" . $_REQUEST['model'] . "'";
+    $check = $connection->query($sql);
   }
   $model = $_REQUEST['model'];
 }
 
 //Recoger datos de coches 
 $sql = "SELECT count(*) FROM vehiculos";
-$memi = $conexion->query($sql);
+$memory = $connection->query($sql);
 
-if ($memi->num_rows > 0) {
-  $info = $memi->fetch_array();
+if ($memory->num_rows > 0) {
+  $info = $memory->fetch_array();
   $num = $info[0];
   $num = (int) $num;
 }
 $cont = 0;
-$listaVeh = array();
+$vehicleList = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM vehiculos WHERE ID='" . $cont2 . "'";
-  $mem = $conexion->query($sql);
-  if ($mem && $mem->num_rows > 0) {
-    $info = $mem->fetch_array();
-    $listaVeh[$info['modelo']]['vendidos'] = $info['vendidos'];
-    $listaVeh[$info['modelo']]['disponibles'] = $info['disponibles'];
-    $listaVeh[$info['modelo']]['rebaja'] = $info['rebaja'];
-    $listaVeh[$info['modelo']]['img'] = $info['img'];
-    $listaVeh[$info['modelo']]['alquilados'] = $info['alquilados'];
-    $listaVeh[$info['modelo']]['ruta'] = $info['ruta'];
+  $memory2 = $connection->query($sql);
+  if ($memory2 && $memory2->num_rows > 0) {
+    $info = $memory2->fetch_array();
+    $vehicleList[$info['modelo']]['vendidos'] = $info['vendidos'];
+    $vehicleList[$info['modelo']]['disponibles'] = $info['disponibles'];
+    $vehicleList[$info['modelo']]['rebaja'] = $info['rebaja'];
+    $vehicleList[$info['modelo']]['img'] = $info['img'];
+    $vehicleList[$info['modelo']]['alquilados'] = $info['alquilados'];
+    $vehicleList[$info['modelo']]['ruta'] = $info['ruta'];
 
-    $rebajaM = (($info['rebaja'] / 100) - 1) * -1;
-    $listaVeh[$info['modelo']]['precioRebajado'] = $info['precio'] * $rebajaM;
-    $listaVeh[$info['modelo']]['precio'] = $info['precio'] * 1;
+    $discountM = (($info['rebaja'] / 100) - 1) * -1;
+    $vehicleList[$info['modelo']]['precioRebajado'] = $info['precio'] * $discountM;
+    $vehicleList[$info['modelo']]['precio'] = $info['precio'] * 1;
 
     //Calculo de rebaja de existir
-    $fechaActual = date("Y\-m\-d");
+    $currentDate = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
-    $memi2 = $conexion->query($sql2);
+    $memi2 = $connection->query($sql2);
 
     if ($memi2->num_rows > 0) {
       $info2 = $memi2->fetch_array();
@@ -65,30 +65,30 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 
     for ($cont20 = 0; $cont0 < $num0; $cont20++) {
       $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $cont20 . "'";
-      $mem = $conexion->query($sql);
-      if ($mem && $mem->num_rows > 0) {
-        $info2 = $mem->fetch_array();
-        if ($info2['fecha_in'] <= $fechaActual) {
-          if ($info2['fecha_fin'] >= $fechaActual) {
-            $multiplicador = $listaVeh[$info['modelo']]['rebaja'] / 100;
-            $multiplicador = ($multiplicador - 1) * -1;
-            $multiplicador2 = $info2['porciento'] * $multiplicador;
-            $listaVeh[$info['modelo']]['rebaja'] = $listaVeh[$info['modelo']]['rebaja'] + $multiplicador2;
+      $memory2 = $connection->query($sql);
+      if ($memory2 && $memory2->num_rows > 0) {
+        $info2 = $memory2->fetch_array();
+        if ($info2['fecha_in'] <= $currentDate) {
+          if ($info2['fecha_fin'] >= $currentDate) {
+            $multipler = $vehicleList[$info['modelo']]['rebaja'] / 100;
+            $multipler = ($multipler - 1) * -1;
+            $multipler2 = $info2['porciento'] * $multipler;
+            $vehicleList[$info['modelo']]['rebaja'] = $vehicleList[$info['modelo']]['rebaja'] + $multipler2;
 
-            $porciento = (($info2['porciento'] / 100) - 1) * -1;
-            $listaVeh[$info['modelo']]['precioRebajado'] = $listaVeh[$info['modelo']]['precioRebajado'] * $porciento;
-            $listaVeh[$info['modelo']]['precioRebajado'] = round($listaVeh[$info['modelo']]['precioRebajado'], 2);
+            $percent = (($info2['porciento'] / 100) - 1) * -1;
+            $vehicleList[$info['modelo']]['precioRebajado'] = $vehicleList[$info['modelo']]['precioRebajado'] * $percent;
+            $vehicleList[$info['modelo']]['precioRebajado'] = round($vehicleList[$info['modelo']]['precioRebajado'], 2);
           }
         }
         $cont0++;
       }
     }
-    $listaVeh[$info['modelo']]['precioAlquiler'] = $info['precioAlquiler'] * 1;
+    $vehicleList[$info['modelo']]['precioAlquiler'] = $info['precioAlquiler'] * 1;
     $cont++;
   }
 }
 
-$_SESSION['listaVeh'] = $listaVeh;
+$_SESSION['listaVeh'] = $vehicleList;
 header("Location:../Vistas/VehiculosVista.php#$model");
 exit;
 

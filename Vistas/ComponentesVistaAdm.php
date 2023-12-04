@@ -18,7 +18,7 @@
 
 <body>
   <?php include "../Tema/Menu.php";
-  $listaComponentes = $_SESSION['listaComponentes'] ?>
+  $componentList = $_SESSION['listaComponentes'] ?>
 
   <!-- ********** HERO ********** -->
   <div class="hero-area bg-img background-overlay mb-4" style="background-image: url(../img/blog-img/componentes.jpg)">
@@ -56,20 +56,20 @@
 
       <?php $cont = "";
 
-      foreach ($listaComponentes as $nombre => $num) {
-        foreach ($num as $tipo => $num2) {
+      foreach ($componentList as $name => $num) {
+        foreach ($num as $type => $num2) {
 
-          if ($cont != $nombre) { ?>
+          if ($cont != $name) { ?>
             <div class="col-12 col-md-6 col-lg-4">
               <div class="single-blog-post post-style-3 ">
 
                 <div class="single-component pt-1 m-0">
                   <h4>
-                    <?php echo $nombre ?>
+                    <?php echo $name ?>
                   </h4>
                   <!-- CARD -->
                   <div class="inside-component" style="background-image: linear-gradient(rgba(0, 0, 0, 0.427),rgba(0, 0, 0, 0.9)) ,
-                    url(../img/componentes/<?php echo $listaComponentes[$nombre][$tipo]['ruta'] ?>)">
+                    url(../img/componentes/<?php echo $componentList[$name][$type]['ruta'] ?>)">
 
                     <!-- Content display -->
                     <div class="component-content">
@@ -78,29 +78,29 @@
                         <?php
                         $check = false;
 
-                        foreach ($listaComponentes[$nombre] as $tipo => $num) { ?>
+                        foreach ($componentList[$name] as $type => $num) { ?>
                           <h6 style="line-height: 5px;">
-                            <?php echo $tipo;
+                            <?php echo $type;
 
-                            if ($listaComponentes[$nombre][$tipo]['cantidad'] == 0) { ?>
+                            if ($componentList[$name][$type]['cantidad'] == 0) { ?>
                               <s>- No disponible</s>
                               <button
-                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $nombre ?>&tip=<?php echo $tipo ?>'">
+                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $name ?>&tip=<?php echo $type ?>'">
                                 <div class="add-icon"></div>
                                 <div class="btn-txt">+</div>
                               </button>
 
-                            <?php } elseif ($listaComponentes[$nombre][$tipo]['cantidad'] > 0) { ?>
+                            <?php } elseif ($componentList[$name][$type]['cantidad'] > 0) { ?>
                               - <i class="available">
-                                <?php echo $listaComponentes[$nombre][$tipo]['cantidad'] ?> disponibles
+                                <?php echo $componentList[$name][$type]['cantidad'] ?> disponibles
                               </i>
                               <button
-                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $nombre ?>&tip=<?php echo $tipo ?>'">
+                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $name ?>&tip=<?php echo $type ?>'">
                                 <div class="add-icon"></div>
                                 <div class="btn-txt">+</div>
                               </button>
                               <button
-                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&q=1&nom=<?php echo $nombre ?>&tip=<?php echo $tipo ?>'">
+                                onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&q=1&nom=<?php echo $name ?>&tip=<?php echo $type ?>'">
                                 <div class="btn-txt">-</div>
                               </button>
                             <?php } ?>
@@ -122,7 +122,7 @@
               </div>
             </div>
           <?php }
-          $cont = $nombre;
+          $cont = $name;
         }
       } ?>
     </div>

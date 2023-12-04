@@ -7,101 +7,101 @@ $_SESSION['chekon'] = 1;
 if (isset($_REQUEST['usuario'])) {
   if (isset($_REQUEST['comprar'])) {
     $sql = "UPDATE vehiculos_usuarios SET reservado='Comprado' WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND n='" . $_REQUEST['n'] . "'";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
 
     $sql = "UPDATE vehiculos_usuarios SET precio='" . $_REQUEST['precio'] . "' WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND n='" . $_REQUEST['n'] . "'";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
 
     $sql = "UPDATE vehiculos_usuarios SET alquilado='No' WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND n='" . $_REQUEST['n'] . "'";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
 
     $sql = "SELECT * FROM vehiculos WHERE id='" . $_REQUEST['vehiculo'] . "' ";
-    $memi = $conexion->query($sql);
+    $memory = $connection->query($sql);
 
-    if ($memi->num_rows > 0) {
-      $info = $memi->fetch_array();
-      $modelo = $info['modelo'];
-      $vendidos = $info['vendidos'];
-      $vendidos = $vendidos + 1;
-      $alquilados = $info['alquilados'];
-      $alquilados = $alquilados - 1;
+    if ($memory->num_rows > 0) {
+      $info = $memory->fetch_array();
+      $model = $info['modelo'];
+      $selled = $info['vendidos'];
+      $selled = $selled + 1;
+      $rented = $info['alquilados'];
+      $rented = $rented - 1;
     }
-    $sql = "UPDATE vehiculos SET vendidos='" . $vendidos . "' WHERE modelo='" . $modelo . "'";
-    $comprobar = $conexion->query($sql);
+    $sql = "UPDATE vehiculos SET vendidos='" . $selled . "' WHERE modelo='" . $model . "'";
+    $check = $connection->query($sql);
 
     if (isset($_REQUEST['alquilar'])) {
-      $sql = "UPDATE vehiculos SET alquilados='" . $alquilados . "' WHERE modelo='" . $modelo . "'";
-      $comprobar = $conexion->query($sql);
+      $sql = "UPDATE vehiculos SET alquilados='" . $rented . "' WHERE modelo='" . $model . "'";
+      $check = $connection->query($sql);
     }
   }
 
   if (isset($_REQUEST['cancelar'])) {
     $sql = "DELETE FROM vehiculos_usuarios WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND  n='" . $_REQUEST['n'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 }
 
 //Recoger vehiculos en array
 
 $sql = "SELECT count(*) FROM vehiculos_usuarios";
-$memi = $conexion->query($sql);
+$memory = $connection->query($sql);
 
-if ($memi->num_rows > 0) {
-  $info = $memi->fetch_array();
+if ($memory->num_rows > 0) {
+  $info = $memory->fetch_array();
   $num = $info[0];
   $num = (int) $num;
 }
 $cont = 0;
-$datosGVehiculos = array();
+$vehicleDate = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM vehiculos_usuarios WHERE id='" . $cont2 . "'";
-  $mem = $conexion->query($sql);
-  if ($mem && $mem->num_rows > 0) {
-    $info = $mem->fetch_array();
-    $usuario = $info['usuario'];
-    $datosGVehiculos[$cont]['idU'] = $info['usuario'];
-    $vehiculo = $info['vehiculo'];
-    $datosGVehiculos[$cont]['idV'] = $info['vehiculo'];
-    $alquilado = $info['alquilado'];
-    $reservado = $info['reservado'];
+  $memory2 = $connection->query($sql);
+  if ($memory2 && $memory2->num_rows > 0) {
+    $info = $memory2->fetch_array();
+    $user = $info['usuario'];
+    $vehicleDate[$cont]['idU'] = $info['usuario'];
+    $vehicle = $info['vehiculo'];
+    $vehicleDate[$cont]['idV'] = $info['vehiculo'];
+    $leased = $info['alquilado'];
+    $reserved = $info['reservado'];
 
-    $fecha = date("d-m-Y", strtotime($info['fecha']));
-    $datosGVehiculos[$cont]['fecha'] = $fecha;
-    $datosGVehiculos[$cont]['n'] = $info['n'];
-    $datosGVehiculos[$cont]['precio'] = $info['precio'] * 1;
+    $date = date("d-m-Y", strtotime($info['fecha']));
+    $vehicleDate[$cont]['fecha'] = $date;
+    $vehicleDate[$cont]['n'] = $info['n'];
+    $vehicleDate[$cont]['precio'] = $info['precio'] * 1;
 
-    $sql = "SELECT * FROM usuarios WHERE id='" . $usuario . "' ";
-    $memi = $conexion->query($sql);
+    $sql = "SELECT * FROM usuarios WHERE id='" . $user . "' ";
+    $memory = $connection->query($sql);
 
-    if ($memi->num_rows > 0) {
-      $info = $memi->fetch_array();
-      $datosGVehiculos[$cont]['nombreUsuario'] = $info['nombreUsuario'];
-      $datosGVehiculos[$cont]['correo'] = $info['correo'];
-      $datosGVehiculos[$cont]['numeroMovil'] = $info['numeroMovil'];
-      $datosGVehiculos[$cont]['nombre'] = $info['nombre'];
-      $datosGVehiculos[$cont]['apellidos'] = $info['apellidos'];
-      $datosGVehiculos[$cont]['nif'] = $info['nif'];
+    if ($memory->num_rows > 0) {
+      $info = $memory->fetch_array();
+      $vehicleDate[$cont]['nombreUsuario'] = $info['nombreUsuario'];
+      $vehicleDate[$cont]['correo'] = $info['correo'];
+      $vehicleDate[$cont]['numeroMovil'] = $info['numeroMovil'];
+      $vehicleDate[$cont]['nombre'] = $info['nombre'];
+      $vehicleDate[$cont]['apellidos'] = $info['apellidos'];
+      $vehicleDate[$cont]['nif'] = $info['nif'];
     }
-    $sql = "SELECT * FROM vehiculos WHERE id='" . $vehiculo . "' ";
-    $memi = $conexion->query($sql);
+    $sql = "SELECT * FROM vehiculos WHERE id='" . $vehicle . "' ";
+    $memory = $connection->query($sql);
 
-    if ($memi->num_rows > 0) {
-      $info = $memi->fetch_array();
-      $datosGVehiculos[$cont]['modelo'] = $info['modelo'];
-      $datosGVehiculos[$cont]['precioAlquiler'] = $info['precioAlquiler'];
-      $datosGVehiculos[$cont]['img'] = $info['img'];
-      $precio = $info['precio'];
-      $rebaja = $info['rebaja'];
+    if ($memory->num_rows > 0) {
+      $info = $memory->fetch_array();
+      $vehicleDate[$cont]['modelo'] = $info['modelo'];
+      $vehicleDate[$cont]['precioAlquiler'] = $info['precioAlquiler'];
+      $vehicleDate[$cont]['img'] = $info['img'];
+      $price = $info['precio'];
+      $discount = $info['rebaja'];
 
-      if ($alquilado == 'Si') {
-        $rebaja = (($rebaja / 100) - 1) * -1;
-        $precio = $precio * $rebaja;
-        $datosGVehiculos[$cont]['precio'] = $precio;
+      if ($leased == 'Si') {
+        $discount = (($discount / 100) - 1) * -1;
+        $price = $price * $discount;
+        $vehicleDate[$cont]['precio'] = $price;
       }
     }
-    $datosGVehiculos[$cont]['alquilado'] = $alquilado;
-    $datosGVehiculos[$cont]['reservado'] = $reservado;
+    $vehicleDate[$cont]['alquilado'] = $leased;
+    $vehicleDate[$cont]['reservado'] = $reserved;
 
     $cont++;
   }
@@ -139,8 +139,8 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-$datosGVehiculos = array_sort($datosGVehiculos, 'reservado', SORT_DESC);
-$_SESSION['datosGVehiculos'] = $datosGVehiculos;
+$vehicleDate = array_sort($vehicleDate, 'reservado', SORT_DESC);
+$_SESSION['datosGVehiculos'] = $vehicleDate;
 header("Location:../Vistas/GVehiculosVista.php");
 exit;
 

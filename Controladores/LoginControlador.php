@@ -6,84 +6,83 @@ include '../ConexiónBD.php';
 if (isset($_REQUEST["email"])) {
   $email = ucwords($_REQUEST["email"]);
   if (isset($_REQUEST["pass"]))
-    $pass = $_REQUEST["pass"];
+    $password = $_REQUEST["pass"];
 
   //Comprobación de Usuario en la base de datos.
   $sql = "SELECT count(*) FROM usuarios";
-  $memi = $conexion->query($sql);
+  $memory = $connection->query($sql);
 
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
     $num = $info[0];
     $num = (int) $num;
   }
 
   $cont = 0;
-  $listaUsu = array();
-  $listaCorreo = array();
+  $userList = array();
+  $emailList = array();
 
   for ($cont2 = 0; $cont < $num; $cont2++) {
     $sql = "SELECT nombreUsuario,correo  FROM usuarios WHERE ID='" . $cont2 . "'";
-    $mem = $conexion->query($sql);
+    $memory2 = $connection->query($sql);
 
-    if ($mem && $mem->num_rows > 0) {
-      $info = $mem->fetch_array();
-      $listaUsu[$cont] = $info['nombreUsuario'];
-      $listaCorreo[$cont] = $info['correo'];
+    if ($memory2 && $memory2->num_rows > 0) {
+      $info = $memory2->fetch_array();
+      $userList[$cont] = $info['nombreUsuario'];
+      $emailList[$cont] = $info['correo'];
       $cont++;
     }
   }
 
   /* SQL INYECTION POR FILTRO */
-  $contador = 1;
+  $counter = 1;
 
-  foreach ($listaUsu as $usu) {
+  foreach ($userList as $usu) {
     if ($usu == $email) {
       $sql = "SELECT * FROM usuarios WHERE nombreUsuario='" . $email . "'";
-      $mem = $conexion->query($sql);
-      if ($mem && $mem->num_rows > 0) {
-        $info = $mem->fetch_array();
+      $memory2 = $connection->query($sql);
+      if ($memory2 && $memory2->num_rows > 0) {
+        $info = $memory2->fetch_array();
         $_SESSION['user'] = $info['nombreUsuario'];
         $email = $info['nombreUsuario'];
       }
-      ;
-      $contador = 0;
+      $counter = 0;
     }
   }
 
-  foreach ($listaCorreo as $correo) {
-    if ($correo == $email) {
+  foreach ($emailList as $em) {
+    if ($em == $email) {
       $sql = "SELECT * FROM usuarios WHERE correo='" . $email . "'";
-      $mem = $conexion->query($sql);
-      if ($mem && $mem->num_rows > 0) {
-        $info = $mem->fetch_array();
+      $memory2 = $connection->query($sql);
+      if ($memory2 && $memory2->num_rows > 0) {
+        $info = $memory2->fetch_array();
         $_SESSION['user'] = $info['nombreUsuario'];
         $email = $info['nombreUsuario'];
       }
-      $contador = 0;
+      $counter = 0;
     }
   }
 
-  if ($contador == 1) {
+  if ($counter == 1) {
     echo $email;
     $_SESSION['mensajeBD'] = 'El usuario ' . $email . ' no esta registrado.';
     unset($_SESSION['user']);
-    $contador2 = 0;
+    $counter2 = 0;
     header("Location:../Vistas/LoginVista.php");
     exit;
   }
 
   //Comprobación Contraseña
   $sql = "SELECT contraseña FROM usuarios WHERE nombreUsuario='" . $email . "' OR correo='" . $email . "'  ";
-  $memi = $conexion->query($sql);
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
-    $decContraseña = base64_decode($info['contraseña']);
+  $memory = $connection->query($sql);
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
+    $decodePassword = base64_decode($info['contraseña']);
 
-    if ($decContraseña != $pass) {
+    if ($decodePassword != $password) {
       $_SESSION['mensajeBD'] = 'La contraseña no coincide';
       unset($_SESSION['user']);
-      $contador2 = 0;
+      $counter2 = 0;
       header("Location:../Vistas/LoginVista.php");
       exit;
     }
@@ -91,9 +90,9 @@ if (isset($_REQUEST["email"])) {
 
   //Rol en sesión
   $sql = "SELECT rol FROM usuarios WHERE nombreUsuario='" . $email . "' OR correo='" . $email . "'  ";
-  $memi = $conexion->query($sql);
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
+  $memory = $connection->query($sql);
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
     $_SESSION['rol'] = $info['rol'];
   }
 

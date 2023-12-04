@@ -4,19 +4,19 @@ include '../ConexiónBD.php';
 
 //Recoger variables // Registro - Login
 if (isset($_SESSION["nombre"])) {
-  $nombre = $_SESSION["nombre"];
-  $nombre = ucwords($nombre);
+  $name = $_SESSION["nombre"];
+  $name = ucwords($name);
   unset($_SESSION['nombre']);
 
   if (isset($_SESSION["apellidos"])) {
-    $apellidos = $_SESSION["apellidos"];
-    $apellidos = ucwords($apellidos);
+    $lastName = $_SESSION["apellidos"];
+    $lastName = ucwords($lastName);
     unset($_SESSION['apellidos']);
   }
 
   if (isset($_SESSION["nombreUs"])) {
-    $nombreUs = $_SESSION["nombreUs"];
-    $nombreUs = ucwords($nombreUs);
+    $userName = $_SESSION["nombreUs"];
+    $userName = ucwords($userName);
     unset($_SESSION['nombreUs']);
   }
 
@@ -27,18 +27,18 @@ if (isset($_SESSION["nombre"])) {
   }
 
   if (isset($_SESSION["direccion"])) {
-    $direccion = $_SESSION["direccion"];
-    $direccion = ucwords($direccion);
+    $address = $_SESSION["direccion"];
+    $address = ucwords($address);
     unset($_SESSION['direccion']);
   }
 
   if (isset($_SESSION["contraseña"])) {
-    $contraseña = $_SESSION["contraseña"];
+    $password = $_SESSION["contraseña"];
     unset($_SESSION['contraseña']);
   }
 
   if (isset($_SESSION["fechaNac"])) {
-    $fechaNac = $_SESSION["fechaNac"];
+    $bornDate = $_SESSION["fechaNac"];
     unset($_SESSION['fechaNac']);
   }
 
@@ -49,36 +49,36 @@ if (isset($_SESSION["nombre"])) {
   }
 
   if (isset($_SESSION["provincia"])) {
-    $provincia = $_SESSION["provincia"];
-    $provincia = ucwords($provincia);
+    $province = $_SESSION["provincia"];
+    $province = ucwords($province);
     unset($_SESSION['provincia']);
   }
 
   if (isset($_SESSION["poblacion"])) {
-    $poblacion = $_SESSION["poblacion"];
-    $poblacion = ucwords($poblacion);
+    $population = $_SESSION["poblacion"];
+    $population = ucwords($population);
     unset($_SESSION['poblacion']);
   }
 
   if (isset($_SESSION["codigoP"])) {
-    $codigoP = $_SESSION["codigoP"];
-    $codigoP = ucwords($codigoP);
+    $zipCode = $_SESSION["codigoP"];
+    $zipCode = ucwords($zipCode);
     unset($_SESSION['codigoP']);
   }
 
   if (isset($_SESSION["movil"])) {
-    $movil = $_SESSION["movil"];
-    $movil = ucwords($movil);
+    $mobile = $_SESSION["movil"];
+    $mobile = ucwords($mobile);
     unset($_SESSION['movil']);
   }
 
   //Insertar en la Base de Datos
-  $sql = "INSERT INTO usuarios(nombre,nif,domicilio,fechaNacimiento,contraseña,rol,apellidos,nombreUsuario,correo,provincia,población,codigoPostal,numeroMovil)   VALUES('" . $nombre . "','" . $nif . "','" . $direccion . "','" . $fechaNac . "','" . $contraseña . "','Usuario','" . $apellidos . "','" . $nombreUs . "','" . $email . "','" . $provincia . "','" . $poblacion . "','" . $codigoP . "','" . $movil . "')";
-  $comprobar = $conexion->query($sql);
+  $sql = "INSERT INTO usuarios(nombre,nif,domicilio,fechaNacimiento,contraseña,rol,apellidos,nombreUsuario,correo,provincia,población,codigoPostal,numeroMovil)   VALUES('" . $name . "','" . $nif . "','" . $address . "','" . $bornDate . "','" . $password . "','Usuario','" . $lastName . "','" . $userName . "','" . $email . "','" . $province . "','" . $population . "','" . $zipCode . "','" . $mobile . "')";
+  $check = $connection->query($sql);
 
-  if ($conexion->affected_rows > 0) {
-    $_SESSION['mensajeBD'] = "Usuario " . $nombreUs . " creado.";
-    $_SESSION['user'] = $nombreUs;
+  if ($connection->affected_rows > 0) {
+    $_SESSION['mensajeBD'] = "Usuario " . $userName . " creado.";
+    $_SESSION['user'] = $userName;
     $_SESSION['rol'] = 'Usuario';
     header("Location:../Vistas/Index.php");
     exit;

@@ -22,7 +22,7 @@
       Seguimientos
     </h1>
   </div>
-  <?php $c = 0 ?>
+  <?php $counter = 0 ?>
 
   <section class="contact-area follow">
     <div class="container">
@@ -49,22 +49,22 @@
               <!-- VEHICLES -->
               <table>
                 <?php foreach ($_SESSION['datosVehiculos'] as $vehiculo => $num) {
-                  foreach ($num as $dato => $valor) { ?>
-                    <?php if ($dato == 'img') { ?>
+                  foreach ($num as $date => $value) { ?>
+                    <?php if ($date == 'img') { ?>
                       <tr>
                         <td>
-                          <img src="../img/bmw<?php echo $valor ?>" height="70%" width="70%">
+                          <img src="../img/bmw<?php echo $value ?>" height="70%" width="70%">
                         <?php }
 
-                    if ($dato == 'vehiculo') { ?>
+                    if ($date == 'vehiculo') { ?>
                           <p class="name">
-                            <?php echo $valor ?>
+                            <?php echo $value ?>
                           </p>
                         </td>
                       <?php }
 
-                    if ($dato == 'reservado') {
-                      if ($valor == 'Si') { ?>
+                    if ($date == 'reservado') {
+                      if ($value == 'Si') { ?>
                           <td class="reserved">
                             <h6>
                               <?php echo "Reservado" ?>
@@ -78,7 +78,7 @@
                             </a>
                           </td>
 
-                        <?php } elseif ($valor == 'Comprado') { ?>
+                        <?php } elseif ($value == 'Comprado') { ?>
                           <td class="buyed">
                             <h6>
                               <?php echo "Comprado" ?>
@@ -90,7 +90,7 @@
                         </td>
                       <?php } ?>
 
-                      <?php if ($dato == 'alquilado') { ?>
+                      <?php if ($date == 'alquilado') { ?>
                         <td class="rented">
                           <h6>
                             <?php echo "Alquilado" ?>
@@ -107,7 +107,7 @@
                         </td>
                       <?php } ?>
 
-                      <?php if ($dato == 'n') { ?>
+                      <?php if ($date == 'n') { ?>
                         <td>
                           <i>
                             <?php echo $num['fecha'] ?>
@@ -126,7 +126,7 @@
           </div>
 
           <?php
-          $c = 1;
+          $counter = 1;
           unset($_SESSION['datosVehiculos']);
         } ?>
 
@@ -150,30 +150,30 @@
                           <?php
 
                           foreach ($_SESSION['datosComponentes'] as $componente => $num) {
-                            foreach ($num as $dato => $valor) { ?>
-                              <?php if ($dato == 'ruta') { ?>
+                            foreach ($num as $date => $value) { ?>
+                              <?php if ($date == 'ruta') { ?>
                                 <tr>
-                                  <td class="name"> <img src="../img/componentes/<?php echo $valor; ?>" height="40%"
+                                  <td class="name"> <img src="../img/componentes/<?php echo $value; ?>" height="40%"
                                       width="40%">
                                   <?php }
-                              if ($dato == 'nombre') { ?>
+                              if ($date == 'nombre') { ?>
                                     <p>
-                                      <?php echo $valor . " - ";
+                                      <?php echo $value . " - ";
                               } ?>
-                                    <?php if ($dato == 'tipo') {
-                                      echo $valor ?>
+                                    <?php if ($date == 'tipo') {
+                                      echo $value ?>
                                     </p>
                                   </td>
                                 <?php }
-                                    if ($dato == 'cantidad' and $num['finalizado'] == 'No') { ?>
+                                    if ($date == 'cantidad' and $num['finalizado'] == 'No') { ?>
                                   <td class="quantity">
                                     <h6>
-                                      <?php echo "Cantidad x" . $valor ?>
+                                      <?php echo "Cantidad x" . $value ?>
                                     </h6>
                                     <h6>
                                       <?php echo $num['precio'] ?> €
                                     </h6>
-                                    <?php if ($valor > 1) { ?>
+                                    <?php if ($value > 1) { ?>
                                       <a href="../Controladores/SeguimientoControlador.php?uno=1&nombre=<?php echo $num['nombre']
                                         ?>&tipo=<?php echo $num['tipo'] ?>& n=<?php echo $num['n'] ?>#2">
                                         Cancelar 1
@@ -195,7 +195,7 @@
                         <?php }
                                     } ?>
 
-                      <?php if ($dato == 'cantidad' and $num['finalizado'] == 'Si') { ?>
+                      <?php if ($date == 'cantidad' and $num['finalizado'] == 'Si') { ?>
                         <td class="quantity-x">
                           <h6>Cantidad x
                             <?php echo $num['cantidad'] ?>
@@ -207,7 +207,7 @@
                           <p>____________________________</p>
                         </td>
                       <?php }
-                      if ($dato == 'fecha') { ?>
+                      if ($date == 'fecha') { ?>
                         <td>
                           <i>
                             <?php echo $num['fecha'] ?>
@@ -225,7 +225,7 @@
           </div>
 
           <?php
-          $c = 1;
+          $counter = 1;
           unset($_SESSION['datosComponentes']);
         }
 
@@ -246,41 +246,41 @@
               <!-- Datos -->
               <table>
                 <?php foreach ($_SESSION['datosReparacion'] as $servicio => $num) {
-                  foreach ($num as $dato => $valor) {
+                  foreach ($num as $date => $value) {
                     if ($num['aceptado'] != 'Finalizado') {
-                      if ($dato == 'servicio') { ?>
+                      if ($date == 'servicio') { ?>
                         <tr>
                           <td class="img">
-                            <?php if ($valor == 'sustituir') { ?>
+                            <?php if ($value == 'sustituir') { ?>
                               <img src="../img/reparacion/1.jpg" height="60%" width="60%">
                               <a>_____________________ </a>
                               <h6>Sustituir piezas defectuosas</h6>
                             <?php }
-                            if ($valor == 'neumatico') { ?>
+                            if ($value == 'neumatico') { ?>
                               <img src="../img/reparacion/2.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                               <h6>Cambio de Neumáticos</h6>
                             <?php }
-                            if ($valor == 'llanta') { ?>
+                            if ($value == 'llanta') { ?>
                               <img src="../img/reparacion/3.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                               <h6>Revisión de llantas</h6>
                             <?php }
-                            if ($valor == 'aceite') { ?>
+                            if ($value == 'aceite') { ?>
                               <img src="../img/reparacion/4.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                               <h6>Aceite y Liquidos</h6>
                             <?php }
-                            if ($valor == 'pintura') { ?>
+                            if ($value == 'pintura') { ?>
                               <img src="../img/reparacion/5.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                               <h6>Renovación de pinturas y arañazos</h6>
                             <?php } ?>
-                            <?php if ($valor == 'carroceria') { ?><img src="../img/reparacion/7.jpg" height="60%" width="60%">
+                            <?php if ($value == 'carroceria') { ?><img src="../img/reparacion/7.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                               <h6>Reparación carrocería</h6>
                             <?php }
-                            if ($valor == 'bateria') { ?>
+                            if ($value == 'bateria') { ?>
                               <img src="../img/reparacion/6.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
@@ -288,21 +288,21 @@
                             <td class="name">
                               <h6>Baterías y Arranque</h6>
                             <?php }
-                            if ($valor == 'bombilla') { ?>
+                            if ($value == 'bombilla') { ?>
                               <img src="../img/reparacion/8.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td class="name">
                               <h6>Bombillas</h6>
                             <?php }
-                            if ($valor == 'parabrisas') { ?>
+                            if ($value == 'parabrisas') { ?>
                               <img src="../img/reparacion/9.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td class="name">
                               <h6>Limpia-parabrisas y escobillas</h6>
                             <?php }
-                            if ($valor == 'limpieza') { ?>
+                            if ($value == 'limpieza') { ?>
                               <img src="../img/reparacion/10.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
@@ -311,9 +311,9 @@
                             <?php }
                       }
 
-                      if ($dato == 'fecha') { ?>
+                      if ($date == 'fecha') { ?>
                             <p>
-                              <?php echo $valor ?>
+                              <?php echo $value ?>
                             </p>
                             <a>___________________________</a>
                           </td>
@@ -322,7 +322,7 @@
                           </td>
                         <?php }
 
-                      if ($dato == 'aceptado') { ?>
+                      if ($date == 'aceptado') { ?>
                           <td class="check">
                             <?php if ($num['aceptado'] == 'Si') { ?>
                               <p>________________</p>
@@ -331,15 +331,15 @@
                             <?php } elseif ($num['aceptado'] == 'Espera') { ?>
                               <p>________________</p>
                               <h6>
-                                <?php echo $valor ?>
+                                <?php echo $value ?>
                               </h6>
                             <?php }
                       } ?>
 
-                          <?php if ($dato == 'precio') { ?>
+                          <?php if ($date == 'precio') { ?>
                             <h6>
-                              <?php if ($valor > 0) {
-                                echo $valor ?> €
+                              <?php if ($value > 0) {
+                                echo $value ?> €
                               <?php } ?>
                             </h6>
 
@@ -364,74 +364,74 @@
 
                 //Finished
                 foreach ($_SESSION['datosReparacion'] as $servicio => $num) {
-                  foreach ($num as $dato => $valor) {
+                  foreach ($num as $date => $value) {
                     if ($num['aceptado'] == 'Finalizado') {
-                      if ($dato == 'servicio') { ?>
+                      if ($date == 'servicio') { ?>
                         <tr class="finished">
                           <td>
-                            <?php if ($valor == 'sustituir') { ?>
+                            <?php if ($value == 'sustituir') { ?>
                               <img src="../img/reparacion/1.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Sustituir piezas defectuosas</h6>
                             <?php }
-                            if ($valor == 'neumatico') { ?>
+                            if ($value == 'neumatico') { ?>
                               <img src="../img/reparacion/2.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Cambio de Neumáticos</h6>
                             <?php }
-                            if ($valor == 'llanta') { ?>
+                            if ($value == 'llanta') { ?>
                               <img src="../img/reparacion/3.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Revisión de llantas</h6>
                             <?php }
-                            if ($valor == 'aceite') { ?>
+                            if ($value == 'aceite') { ?>
                               <img src="../img/reparacion/4.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Aceite y Liquidos</h6>
                             <?php }
-                            if ($valor == 'pintura') { ?>
+                            if ($value == 'pintura') { ?>
                               <img src="../img/reparacion/5.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Renovación de pinturas y arañazos</h6>
                             <?php }
-                            if ($valor == 'carroceria') { ?><img src="../img/reparacion/7.jpg" height="60%"
+                            if ($value == 'carroceria') { ?><img src="../img/reparacion/7.jpg" height="60%"
                                 width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Reparación carrocería</h6>
                             <?php }
-                            if ($valor == 'bateria') { ?><img src="../img/reparacion/6.jpg" height="60%" width="60%">
+                            if ($value == 'bateria') { ?><img src="../img/reparacion/6.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Baterías y Arranque</h6>
                             <?php }
-                            if ($valor == 'bombilla') { ?>
+                            if ($value == 'bombilla') { ?>
                               <img src="../img/reparacion/8.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Bombillas</h6>
                             <?php }
-                            if ($valor == 'parabrisas') { ?>
+                            if ($value == 'parabrisas') { ?>
                               <img src="../img/reparacion/9.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
                             <td>
                               <h6>Limpia-parabrisas y escobillas</h6>
                             <?php }
-                            if ($valor == 'limpieza') { ?>
+                            if ($value == 'limpieza') { ?>
                               <img src="../img/reparacion/10.jpg" height="60%" width="60%">
                               <a>_____________________</a>
                             </td>
@@ -440,15 +440,15 @@
                             <?php }
                       } ?>
 
-                          <?php if ($dato == 'fecha') { ?>
+                          <?php if ($date == 'fecha') { ?>
                             <p>
-                              <?php echo $valor ?>
+                              <?php echo $value ?>
                             </p>
                             <a>___________________________</a>
                           </td>
                         <?php } ?>
 
-                        <?php if ($dato == 'aceptado') { ?>
+                        <?php if ($date == 'aceptado') { ?>
                           <td class="value">
                             <p class="a">________________</p>
                             <?php if ($num['aceptado'] == 'Si') { ?>
@@ -458,10 +458,10 @@
                             <?php }
                         } ?>
 
-                          <?php if ($dato == 'precio') { ?>
+                          <?php if ($date == 'precio') { ?>
                             <h6>
-                              <?php if ($valor > 0) {
-                                echo $valor ?> €
+                              <?php if ($value > 0) {
+                                echo $value ?> €
                               <?php } ?>
                             </h6>
                             <p class="a">________________</p>
@@ -487,11 +487,11 @@
             </div>
           </div>
           <?php
-          $c = 1;
+          $counter = 1;
           unset($_SESSION['datosReparacion']);
         } ?>
 
-        <?php if ($c == 0) { ?>
+        <?php if ($counter == 0) { ?>
           <div class="col-12 col-md-10 col-lg-8">
             <div class="contact-form">
 

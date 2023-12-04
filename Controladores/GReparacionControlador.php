@@ -7,45 +7,45 @@ $_SESSION['chekon'] = 1;
 if (isset($_REQUEST['n'])) {
   if (isset($_REQUEST['editar'])) {
     $sql = "UPDATE reparacion SET precio='" . $_REQUEST['precioE'] . "' WHERE  n='" . $_REQUEST['n'] . "'  ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 
   if (isset($_REQUEST['aceptar'])) {
     $sql = "UPDATE reparacion SET aceptado='Si' WHERE  n='" . $_REQUEST['n'] . "'  ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
 
     //Calculo de rebaja de existir
-    $fechaActual = date("Y\-m\-d");
+    $currentDate = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
-    $memi2 = $conexion->query($sql2);
+    $memory2 = $connection->query($sql2);
 
-    if ($memi2->num_rows > 0) {
-      $info2 = $memi2->fetch_array();
-      $num0 = $info2[0];
-      $num0 = (int) $num0;
+    if ($memory2->num_rows > 0) {
+      $info2 = $memory2->fetch_array();
+      $num2 = $info2[0];
+      $num2 = (int) $num2;
     }
-    $cont0 = 0;
+    $counter = 0;
 
-    for ($cont20 = 0; $cont0 < $num0; $cont20++) {
-      $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $cont20 . "'";
-      $mem = $conexion->query($sql);
-      if ($mem && $mem->num_rows > 0) {
-        $info2 = $mem->fetch_array();
-        if ($info2['fecha_in'] <= $fechaActual) {
-          if ($info2['fecha_fin'] >= $fechaActual) {
-            $porciento = $info2['porciento'];
-            $porciento = $porciento / 100;
-            $porciento = $porciento - 1;
-            $porciento = $porciento * -1;
+    for ($counter2 = 0; $counter < $num2; $counter2++) {
+      $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $counter2 . "'";
+      $memory = $connection->query($sql);
+      if ($memory && $memory->num_rows > 0) {
+        $info2 = $memory->fetch_array();
+        if ($info2['fecha_in'] <= $currentDate) {
+          if ($info2['fecha_fin'] >= $currentDate) {
+            $percent = $info2['porciento'];
+            $percent = $percent / 100;
+            $percent = $percent - 1;
+            $percent = $percent * -1;
 
-            $_REQUEST['precio'] = $_REQUEST['precio'] * $porciento;
+            $_REQUEST['precio'] = $_REQUEST['precio'] * $percent;
             $_REQUEST['precio'] = round($_REQUEST['precio'], 2);
             $_SESSION['rebaja'] = $info2['porciento'];
 
             $count = 0;
           }
         }
-        $cont0++;
+        $counter++;
       }
     }
     if (!isset($count)) {
@@ -55,23 +55,23 @@ if (isset($_REQUEST['n'])) {
       }
     }
     $sql = "UPDATE reparacion SET precio='" . $_REQUEST['precio'] . "' WHERE  n='" . $_REQUEST['n'] . "'  ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 
   if (isset($_REQUEST['finalizar'])) {
     $sql = "UPDATE reparacion SET aceptado='Finalizado' WHERE n='" . $_REQUEST['n'] . "'";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 
   if (isset($_REQUEST['cancelar'])) {
     $sql = "DELETE FROM reparacion WHERE n='" . $_REQUEST['n'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 }
 
 //Recoger servicios en array
 $sql = "SELECT count(*) FROM reparacion";
-$memi = $conexion->query($sql);
+$memi = $connection->query($sql);
 
 if ($memi->num_rows > 0) {
   $info = $memi->fetch_array();
@@ -79,35 +79,35 @@ if ($memi->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$datosGReparacion = array();
+$servicesDate = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM reparacion WHERE id='" . $cont2 . "'";
-  $mem = $conexion->query($sql);
+  $memory = $connection->query($sql);
 
-  if ($mem && $mem->num_rows > 0) {
-    $info = $mem->fetch_array();
+  if ($memory && $memory->num_rows > 0) {
+    $info = $memory->fetch_array();
     $usuario = $info['usuario'];
-    $datosGReparacion[$cont]['idU'] = $info['usuario'];
+    $servicesDate[$cont]['idU'] = $info['usuario'];
 
     $fecha = date("d-m-Y", strtotime($info['fecha']));
-    $datosGReparacion[$cont]['fecha'] = $fecha;
-    $datosGReparacion[$cont]['n'] = $info['n'];
-    $datosGReparacion[$cont]['aceptado'] = $info['aceptado'];
-    $datosGReparacion[$cont]['precio'] = $info['precio'] * 1;
-    $datosGReparacion[$cont]['servicio'] = $info['servicio'];
+    $servicesDate[$cont]['fecha'] = $fecha;
+    $servicesDate[$cont]['n'] = $info['n'];
+    $servicesDate[$cont]['aceptado'] = $info['aceptado'];
+    $servicesDate[$cont]['precio'] = $info['precio'] * 1;
+    $servicesDate[$cont]['servicio'] = $info['servicio'];
 
     $sql = "SELECT * FROM usuarios WHERE id='" . $usuario . "' ";
-    $memi = $conexion->query($sql);
+    $memi = $connection->query($sql);
 
     if ($memi->num_rows > 0) {
       $info = $memi->fetch_array();
-      $datosGReparacion[$cont]['nombreUsuario'] = $info['nombreUsuario'];
-      $datosGReparacion[$cont]['correo'] = $info['correo'];
-      $datosGReparacion[$cont]['numeroMovil'] = $info['numeroMovil'];
-      $datosGReparacion[$cont]['nombre'] = $info['nombre'];
-      $datosGReparacion[$cont]['apellidos'] = $info['apellidos'];
-      $datosGReparacion[$cont]['nif'] = $info['nif'];
+      $servicesDate[$cont]['nombreUsuario'] = $info['nombreUsuario'];
+      $servicesDate[$cont]['correo'] = $info['correo'];
+      $servicesDate[$cont]['numeroMovil'] = $info['numeroMovil'];
+      $servicesDate[$cont]['nombre'] = $info['nombre'];
+      $servicesDate[$cont]['apellidos'] = $info['apellidos'];
+      $servicesDate[$cont]['nif'] = $info['nif'];
     }
     $cont++;
   }
@@ -143,34 +143,34 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-$datosGReparacion = array_sort($datosGReparacion, 'servicio', SORT_ASC);
-$datosGReparacion = array_sort($datosGReparacion, 'aceptado', SORT_ASC);
+$servicesDate = array_sort($servicesDate, 'servicio', SORT_ASC);
+$servicesDate = array_sort($servicesDate, 'aceptado', SORT_ASC);
 
 //Calculo de rebaja de existir
-$fechaActual = date("Y\-m\-d");
+$currentDate = date("Y\-m\-d");
 $sql2 = "SELECT count(*) FROM eventos_descuentos";
-$memi2 = $conexion->query($sql2);
+$memory2 = $connection->query($sql2);
 
-if ($memi2->num_rows > 0) {
-  $info2 = $memi2->fetch_array();
-  $num0 = $info2[0];
-  $num0 = (int) $num0;
+if ($memory2->num_rows > 0) {
+  $info2 = $memory2->fetch_array();
+  $num2 = $info2[0];
+  $num2 = (int) $num2;
 }
-$cont0 = 0;
+$counter = 0;
 
-for ($cont20 = 0; $cont0 < $num0; $cont20++) {
-  $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $cont20 . "'";
-  $mem = $conexion->query($sql);
+for ($counter2 = 0; $counter < $num2; $counter2++) {
+  $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $counter2 . "'";
+  $memory = $connection->query($sql);
 
-  if ($mem && $mem->num_rows > 0) {
-    $info2 = $mem->fetch_array();
-    if ($info2['fecha_in'] <= $fechaActual) {
-      if ($info2['fecha_fin'] >= $fechaActual) {
+  if ($memory && $memory->num_rows > 0) {
+    $info2 = $memory->fetch_array();
+    if ($info2['fecha_in'] <= $currentDate) {
+      if ($info2['fecha_fin'] >= $currentDate) {
         $_SESSION['rebaja'] = $info2['porciento'];
         $count = 0;
       }
     }
-    $cont0++;
+    $counter++;
   }
 }
 
@@ -181,7 +181,7 @@ if (!isset($count)) {
   }
 }
 
-$_SESSION['datosGReparacion'] = $datosGReparacion;
+$_SESSION['datosGReparacion'] = $servicesDate;
 header("Location:../Vistas/GReparacionVista.php");
 exit;
 

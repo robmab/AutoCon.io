@@ -15,9 +15,9 @@
 <body>
   <?php include "../Tema/Menu.php";
 
-  $datosUsu = $_SESSION['datosUsu'];
+  $userData = $_SESSION['datosUsu'];
   if (isset($_SESSION['datosTar']))
-    $datosTar = $_SESSION['datosTar'];
+    $cardDate = $_SESSION['datosTar'];
 
   if (isset($_REQUEST['editar'])) { ?>
 
@@ -45,7 +45,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="text" name="nombreUs" id="nombreUs" autocomplete="off"
-                        value="<?php echo $datosUsu['nombreUsuario'] ?>">
+                        value="<?php echo $userData['nombreUsuario'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Nombre de Usuario</label>
@@ -55,7 +55,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="email" name="email" id="email" autocomplete="off"
-                        value="<?php echo $datosUsu['correo'] ?>">
+                        value="<?php echo $userData['correo'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Correo</label>
@@ -65,7 +65,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="text" name="nombre" id="nombre" autocomplete="off"
-                        value="<?php echo $datosUsu['nombre'] ?>">
+                        value="<?php echo $userData['nombre'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Nombre</label>
@@ -75,7 +75,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="text" name="apellidos" id="apellidos" autocomplete="off"
-                        value="<?php echo $datosUsu['apellidos'] ?>">
+                        value="<?php echo $userData['apellidos'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Apellidos</label>
@@ -85,7 +85,7 @@
                   <div class="col-12">
                     <div class="group">
                       <input type="text" name="direccion" id="direccion" autocomplete="off"
-                        value="<?php echo $datosUsu['domicilio'] ?>">
+                        value="<?php echo $userData['domicilio'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Dirección</label>
@@ -95,7 +95,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="text" name="nif" id="nif" autocomplete="off" maxlength="9" minlength="9"
-                        value="<?php echo $datosUsu['nif'] ?>">
+                        value="<?php echo $userData['nif'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>DNI </label>
@@ -105,7 +105,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="date" name="fechaNac" id="fechaNac" autocomplete="off"
-                        value="<?php echo $datosUsu['fechaNacimiento'] ?>">
+                        value="<?php echo $userData['fechaNacimiento'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Fecha de Nacimiento </label>
@@ -117,7 +117,7 @@
                       <p>Provincia</p>
                       <select name="provincia" id="provincia">
                         <option selected="true" disabled="disabled">
-                          <?php echo $datosUsu['provincia'] ?>
+                          <?php echo $userData['provincia'] ?>
                         </option>
                         <option value='alava'>Álava</option>
                         <option value='albacete'>Albacete</option>
@@ -178,7 +178,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="text" name="poblacion" id="poblacion" autocomplete="off"
-                        value="<?php echo $datosUsu['poblacion'] ?>">
+                        value="<?php echo $userData['poblacion'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Población </label>
@@ -188,7 +188,7 @@
                   <div class="col-12 col-md-6">
                     <div class="group">
                       <input type="text" name="codigoP" id="codigoP" autocomplete="off"
-                        value="<?php echo $datosUsu['codigoPostal'] ?>">
+                        value="<?php echo $userData['codigoPostal'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Código Postal </label>
@@ -198,7 +198,7 @@
                   <div class="col-12 col-md-6 tlf">
                     <div class="group">
                       <input type="text" name="movil" id="movil" autocomplete="off"
-                        value="<?php echo $datosUsu['numeroMovil'] ?>">
+                        value="<?php echo $userData['numeroMovil'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
                       <label>Numero teléfono </label>
@@ -285,67 +285,67 @@
                 <tr>
                   <td> <b> Nombre Usuario: </b> </td>
                   <td>
-                    <?php echo $datosUsu['nombreUsuario'] ?>
+                    <?php echo $userData['nombreUsuario'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Correo: </b> </td>
                   <td>
-                    <?php echo $datosUsu['correo'] ?>
+                    <?php echo $userData['correo'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td><b> Nombre: </b> </td>
                   <td>
-                    <?php echo $datosUsu['nombre'] ?>
+                    <?php echo $userData['nombre'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Apellidos: </b> </td>
                   <td>
-                    <?php echo $datosUsu['apellidos'] ?>
+                    <?php echo $userData['apellidos'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Fecha Nacimiento: </b> </td>
                   <td>
-                    <?php echo $datosUsu['fechaNacimiento'] ?>
+                    <?php echo $userData['fechaNacimiento'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td><b> DNI: </b> </td>
                   <td>
-                    <?php echo $datosUsu['nif'] ?>
+                    <?php echo $userData['nif'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Domicilio: </b> </td>
                   <td>
-                    <?php echo $datosUsu['domicilio'] ?>
+                    <?php echo $userData['domicilio'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Código Postal: </b> </td>
                   <td>
-                    <?php echo $datosUsu['codigoPostal'] ?>
+                    <?php echo $userData['codigoPostal'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Teléfono: </b> </td>
                   <td>
-                    <?php echo $datosUsu['numeroMovil'] ?>
+                    <?php echo $userData['numeroMovil'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Provincia: </b> </td>
                   <td>
-                    <?php echo $datosUsu['provincia'] ?>
+                    <?php echo $userData['provincia'] ?>
                   </td>
                 </tr>
                 <tr>
                   <td> <b> Población: </b> </td>
                   <td>
-                    <?php echo $datosUsu['poblacion'] ?>
+                    <?php echo $userData['poblacion'] ?>
                   </td>
                 </tr>
               </table>
@@ -373,7 +373,7 @@
 
                 <h5>
                   <?php
-                  if ($datosTar['tipo'] == "Visa") { ?>
+                  if ($cardDate['tipo'] == "Visa") { ?>
                     <img src="../img/core-img/visa.png" width="20%" height="20%">
                   <?php } else { ?>
                     <img src="../img/core-img/mastercard.png" width="20%" height="20%">
@@ -391,10 +391,10 @@
                     <tr>
                       <td> <b> Número: </b> </td>
                       <td>
-                        <?php echo $datosTar['numero1'] ?> -
-                        <?php echo $datosTar['numero2'] ?> -
-                        <?php echo $datosTar['numero3'] ?> -
-                        <?php echo $datosTar['numero4'] ?>
+                        <?php echo $cardDate['numero1'] ?> -
+                        <?php echo $cardDate['numero2'] ?> -
+                        <?php echo $cardDate['numero3'] ?> -
+                        <?php echo $cardDate['numero4'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -402,7 +402,7 @@
                         <b> Titular: </b>
                       </td>
                       <td>
-                        <?php echo $datosTar['titular'] ?>
+                        <?php echo $cardDate['titular'] ?>
                       </td>
                     </tr>
                     <tr>
@@ -410,8 +410,8 @@
                         <b> Fecha: </b>
                       </td>
                       <td>
-                        <?php echo $datosTar['fechaM'] ?> -
-                        <?php echo $datosTar['fechaA'] ?>
+                        <?php echo $cardDate['fechaM'] ?> -
+                        <?php echo $cardDate['fechaA'] ?>
                       </td>
                     </tr>
                   </table>

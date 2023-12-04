@@ -9,37 +9,37 @@ if (isset($_REQUEST['proveedor'])) {
   if (isset($_REQUEST['cambiar'])) {
     if ($_REQUEST['cambiar'] == 1) {
       $sql = "UPDATE proveedores SET disponibilidad='No' WHERE nombre='" . $_REQUEST['proveedor'] . "'";
-      $comprobar = $conexion->query($sql);
+      $check = $connection->query($sql);
     }
     if ($_REQUEST['cambiar'] == 2) {
       $sql = "UPDATE proveedores SET disponibilidad='Si' WHERE nombre='" . $_REQUEST['proveedor'] . "'";
-      $comprobar = $conexion->query($sql);
+      $check = $connection->query($sql);
     }
   }
 }
 
 //Recoger proveedores en array
 $sql = "SELECT count(*) FROM proveedores";
-$memi = $conexion->query($sql);
+$memory = $connection->query($sql);
 
-if ($memi->num_rows > 0) {
-  $info = $memi->fetch_array();
+if ($memory->num_rows > 0) {
+  $info = $memory->fetch_array();
   $num = $info[0];
   $num = (int) $num;
 }
 $cont = 0;
-$datosProveedores = array();
+$providersData = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM proveedores WHERE id='" . $cont2 . "'";
-  $mem = $conexion->query($sql);
+  $memory2 = $connection->query($sql);
 
-  if ($mem && $mem->num_rows > 0) {
-    $info = $mem->fetch_array();
-    $datosProveedores[$info['nombre']]['disponibilidad'] = $info['disponibilidad'];
-    $datosProveedores[$info['nombre']]['numero'] = $info['numero'];
-    $datosProveedores[$info['nombre']]['correo'] = $info['correo'];
-    $datosProveedores[$info['nombre']]['logo'] = $info['logo'];
+  if ($memory2 && $memory2->num_rows > 0) {
+    $info = $memory2->fetch_array();
+    $providersData[$info['nombre']]['disponibilidad'] = $info['disponibilidad'];
+    $providersData[$info['nombre']]['numero'] = $info['numero'];
+    $providersData[$info['nombre']]['correo'] = $info['correo'];
+    $providersData[$info['nombre']]['logo'] = $info['logo'];
 
     $cont++;
   }
@@ -76,10 +76,10 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-ksort($datosProveedores);
-$datosProveedores = array_sort($datosProveedores, 'disponibilidad', SORT_DESC);
+ksort($providersData);
+$providersData = array_sort($providersData, 'disponibilidad', SORT_DESC);
 
-$_SESSION['datosProveedores'] = $datosProveedores;
+$_SESSION['datosProveedores'] = $providersData;
 header("Location:../Vistas/ProveedoresVista.php");
 exit;
 

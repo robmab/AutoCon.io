@@ -3,35 +3,35 @@ session_start();
 
 //Recoger variables y guardarlas en sesion.
 if (isset($_REQUEST["tarjeta"])) {
-  $tarjeta = $_REQUEST["tarjeta"];
-  $tarjeta = ucwords($tarjeta);
-  $_SESSION['tarjetaF'] = $tarjeta;
-  $type = $tarjeta;
+  $card = $_REQUEST["tarjeta"];
+  $card = ucwords($card);
+  $_SESSION['tarjetaF'] = $card;
+  $type = $card;
 }
 
 if (isset($_REQUEST["numero"])) {
-  $numero = $_REQUEST["numero"];
-  $numero = ucwords($numero);
-  $_SESSION['numeroF'] = $numero;
-  $cc_num = $numero;
+  $number = $_REQUEST["numero"];
+  $number = ucwords($number);
+  $_SESSION['numeroF'] = $number;
+  $cc_num = $number;
 }
 
 if (isset($_REQUEST["titular"])) {
-  $titular = $_REQUEST["titular"];
-  $titular = ucwords($titular);
-  $_SESSION['titularF'] = $titular;
+  $owner = $_REQUEST["titular"];
+  $owner = ucwords($owner);
+  $_SESSION['titularF'] = $owner;
 }
 
 if (isset($_REQUEST["mes"])) {
-  $mes = $_REQUEST["mes"];
-  $mes = ucwords($mes);
-  $_SESSION['mesF'] = $mes;
+  $month = $_REQUEST["mes"];
+  $month = ucwords($month);
+  $_SESSION['mesF'] = $month;
 }
 
 if (isset($_REQUEST["año"])) {
-  $año = $_REQUEST["año"];
-  $año = ucwords($año);
-  $_SESSION['añoF'] = $año;
+  $year = $_REQUEST["año"];
+  $year = ucwords($year);
+  $_SESSION['añoF'] = $year;
 }
 
 if (isset($_REQUEST["ccv"])) {
@@ -89,9 +89,9 @@ function validateCCVisa($cc_num, $type)
   }
 }
 
-if ($tarjeta == "Mastercard")
-  validateCCMaster($numero, $tarjeta);
-elseif ($tarjeta == "Visa")
-  validateCCVisa($numero, $tarjeta);
+if ($card == "Mastercard")
+  validateCCMaster($number, $card);
+elseif ($card == "Visa")
+  validateCCVisa($number, $card);
 
 ?>

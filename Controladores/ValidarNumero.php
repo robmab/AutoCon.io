@@ -4,21 +4,21 @@ session_start();
 $_SESSION['checkon'] = 1;
 //Recoger variables y guardarlas en sesion.
 if (isset($_REQUEST["nombre"])) {
-  $nombre = $_REQUEST["nombre"];
-  $nombre = ucwords($nombre);
-  $_SESSION['nombre'] = $nombre;
+  $name = $_REQUEST["nombre"];
+  $name = ucwords($name);
+  $_SESSION['nombre'] = $name;
 }
 
 if (isset($_REQUEST["apellidos"])) {
-  $apellidos = $_REQUEST["apellidos"];
-  $apellidos = ucwords($apellidos);
-  $_SESSION['apellidos'] = $apellidos;
+  $lastName = $_REQUEST["apellidos"];
+  $lastName = ucwords($lastName);
+  $_SESSION['apellidos'] = $lastName;
 }
 
 if (isset($_REQUEST["nombreUs"])) {
-  $nombreUs = $_REQUEST["nombreUs"];
-  $nombreUs = ucwords($nombreUs);
-  $_SESSION['nombreUs'] = $nombreUs;
+  $userName = $_REQUEST["nombreUs"];
+  $userName = ucwords($userName);
+  $_SESSION['nombreUs'] = $userName;
 }
 
 if (isset($_REQUEST["email"])) {
@@ -28,35 +28,35 @@ if (isset($_REQUEST["email"])) {
 }
 
 if (isset($_REQUEST["direccion"])) {
-  $direccion = $_REQUEST["direccion"];
-  $direccion = ucwords($direccion);
-  $_SESSION['direccion'] = $direccion;
+  $address = $_REQUEST["direccion"];
+  $address = ucwords($address);
+  $_SESSION['direccion'] = $address;
 }
 
 if (isset($_REQUEST['edicion'])) {
   if (isset($_REQUEST["contraseñaActual"])) {
-    $contraseñaActual = $_REQUEST["contraseñaActual"];
-    $_SESSION['contraseñaActual'] = $contraseñaActual;
+    $currentPassword = $_REQUEST["contraseñaActual"];
+    $_SESSION['contraseñaActual'] = $currentPassword;
   }
   if (isset($_REQUEST["contraseñaNueva"])) {
-    $contraseñaNueva = $_REQUEST["contraseñaNueva"];
-    $_SESSION['contraseñaNueva'] = $contraseñaNueva;
+    $newPassword = $_REQUEST["contraseñaNueva"];
+    $_SESSION['contraseñaNueva'] = $newPassword;
   }
   if (isset($_REQUEST["contraseñaNueva2"])) {
-    $contraseñaNueva2 = $_REQUEST["contraseñaNueva2"];
-    $_SESSION['contraseñaNueva2'] = $contraseñaNueva2;
+    $newPassword2 = $_REQUEST["contraseñaNueva2"];
+    $_SESSION['contraseñaNueva2'] = $newPassword2;
   }
 } else {
   if (isset($_REQUEST["contraseña"])) {
-    $contraseña = $_REQUEST["contraseña"];
-    $contraseña = base64_encode($contraseña);
-    $_SESSION['contraseña'] = $contraseña;
+    $password = $_REQUEST["contraseña"];
+    $password = base64_encode($password);
+    $_SESSION['contraseña'] = $password;
   }
 }
 
 if (isset($_REQUEST["fechaNac"])) {
-  $fechaNac = $_REQUEST["fechaNac"];
-  $_SESSION['fechaNac'] = $fechaNac;
+  $bornDate = $_REQUEST["fechaNac"];
+  $_SESSION['fechaNac'] = $bornDate;
 }
 
 if (isset($_REQUEST["nif"])) {
@@ -66,27 +66,27 @@ if (isset($_REQUEST["nif"])) {
 }
 
 if (isset($_REQUEST["provincia"])) {
-  $provincia = $_REQUEST["provincia"];
-  $provincia = ucwords($provincia);
-  $_SESSION['provincia'] = $provincia;
+  $province = $_REQUEST["provincia"];
+  $province = ucwords($province);
+  $_SESSION['provincia'] = $province;
 }
 
 if (isset($_REQUEST["poblacion"])) {
-  $poblacion = $_REQUEST["poblacion"];
-  $poblacion = ucwords($poblacion);
-  $_SESSION['poblacion'] = $poblacion;
+  $populate = $_REQUEST["poblacion"];
+  $populate = ucwords($populate);
+  $_SESSION['poblacion'] = $populate;
 }
 
 if (isset($_REQUEST["codigoP"])) {
-  $codigoP = $_REQUEST["codigoP"];
-  $codigoP = ucwords($codigoP);
-  $_SESSION['codigoP'] = $codigoP;
+  $zipCode = $_REQUEST["codigoP"];
+  $zipCode = ucwords($zipCode);
+  $_SESSION['codigoP'] = $zipCode;
 }
 
 if (isset($_REQUEST["movil"])) {
-  $movil = $_REQUEST["movil"];
-  $movil = ucwords($movil);
-  $_SESSION['movil'] = $movil;
+  $mobile = $_REQUEST["movil"];
+  $mobile = ucwords($mobile);
+  $_SESSION['movil'] = $mobile;
 }
 
 //Funcion validar codigo postal
@@ -154,8 +154,8 @@ function validate_phone_number($phone)
 }
 
 //funcion de edad
-validaPostal($codigoP);
-time_date($fechaNac);
-validate_phone_number($movil);
+validaPostal($zipCode);
+time_date($bornDate);
+validate_phone_number($mobile);
 
 ?>

@@ -7,58 +7,58 @@ $_SESSION['chekon'] = 1;
 if (isset($_REQUEST['nU'])) {
   if (isset($_REQUEST['adm'])) {
     $sql = "UPDATE usuarios SET rol='Admin' WHERE nombreUsuario='" . $_REQUEST['nU'] . "'";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
   if (isset($_REQUEST['user']) and $_REQUEST['nU'] != "Rob") {
     $sql = "UPDATE usuarios SET rol='Usuario' WHERE nombreUsuario='" . $_REQUEST['nU'] . "'";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 
   if (isset($_REQUEST['eliminar']) and $_REQUEST['nU'] != "Rob") {
     $sql = "DELETE FROM componente_usuario WHERE usuario='" . $_REQUEST['id'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
     $sql = "DELETE FROM vehiculos_usuarios WHERE usuario='" . $_REQUEST['id'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
     $sql = "DELETE FROM reparacion WHERE usuario='" . $_REQUEST['id'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
     $sql = "DELETE FROM usuarios_facturacion WHERE usuario='" . $_REQUEST['id'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
     $sql = "DELETE FROM usuarios WHERE nombreUsuario='" . $_REQUEST['nU'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 }
 
 //Recoger usuarios en array
 $sql = "SELECT count(*) FROM usuarios";
-$memi = $conexion->query($sql);
+$memory = $connection->query($sql);
 
-if ($memi->num_rows > 0) {
-  $info = $memi->fetch_array();
+if ($memory->num_rows > 0) {
+  $info = $memory->fetch_array();
   $num = $info[0];
   $num = (int) $num;
 }
 $cont = 0;
-$datosUsuarios = array();
+$userDate = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM usuarios WHERE id='" . $cont2 . "'";
-  $mem = $conexion->query($sql);
+  $memory2 = $connection->query($sql);
 
-  if ($mem && $mem->num_rows > 0) {
-    $info = $mem->fetch_array();
-    $datosUsuarios[$info['nombreUsuario']]['nombre'] = $info['nombre'];
-    $datosUsuarios[$info['nombreUsuario']]['nif'] = $info['nif'];
-    $datosUsuarios[$info['nombreUsuario']]['domicilio'] = $info['domicilio'];
+  if ($memory2 && $memory2->num_rows > 0) {
+    $info = $memory2->fetch_array();
+    $userDate[$info['nombreUsuario']]['nombre'] = $info['nombre'];
+    $userDate[$info['nombreUsuario']]['nif'] = $info['nif'];
+    $userDate[$info['nombreUsuario']]['domicilio'] = $info['domicilio'];
     $info['fechaNacimiento'] = date("d-m-Y", strtotime($info['fechaNacimiento']));
-    $datosUsuarios[$info['nombreUsuario']]['fechaNacimiento'] = $info['fechaNacimiento'];
-    $datosUsuarios[$info['nombreUsuario']]['rol'] = $info['rol'];
-    $datosUsuarios[$info['nombreUsuario']]['apellidos'] = $info['apellidos'];
-    $datosUsuarios[$info['nombreUsuario']]['codigoPostal'] = $info['codigoPostal'];
-    $datosUsuarios[$info['nombreUsuario']]['correo'] = $info['correo'];
-    $datosUsuarios[$info['nombreUsuario']]['provincia'] = $info['provincia'];
-    $datosUsuarios[$info['nombreUsuario']]['población'] = $info['población'];
-    $datosUsuarios[$info['nombreUsuario']]['numeroMovil'] = $info['numeroMovil'];
-    $datosUsuarios[$info['nombreUsuario']]['id'] = $info['id'];
+    $userDate[$info['nombreUsuario']]['fechaNacimiento'] = $info['fechaNacimiento'];
+    $userDate[$info['nombreUsuario']]['rol'] = $info['rol'];
+    $userDate[$info['nombreUsuario']]['apellidos'] = $info['apellidos'];
+    $userDate[$info['nombreUsuario']]['codigoPostal'] = $info['codigoPostal'];
+    $userDate[$info['nombreUsuario']]['correo'] = $info['correo'];
+    $userDate[$info['nombreUsuario']]['provincia'] = $info['provincia'];
+    $userDate[$info['nombreUsuario']]['población'] = $info['población'];
+    $userDate[$info['nombreUsuario']]['numeroMovil'] = $info['numeroMovil'];
+    $userDate[$info['nombreUsuario']]['id'] = $info['id'];
 
     $cont++;
   }
@@ -94,8 +94,8 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-$datosUsuarios = array_sort($datosUsuarios, 'nombre', SORT_ASC);
-$_SESSION['datosUsuarios'] = $datosUsuarios;
+$userDate = array_sort($userDate, 'nombre', SORT_ASC);
+$_SESSION['datosUsuarios'] = $userDate;
 header("Location:../Vistas/UsuariosVista.php");
 exit;
 

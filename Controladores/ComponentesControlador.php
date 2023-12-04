@@ -6,20 +6,20 @@ $_SESSION['chekonn'] = 1;
 
 if (isset($_REQUEST['nom'])) {
   $sql = "SELECT * FROM componentes WHERE nombre='" . $_REQUEST['nom'] . "' AND tipo='" . $_REQUEST['tip'] . "'";
-  $memi = $conexion->query($sql);
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
-    $cantidad = $info['cantidad'];
+  $memory = $connection->query($sql);
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
+    $quantity = $info['cantidad'];
   }
   if (isset($_REQUEST['a'])) {
-    $cantidad = $cantidad + 1;
-    $sql = "UPDATE componentes SET cantidad='" . $cantidad . "' WHERE nombre='" . $_REQUEST['nom'] . "' AND tipo='" . $_REQUEST['tip'] . "'";
-    $comprobar = $conexion->query($sql);
+    $quantity = $quantity + 1;
+    $sql = "UPDATE componentes SET cantidad='" . $quantity . "' WHERE nombre='" . $_REQUEST['nom'] . "' AND tipo='" . $_REQUEST['tip'] . "'";
+    $check = $connection->query($sql);
   }
   if (isset($_REQUEST['q'])) {
-    $cantidad = $cantidad - 1;
-    $sql = "UPDATE componentes SET cantidad='" . $cantidad . "' WHERE nombre='" . $_REQUEST['nom'] . "' AND tipo='" . $_REQUEST['tip'] . "'";
-    $comprobar = $conexion->query($sql);
+    $quantity = $quantity - 1;
+    $sql = "UPDATE componentes SET cantidad='" . $quantity . "' WHERE nombre='" . $_REQUEST['nom'] . "' AND tipo='" . $_REQUEST['tip'] . "'";
+    $check = $connection->query($sql);
   }
 
   $nom = $_REQUEST['nom'];
@@ -29,10 +29,10 @@ if (isset($_REQUEST['nom'])) {
 
 if (isset($_REQUEST['comprar'])) {
   if ($_REQUEST['tipo']) {
-    $tipo = $_REQUEST['tipo'];
-    $porciones = explode("-", $tipo);
-    $tipo = $porciones[0];
-    $precioC = $porciones[1];
+    $type = $_REQUEST['tipo'];
+    $portions = explode("-", $type);
+    $type = $portions[0];
+    $price2 = $portions[1];
   } else {
     //Component Control 
     $_SESSION['mensajeBD'] = "Debes seleccionar un componente primero.";
@@ -49,152 +49,151 @@ if (isset($_REQUEST['comprar'])) {
 
   //comprobar si tiene datos de facturacion el usuario
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
-  $memi = $conexion->query($sql);
+  $memory = $connection->query($sql);
 
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
-    $usuario = $info['id'];
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
+    $user = $info['id'];
   }
 
-  $sql = "SELECT * FROM usuarios_facturacion WHERE usuario='" . $usuario . "'";
-  $memi = $conexion->query($sql);
+  $sql = "SELECT * FROM usuarios_facturacion WHERE usuario='" . $user . "'";
+  $memory = $connection->query($sql);
 
-  if ($memi->num_rows <= 0) {
+  if ($memory->num_rows <= 0) {
     $_SESSION['mensajeBD'] = "Necesitas asociar los datos de tu tarjeta a tu cuenta para asignar el pago";
     header("Location:../Vistas/FacturacionVista.php?checkF=1");
     exit;
   }
 
   if ($_REQUEST['nombre'])
-    $nombre = $_REQUEST['nombre'];
+    $name = $_REQUEST['nombre'];
 
   //Ingreso en la base de datos.
-  $sql = "SELECT * FROM componentes WHERE nombre='" . $nombre . "'  AND tipo='" . $tipo . "'";
-  $memi = $conexion->query($sql);
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
-    $componente = $info['id'];
+  $sql = "SELECT * FROM componentes WHERE nombre='" . $name . "'  AND tipo='" . $type . "'";
+  $memory = $connection->query($sql);
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
+    $component = $info['id'];
   }
 
   //Comprobar si ya tenia ese producto.
-  $sql = "SELECT * FROM componente_usuario WHERE usuario='" . $usuario . "'  AND componente='" . $componente . "' AND finalizado='No'";
-  $memi = $conexion->query($sql);
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
-    $cantidad = $info['cantidad'];
-    $finalizado = $info['finalizado'];
-    $precio = $info['precio'];
+  $sql = "SELECT * FROM componente_usuario WHERE usuario='" . $user . "'  AND componente='" . $component . "' AND finalizado='No'";
+  $memory = $connection->query($sql);
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
+    $quantity = $info['cantidad'];
+    $end = $info['finalizado'];
+    $price1 = $info['precio'];
   } else
-    $cantidad = 0;
+    $quantity = 0;
 
   //Inserción del componente y mensaje
-  if ($cantidad > 0) {
-    $cantidad = $cantidad + 1;
-    $sql = "UPDATE  componente_usuario SET cantidad='" . $cantidad . "' WHERE usuario='" . $usuario . "'  AND componente='" . $componente . "' AND finalizado='No' ";
-    $comprobar = $conexion->query($sql);
-    $precio = $precio + $precioC;
+  if ($quantity > 0) {
+    $quantity = $quantity + 1;
+    $sql = "UPDATE  componente_usuario SET cantidad='" . $quantity . "' WHERE usuario='" . $user . "'  AND componente='" . $component . "' AND finalizado='No' ";
+    $check = $connection->query($sql);
+    $price1 = $price1 + $price2;
 
-    $sql = "UPDATE  componente_usuario SET precio='" . $precio . "' WHERE usuario='" . $usuario . "'  AND componente='" . $componente . "' AND finalizado='No' ";
-    $comprobar = $conexion->query($sql);
+    $sql = "UPDATE  componente_usuario SET precio='" . $price1 . "' WHERE usuario='" . $user . "'  AND componente='" . $component . "' AND finalizado='No' ";
+    $check = $connection->query($sql);
   } else {
     $n = rand(1000000000, 9999999999);
-    $contad = 0;
+    $cont1 = 0;
 
-    while ($contad == 0) {
+    while ($cont1 == 0) {
       $sql = "SELECT * FROM componente_usuario WHERE n='" . $n . "'";
-      $memi = $conexion->query($sql);
-      if ($memi->num_rows > 0)
+      $memory = $connection->query($sql);
+      if ($memory->num_rows > 0)
         $n = rand(1000000000, 9999999999);
       else
-        $contad = 1;
+        $cont1 = 1;
     }
 
-    $cantidad = $cantidad + 1;
-    $sql = "INSERT INTO componente_usuario(usuario,cantidad,componente,precio,n)   VALUES(" . $usuario . "," . $cantidad . "," . $componente . "," . $precioC . ",'" . $n . "')";
-    $comprobar = $conexion->query($sql);
+    $quantity = $quantity + 1;
+    $sql = "INSERT INTO componente_usuario(usuario,cantidad,componente,precio,n)   VALUES(" . $user . "," . $quantity . "," . $component . "," . $price2 . ",'" . $n . "')";
+    $check = $connection->query($sql);
   }
 
   //Actualizar disponibilidad -->
-  $sql = "SELECT cantidad FROM componentes WHERE id='" . $componente . "'    ";
-  $memi = $conexion->query($sql);
-  if ($memi->num_rows > 0) {
-    $info = $memi->fetch_array();
-    $cantidadC = $info['cantidad'];
-    $cantidadC = $cantidadC - 1;
+  $sql = "SELECT cantidad FROM componentes WHERE id='" . $component . "'    ";
+  $memory = $connection->query($sql);
+  if ($memory->num_rows > 0) {
+    $info = $memory->fetch_array();
+    $quantity2 = $info['cantidad'];
+    $quantity2 = $quantity2 - 1;
   }
 
-  $sql = "UPDATE  componentes SET cantidad='" . $cantidadC . "' WHERE id='" . $componente . "' ";
-  $comprobar = $conexion->query($sql);
+  $sql = "UPDATE  componentes SET cantidad='" . $quantity2 . "' WHERE id='" . $component . "' ";
+  $check = $connection->query($sql);
 
-  $_SESSION['mensajeBD2'] = "Componente " . $nombre . " - " . $tipo . " comprado con éxito.";
+  $_SESSION['mensajeBD2'] = "Componente " . $name . " - " . $type . " comprado con éxito.";
   header("Location:SeguimientoControlador.php#2");
   exit;
 }
 
 //Recoger componentes en array de objetos
 $sql = "SELECT count(*) FROM componentes";
-$memi = $conexion->query($sql);
+$memory = $connection->query($sql);
 
-if ($memi->num_rows > 0) {
-
-  $info = $memi->fetch_array();
+if ($memory->num_rows > 0) {
+  $info = $memory->fetch_array();
   $num = $info[0];
   $num = (int) $num;
 }
 
-$cont = 0;
-$listaComponentes = array();
+$cont2 = 0;
+$componentList = array();
 
-for ($cont2 = 0; $cont < $num; $cont2++) {
+for ($cont2 = 0; $cont2 < $num; $cont2++) {
   $sql = "SELECT *  FROM componentes WHERE ID='" . $cont2 . "'";
-  $mem = $conexion->query($sql);
+  $mem = $connection->query($sql);
   if ($mem && $mem->num_rows > 0) {
     $info = $mem->fetch_array();
-    $listaComponentes[$info['nombre']][$info['tipo']]['cantidad'] = $info['cantidad'];
-    $listaComponentes[$info['nombre']][$info['tipo']]['ruta'] = $info['ruta'];
-    $listaComponentes[$info['nombre']][$info['tipo']]['descuento'] = $info['descuento'];
-    $listaComponentes[$info['nombre']][$info['tipo']]['precioO'] = $info['precio'] * 1;
-    $listaComponentes[$info['nombre']][$info['tipo']]['precio'] = $info['precio'] * 1;
-    $precioR = ((($info['descuento'] / 100) - 1) * -1) * $info['precio'];
+    $componentList[$info['nombre']][$info['tipo']]['cantidad'] = $info['cantidad'];
+    $componentList[$info['nombre']][$info['tipo']]['ruta'] = $info['ruta'];
+    $componentList[$info['nombre']][$info['tipo']]['descuento'] = $info['descuento'];
+    $componentList[$info['nombre']][$info['tipo']]['precioO'] = $info['precio'] * 1;
+    $componentList[$info['nombre']][$info['tipo']]['precio'] = $info['precio'] * 1;
+    $priceR = ((($info['descuento'] / 100) - 1) * -1) * $info['precio'];
 
     //Calculo de rebaja de existir
     $fechaActual = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
-    $memi2 = $conexion->query($sql2);
+    $memi2 = $connection->query($sql2);
     if ($memi2->num_rows > 0) {
       $info2 = $memi2->fetch_array();
       $num0 = $info2[0];
       $num0 = (int) $num0;
     }
-    $cont0 = 0;
+    $cont = 0;
 
-    for ($cont20 = 0; $cont0 < $num0; $cont20++) {
-      $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $cont20 . "'";
-      $mem = $conexion->query($sql);
+    for ($counter = 0; $cont < $num0; $counter++) {
+      $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $counter . "'";
+      $mem = $connection->query($sql);
       if ($mem && $mem->num_rows > 0) {
         $info2 = $mem->fetch_array();
         if ($info2['fecha_in'] <= $fechaActual) {
           if ($info2['fecha_fin'] >= $fechaActual) {
-            $multiplicador = $listaComponentes[$info['nombre']][$info['tipo']]['descuento'] / 100;
-            $multiplicador = ($multiplicador - 1) * -1;
-            $multiplicador2 = $info2['porciento'] * $multiplicador;
-            $listaComponentes[$info['nombre']][$info['tipo']]['descuento'] = $listaComponentes[$info['nombre']][$info['tipo']]['descuento'] + $multiplicador2;
-            $porciento = (($info2['porciento'] / 100) - 1) * -1;
-            $listaComponentes[$info['nombre']][$info['tipo']]['precio'] = $listaComponentes[$info['nombre']][$info['tipo']]['precio'] * $porciento;
-            $precioR = round(($precioR * $porciento), 2);
+            $multiplier = $componentList[$info['nombre']][$info['tipo']]['descuento'] / 100;
+            $multiplier = ($multiplier - 1) * -1;
+            $multiplier2 = $info2['porciento'] * $multiplier;
+            $componentList[$info['nombre']][$info['tipo']]['descuento'] = $componentList[$info['nombre']][$info['tipo']]['descuento'] + $multiplier2;
+            $percent = (($info2['porciento'] / 100) - 1) * -1;
+            $componentList[$info['nombre']][$info['tipo']]['precio'] = $componentList[$info['nombre']][$info['tipo']]['precio'] * $percent;
+            $priceR = round(($priceR * $percent), 2);
           }
         }
-        $cont0++;
+        $cont++;
       }
     }
-    $listaComponentes[$info['nombre']][$info['tipo']]['precioR'] = $precioR;
-    $listaComponentes[$info['nombre']][$info['tipo']]['precioR'] = round($listaComponentes[$info['nombre']][$info['tipo']]['precioR'], 2);
+    $componentList[$info['nombre']][$info['tipo']]['precioR'] = $priceR;
+    $componentList[$info['nombre']][$info['tipo']]['precioR'] = round($componentList[$info['nombre']][$info['tipo']]['precioR'], 2);
 
-    $cont++;
+    $cont2++;
   }
 }
 
-$_SESSION['listaComponentes'] = $listaComponentes;
+$_SESSION['listaComponentes'] = $componentList;
 
 if (isset($_REQUEST['Adm']))
   header("Location:../Vistas/ComponentesVistaAdm.php#$nom");

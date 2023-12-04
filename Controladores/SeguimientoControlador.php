@@ -6,23 +6,23 @@ $_SESSION['chekon'] = 1;
 //Cancelar vehiculo
 if (isset($_REQUEST['vehiculo'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
-  $memory = $conexion->query($sql);
+  $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
     $user = $info['id'];
   }
 
   $sql = "SELECT id FROM vehiculos WHERE modelo='" . $_REQUEST['vehiculo'] . "'";
-  $memory = $conexion->query($sql);
+  $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
     $veh = $info['id'];
   }
 
   $sql = "DELETE FROM vehiculos_usuarios WHERE n='" . $_REQUEST['n'] . "' ";
-  $check = $conexion->query($sql);
+  $check = $connection->query($sql);
   $sql = "SELECT * FROM vehiculos WHERE modelo='" . $_REQUEST['vehiculo'] . "'";
-  $memory = $conexion->query($sql);
+  $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
     $rented = $info['alquilados'];
@@ -32,14 +32,14 @@ if (isset($_REQUEST['vehiculo'])) {
 
   $available = $available + 1;
   $sql = "UPDATE vehiculos SET disponibles='" . $available . "' WHERE modelo='" . $model . "'";
-  $check = $conexion->query($sql);
+  $check = $connection->query($sql);
 
   if (isset($_REQUEST['R'])) {
     $_SESSION['mensajeBD1'] = 'Reserva cancelada con exito.';
   } elseif (isset($_REQUEST['A'])) {
     $rented = $rented - 1;
     $sql = "UPDATE vehiculos SET alquilados='" . $rented . "' WHERE modelo='" . $model . "'";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
     $_SESSION['mensajeBD1'] = 'Alquiler cancelado con exito. Devuelve el vehículo en un plazo de 1 semana.';
   }
 }
@@ -47,7 +47,7 @@ if (isset($_REQUEST['vehiculo'])) {
 //Cancelar componente
 if (isset($_REQUEST['nombre'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
-  $memory = $conexion->query($sql);
+  $memory = $connection->query($sql);
 
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
@@ -56,7 +56,7 @@ if (isset($_REQUEST['nombre'])) {
   $name = $_REQUEST['nombre'];
   $type = $_REQUEST['tipo'];
   $sql = "SELECT id FROM componentes WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
-  $memory = $conexion->query($sql);
+  $memory = $connection->query($sql);
 
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
@@ -65,9 +65,9 @@ if (isset($_REQUEST['nombre'])) {
 
   if (isset($_REQUEST['unico'])) {
     $sql = "DELETE FROM componente_usuario WHERE n='" . $_REQUEST['n'] . "' ";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
     $sql = "SELECT * FROM componentes WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
-    $memory = $conexion->query($sql);
+    $memory = $connection->query($sql);
 
     if ($memory->num_rows > 0) {
       $info = $memory->fetch_array();
@@ -75,11 +75,11 @@ if (isset($_REQUEST['nombre'])) {
     }
     $quantity = $quantity + 1;
     $sql = "UPDATE componentes SET cantidad='" . $quantity . "' WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
     $_SESSION['mensajeBD2'] = $name . ' de tipo ' . $type . ' cancelado.';
   } elseif (isset($_REQUEST['uno'])) {
     $sql = "SELECT * FROM componente_usuario WHERE n='" . $_REQUEST['n'] . "' ";
-    $memory = $conexion->query($sql);
+    $memory = $connection->query($sql);
     if ($memory->num_rows > 0) {
       $info = $memory->fetch_array();
       $quantity = $info['cantidad'];
@@ -91,13 +91,13 @@ if (isset($_REQUEST['nombre'])) {
     $price = $price * $quantity2;
 
     $sql = "UPDATE componente_usuario SET cantidad='" . $quantity2 . "' WHERE n='" . $_REQUEST['n'] . "' ";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
 
     $sql = "UPDATE componente_usuario SET precio='" . $price . "' WHERE n='" . $_REQUEST['n'] . "' ";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
 
     $sql = "SELECT * FROM componentes WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
-    $memory = $conexion->query($sql);
+    $memory = $connection->query($sql);
 
     if ($memory->num_rows > 0) {
       $info = $memory->fetch_array();
@@ -106,15 +106,15 @@ if (isset($_REQUEST['nombre'])) {
 
     $quantity = $quantity + 1;
     $sql = "UPDATE componentes SET cantidad='" . $quantity . "' WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
     $_SESSION['mensajeBD2'] = '1 ' . $name . " de tipo " . $type . " cancelado.";
 
   } elseif (isset($_REQUEST['todos'])) {
     $sql = "DELETE FROM componente_usuario WHERE n='" . $_REQUEST['n'] . "' ";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
 
     $sql = "SELECT * FROM componentes WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
-    $memory = $conexion->query($sql);
+    $memory = $connection->query($sql);
 
     if ($memory->num_rows > 0) {
       $info = $memory->fetch_array();
@@ -123,7 +123,7 @@ if (isset($_REQUEST['nombre'])) {
     $quantity = $quantity + $_REQUEST['cantidad'];
 
     $sql = "UPDATE componentes SET cantidad='" . $quantity . "' WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
-    $check = $conexion->query($sql);
+    $check = $connection->query($sql);
     $_SESSION['mensajeBD2'] = $_REQUEST['cantidad'] . ' ' . $name . ' de tipo ' . $type . ' cancelados.';
   }
 }
@@ -133,14 +133,14 @@ if (isset($_REQUEST['servicio'])) {
   $service = $_REQUEST['servicio'];
   $date = $_REQUEST['fecha'];
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
-  $memory = $conexion->query($sql);
+  $memory = $connection->query($sql);
 
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
     $user = $info['id'];
   }
   $sql = "DELETE FROM reparacion WHERE n='" . $_REQUEST['n'] . "' ";
-  $check = $conexion->query($sql);
+  $check = $connection->query($sql);
   $_SESSION['mensajeBD3'] = "El servicio de " . $service . " del " . $date . " ha sido cancelado.";
 }
 
@@ -176,7 +176,7 @@ function array_sort($array, $on, $order = SORT_ASC)
 
 //Coger id usuario
 $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
-$memory = $conexion->query($sql);
+$memory = $connection->query($sql);
 
 if ($memory->num_rows > 0) {
   $info = $memory->fetch_array();
@@ -185,7 +185,7 @@ if ($memory->num_rows > 0) {
 
 //Recoger datos, si existen, de los vehiculos alquilados o reservados.      
 $sql = "SELECT count(*) FROM vehiculos_usuarios";
-$memory = $conexion->query($sql);
+$memory = $connection->query($sql);
 
 if ($memory->num_rows > 0) {
   $info = $memory->fetch_array();
@@ -198,7 +198,7 @@ $vehicleDate = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM vehiculos_usuarios WHERE id='" . $cont2 . "'";
-  $memory2 = $conexion->query($sql);
+  $memory2 = $connection->query($sql);
 
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();
@@ -210,7 +210,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
       $date = $info['fecha'];
 
       $sql = "SELECT *  FROM vehiculos WHERE id='" . $info['vehiculo'] . "'";
-      $memory2 = $conexion->query($sql);
+      $memory2 = $connection->query($sql);
 
       if ($memory2 && $memory2->num_rows > 0) {
         $info = $memory2->fetch_array();
@@ -234,7 +234,7 @@ $vehicleDate = array_sort($vehicleDate, 'reservado', SORT_DESC);
 
 //Recoger Componentes
 $sql = "SELECT count(*) FROM componente_usuario";
-$memory = $conexion->query($sql);
+$memory = $connection->query($sql);
 
 if ($memory->num_rows > 0) {
 
@@ -247,7 +247,7 @@ $componentDate = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM componente_usuario WHERE id='" . $cont2 . "'";
-  $memory2 = $conexion->query($sql);
+  $memory2 = $connection->query($sql);
 
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();
@@ -258,7 +258,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
       $date = $info['fecha'];
       $n = $info['n'];
       $sql = "SELECT *  FROM componentes WHERE id='" . $info['componente'] . "'";
-      $memory2 = $conexion->query($sql);
+      $memory2 = $connection->query($sql);
       if ($memory2 && $memory2->num_rows > 0) {
         $info = $memory2->fetch_array();
         $componentDate[$cont]['ruta'] = $info['ruta'];
@@ -278,7 +278,7 @@ $componentDate = array_sort($componentDate, 'finalizado', SORT_ASC);
 
 // Recoger datos de Reparación
 $sql = "SELECT count(*) FROM reparacion";
-$memory = $conexion->query($sql);
+$memory = $connection->query($sql);
 if ($memory->num_rows > 0) {
   $info = $memory->fetch_array();
   $num = $info[0];
@@ -289,7 +289,7 @@ $repairDate = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM reparacion WHERE id='" . $cont2 . "'";
-  $memory2 = $conexion->query($sql);
+  $memory2 = $connection->query($sql);
 
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();

@@ -8,66 +8,66 @@ if (isset($_REQUEST['usuario'])) {
 
   if (isset($_REQUEST['comprar'])) {
     $sql = "UPDATE componente_usuario SET finalizado='Si' WHERE usuario='" . $_REQUEST['usuario'] . "' AND componente='" . $_REQUEST['componente'] . "'";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 
   if (isset($_REQUEST['cancelar'])) {
     $sql = "DELETE FROM componente_usuario WHERE usuario='" . $_REQUEST['usuario'] . "' AND componente='" . $_REQUEST['componente'] . "' AND n='" . $_REQUEST['n'] . "' ";
-    $comprobar = $conexion->query($sql);
+    $check = $connection->query($sql);
   }
 }
 
 //Recoger vehiculos en array
 $sql = "SELECT count(*) FROM componente_usuario";
-$memi = $conexion->query($sql);
+$memory = $connection->query($sql);
 
-if ($memi->num_rows > 0) {
-  $info = $memi->fetch_array();
+if ($memory->num_rows > 0) {
+  $info = $memory->fetch_array();
   $num = $info[0];
   $num = (int) $num;
 }
 
 $cont = 0;
-$datosGComponentes = array();
+$componentDate = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM componente_usuario WHERE id='" . $cont2 . "'";
-  $mem = $conexion->query($sql);
-  if ($mem && $mem->num_rows > 0) {
-    $info = $mem->fetch_array();
-    $usuario = $info['usuario'];
-    $datosGComponentes[$cont]['idU'] = $info['usuario'];
-    $componente = $info['componente'];
-    $datosGComponentes[$cont]['idC'] = $info['componente'];
+  $memory2 = $connection->query($sql);
+  if ($memory2 && $memory2->num_rows > 0) {
+    $info = $memory2->fetch_array();
+    $user = $info['usuario'];
+    $componentDate[$cont]['idU'] = $info['usuario'];
+    $component = $info['componente'];
+    $componentDate[$cont]['idC'] = $info['componente'];
 
-    $fecha = date("d-m-Y", strtotime($info['fecha']));
-    $datosGComponentes[$cont]['fecha'] = $fecha;
-    $datosGComponentes[$cont]['n'] = $info['n'];
-    $datosGComponentes[$cont]['precio'] = $info['precio'] * 1;
-    $datosGComponentes[$cont]['cantidad'] = $info['cantidad'];
-    $datosGComponentes[$cont]['finalizado'] = $info['finalizado'];
+    $date = date("d-m-Y", strtotime($info['fecha']));
+    $componentDate[$cont]['fecha'] = $date;
+    $componentDate[$cont]['n'] = $info['n'];
+    $componentDate[$cont]['precio'] = $info['precio'] * 1;
+    $componentDate[$cont]['cantidad'] = $info['cantidad'];
+    $componentDate[$cont]['finalizado'] = $info['finalizado'];
 
-    $sql = "SELECT * FROM usuarios WHERE id='" . $usuario . "' ";
-    $memi = $conexion->query($sql);
+    $sql = "SELECT * FROM usuarios WHERE id='" . $user . "' ";
+    $memory = $connection->query($sql);
 
-    if ($memi->num_rows > 0) {
-      $info = $memi->fetch_array();
-      $datosGComponentes[$cont]['nombreUsuario'] = $info['nombreUsuario'];
-      $datosGComponentes[$cont]['correo'] = $info['correo'];
-      $datosGComponentes[$cont]['numeroMovil'] = $info['numeroMovil'];
-      $datosGComponentes[$cont]['nombre'] = $info['nombre'];
-      $datosGComponentes[$cont]['apellidos'] = $info['apellidos'];
-      $datosGComponentes[$cont]['nif'] = $info['nif'];
+    if ($memory->num_rows > 0) {
+      $info = $memory->fetch_array();
+      $componentDate[$cont]['nombreUsuario'] = $info['nombreUsuario'];
+      $componentDate[$cont]['correo'] = $info['correo'];
+      $componentDate[$cont]['numeroMovil'] = $info['numeroMovil'];
+      $componentDate[$cont]['nombre'] = $info['nombre'];
+      $componentDate[$cont]['apellidos'] = $info['apellidos'];
+      $componentDate[$cont]['nif'] = $info['nif'];
     }
 
-    $sql = "SELECT * FROM componentes WHERE id='" . $componente . "' ";
-    $memi = $conexion->query($sql);
+    $sql = "SELECT * FROM componentes WHERE id='" . $component . "' ";
+    $memory = $connection->query($sql);
 
-    if ($memi->num_rows > 0) {
-      $info = $memi->fetch_array();
-      $datosGComponentes[$cont]['nombreC'] = $info['nombre'];
-      $datosGComponentes[$cont]['tipo'] = $info['tipo'];
-      $datosGComponentes[$cont]['ruta'] = $info['ruta'];
+    if ($memory->num_rows > 0) {
+      $info = $memory->fetch_array();
+      $componentDate[$cont]['nombreC'] = $info['nombre'];
+      $componentDate[$cont]['tipo'] = $info['tipo'];
+      $componentDate[$cont]['ruta'] = $info['ruta'];
     }
     $cont++;
   }
@@ -107,8 +107,8 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-$datosGComponentes = array_sort($datosGComponentes, 'finalizado', SORT_ASC);
-$_SESSION['datosGComponentes'] = $datosGComponentes;
+$componentDate = array_sort($componentDate, 'finalizado', SORT_ASC);
+$_SESSION['datosGComponentes'] = $componentDate;
 header("Location:../Vistas/GComponentesVista.php");
 exit;
 
