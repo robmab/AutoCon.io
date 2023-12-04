@@ -1,0 +1,104 @@
+.follow .title-name {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* VEHICLES */
+.follow table .name {
+  color: black;
+  font-size: 15px;
+}
+
+.follow .reserved h6:first-of-type {
+  color: black;
+}
+
+.follow .buyed {
+  padding-right: 7em;
+}
+
+.follow .buyed h6:first-of-type {
+  color: blue;
+}
+
+.follow .rented h6:first-of-type {
+  color: black;
+}
+
+.follow .vehicles table a {
+  color: red;
+}
+
+/* COMPONENTS */
+.follow .components .name p {
+  color: black;
+  font-size: 15px;
+}
+
+.follow .components .quantity a {
+  color: red;
+}
+
+.follow .components .quantity p {
+  color: transparent;
+}
+
+.follow .components .quantity-x h6.a {
+  color: blue;
+}
+
+.follow .components .quantity-x p {
+  color: transparent;
+}
+
+/* SERVICES */
+.follow .services .img a {
+  color: white;
+}
+.follow .services .img h6 {
+  color: black;
+}
+
+.follow .services .name a {
+  color: white;
+}
+.follow .services .name h6 {
+  color: black;
+}
+.follow .services .name p {
+  color: transparent;
+}
+
+.follow .services .check p {
+  color: white;
+}
+.follow .services .check h6.name {
+  color: #28a745;
+}
+.follow .services .check a {
+  color: red;
+}
+
+.follow .services .finished a {
+  color: white;
+}
+.follow .services .finished h6 {
+  color: black;
+}
+.follow .services .finished .value p.a {
+  color: white;
+}
+.follow .services .finished .value p.b {
+  color: #28a745;
+}
+.follow .services .finished .value h6.a {
+  color: blue;
+}
+.follow .services .finished .value a {
+  color: red;
+}
+
+.follow h5 {
+  margin-bottom: 1em;
+}
