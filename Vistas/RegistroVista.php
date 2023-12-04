@@ -3,6 +3,7 @@
 
 <head>
   <?php include "../Tema/CSS.php" ?>
+  <link rel="stylesheet" href="../css/views/register.css">
   <title>AutoCon - Registro</title>
 </head>
 
@@ -10,21 +11,20 @@
   <?php include "../Tema/Menu.php"; ?>
 
   <!-- ********** Hero Area ********** -->
-  <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/registro.jpg); 
-      display: flex; justify-content: center; align-items: end; height:180px">
-    <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black; text-align: center; ">
+  <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/registro.jpg)">
+    <h1>
       Registro
     </h1>
   </div>
 
-  <section class="contact-area ">
+  <section class="contact-area register">
     <div class="container register">
       <div class="row justify-content-center">
         <!-- Contact Form Area -->
         <div class="col-12 col-md-10 col-lg-8">
-          <div class="contact-form" style="display: flex; justify-content: center;">
+          <div class="contact-form">
             <?php if (isset($_SESSION['mensajeBD'])) {
-              echo " <p style='color:red;'> " . $_SESSION['mensajeBD'] . "</p> ";
+              echo " <p class='alert'> " . $_SESSION['mensajeBD'] . "</p> ";
               unset($_SESSION['mensajeBD']);
             } ?>
 
@@ -85,20 +85,19 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 date">
                   <div class="group">
                     <input type="date" name="fechaNac" id="fechaNac" autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label style="font-size: 14px; color: #8D8D8D;">Fecha de Nacimiento </label>
+                    <label>Fecha de Nacimiento</label>
                   </div>
                 </div>
 
-                <div class="col-12 col-md-6" style="padding-top: -1.1em; margin-top: -0.4em;">
+                <div class="col-12 col-md-6 select">
                   <div class="group">
-                    <p style="color:#006EEC; font-size: 14px; padding-bottom:0.1em; margin:0;
-                      ">Provincia </p>
-                    <select style="color:black; font-size: 14px" name="provincia" id="provincia">
+                    <p>Provincia </p>
+                    <select name="provincia" id="provincia">
                       <option selected="true" disabled="disabled">-</option>
                       <option value='alava'>Álava</option>
                       <option value='albacete'>Albacete</option>
@@ -176,7 +175,7 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-md-6" style="margin-bottom: 2em;">
+                <div class="col-12 col-md-6 tlf">
                   <div class="group">
                     <input type="number" name="movil" id="movil" required autocomplete="off">
                     <span class="highlight"></span>
@@ -205,7 +204,7 @@
                 </div>
               </div>
 
-              <div class="col-12" style="display: flex; justify-content: center;">
+              <div class="col-12 but">
                 <button type="submit" class="btn world-btn">Registro</button>
               </div>
           </div>
@@ -217,7 +216,7 @@
   </section>
 
   <?php include "../Tema/Scripts.php"; ?>
-  
+
   <script>
     function check(inpu) {
       if (inpu.value != document.getElementById('contraseña').value)
