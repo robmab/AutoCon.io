@@ -8,6 +8,7 @@
   else
     header("Location:../Controladores/PerfilControlador.php");
   ?>
+  <link rel="stylesheet" href="../css/views/profile.css">
   <title>AutoCon - Perfil</title>
 </head>
 
@@ -23,20 +24,19 @@
     <!-----  | EDIT PROFILE |  ----->
 
   <!------ HERO ------>
-    <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/perfil.jpg); 
-      display: flex; justify-content: center; align-items: end; height:180px">
-      <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black; text-align: center; ">
+    <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/perfil.jpg)">
+      <h1>
         Editar datos personales
       </h1>
     </div>
 
-    <section class="contact-area" style="margin:0">
+    <section class="profile edit contact-area">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10 col-lg-8">
-            <div class="contact-form" style="padding-top: 2em;">
+            <div class="contact-form">
 
-              <p style="text-align: center; margin-bottom: 4em;"><i>Los datos en blanco no serán modificados</i></p>
+              <p class='msg'><i>Los datos en blanco no serán modificados</i></p>
               <!-- Datos -->
               <form action="../Controladores/ValidarNumero.php?edicion=1#1" method="post"
                 onsubmit="return dobValidate('dn')">
@@ -48,7 +48,7 @@
                         value="<?php echo $datosUsu['nombreUsuario'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Nombre de Usuario</label>
+                      <label>Nombre de Usuario</label>
                     </div>
                   </div>
 
@@ -58,7 +58,7 @@
                         value="<?php echo $datosUsu['correo'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Correo</label>
+                      <label>Correo</label>
                     </div>
                   </div>
 
@@ -68,7 +68,7 @@
                         value="<?php echo $datosUsu['nombre'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Nombre</label>
+                      <label>Nombre</label>
                     </div>
 
                   </div>
@@ -78,7 +78,7 @@
                         value="<?php echo $datosUsu['apellidos'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Apellidos</label>
+                      <label>Apellidos</label>
                     </div>
                   </div>
 
@@ -88,7 +88,7 @@
                         value="<?php echo $datosUsu['domicilio'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Dirección</label>
+                      <label>Dirección</label>
                     </div>
                   </div>
 
@@ -98,7 +98,7 @@
                         value="<?php echo $datosUsu['nif'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">DNI </label>
+                      <label>DNI </label>
                     </div>
                   </div>
 
@@ -108,14 +108,13 @@
                         value="<?php echo $datosUsu['fechaNacimiento'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Fecha de Nacimiento </label>
+                      <label>Fecha de Nacimiento </label>
                     </div>
                   </div>
 
-                  <div class="col-12 col-md-6" style="padding-top: -1.1em; margin-top: -1.1em;">
+                  <div class="col-12 col-md-6 select">
                     <div class="group">
-                      <p style="color:#006EEC; font-size: 15px; padding-bottom:0.5em; margin:0;
-                      font-weight: 500;">Provincia </p>
+                      <p>Provincia</p>
                       <select name="provincia" id="provincia">
                         <option selected="true" disabled="disabled">
                           <?php echo $datosUsu['provincia'] ?>
@@ -182,7 +181,7 @@
                         value="<?php echo $datosUsu['poblacion'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Población </label>
+                      <label>Población </label>
                     </div>
                   </div>
 
@@ -192,17 +191,17 @@
                         value="<?php echo $datosUsu['codigoPostal'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Código Postal </label>
+                      <label>Código Postal </label>
                     </div>
                   </div>
 
-                  <div class="col-12 col-md-6" style="margin-bottom: 3em;">
+                  <div class="col-12 col-md-6 tlf">
                     <div class="group">
                       <input type="text" name="movil" id="movil" autocomplete="off"
                         value="<?php echo $datosUsu['numeroMovil'] ?>">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Numero teléfono </label>
+                      <label>Numero teléfono </label>
                     </div>
                   </div>
 
@@ -211,9 +210,9 @@
                       <input type="password" name="contraseñaActual" id="contraseñaActual" autocomplete="off">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Contraseña actual</label>
+                      <label>Contraseña actual</label>
                       <?php if (isset($_SESSION['errC'])) {
-                        echo " <p style='color:red;text-align:center'> " . $_SESSION['errC'] . "</p> ";
+                        echo " <p class='alert'> " . $_SESSION['errC'] . "</p> ";
                         unset($_SESSION['errC']);
                       } ?>
                     </div>
@@ -224,7 +223,7 @@
                       <input type="password" name="contraseñaNueva" id="contraseñaNueva" autocomplete="off">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Nueva contraseña</label>
+                      <label>Nueva contraseña</label>
                     </div>
                   </div>
 
@@ -234,26 +233,23 @@
                         autocomplete="off">
                       <span class="highlight"></span>
                       <span class="bar"></span>
-                      <label style="font-size: 15px;">Repite contraseña</label>
+                      <label>Repite contraseña</label>
                     </div>
                   </div>
                 </div>
 
                 <?php if (isset($_SESSION['mensajeBD'])) {
-                  echo " <p style='color:red;text-align:center'> " . $_SESSION['mensajeBD'] . "</p> ";
+                  echo " <p class='alert'> " . $_SESSION['mensajeBD'] . "</p> ";
                   unset($_SESSION['mensajeBD']);
                 } ?>
 
-                <div class="col-12" style="display: flex; justify-content: center;">
+                <div class="col-12 but">
                   <button type="submit" class="btn world-btn">Editar</button>
                 </div>
             </div>
           </div>
         </div>
         </form>
-      </div>
-      </div>
-      </div>
       </div>
     </section>
 
@@ -262,19 +258,18 @@
     <!------ | PROFILE VIEW | ------>
 
     <!---- HERO ---->
-    <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/perfil.jpg); 
-      display: flex; justify-content: center; align-items: end; height:180px">
-      <h1 style="color:rgb(242, 242, 242); text-shadow: 3px 3px 1px black;">Datos Personales</h1>
+    <div class="hero-area bg-img background-overlay" style="background-image: url(../img/blog-img/perfil.jpg)">
+      <h1>Datos Personales</h1>
     </div>
 
-    <section class="contact-area" style="margin: 3em 0;">
+    <section class="profile view contact-area">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-md-10 col-lg-8" id="1">
-            <div class="contact-form" style="display: flex; justify-content: center;">
+            <div class="contact-form view">
 
               <?php if (isset($_SESSION['mensajeBD'])) {
-                echo " <h6 style='color:red;'> " . $_SESSION['mensajeBD'] . "</h6> ";
+                echo " <h6 class='alert'> " . $_SESSION['mensajeBD'] . "</h6> ";
                 unset($_SESSION['mensajeBD']);
               } ?>
 
@@ -282,12 +277,11 @@
             <form action="../Controladores/PerfilControlador.php?editar=1" method="post">
 
               <?php if (isset($_SESSION['mensajeConf'])) {
-
-                echo "<p style='color:red;text-align:center'>" . $_SESSION['mensajeConf'] . "</p> ";
+                echo "<p class='alert'>" . $_SESSION['mensajeConf'] . "</p> ";
                 unset($_SESSION['mensajeConf']);
               } ?>
 
-              <table style="border-spacing: 30px;">
+              <table>
                 <tr>
                   <td> <b> Nombre Usuario: </b> </td>
                   <td>
@@ -313,7 +307,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-right: 15px;"> <b> Fecha Nacimiento: </b> </td>
+                  <td> <b> Fecha Nacimiento: </b> </td>
                   <td>
                     <?php echo $datosUsu['fechaNacimiento'] ?>
                   </td>
@@ -356,7 +350,7 @@
                 </tr>
               </table>
 
-              <div class="col-12" style="display: flex; justify-content: center;">
+              <div class="col-12 but">
                 <button type="submit" class="btn world-btn">Editar</button>
               </div>
 
@@ -370,14 +364,14 @@
 
             <!-- Payment method -->
             <div class="col-12 col-md-10 col-lg-8">
-              <div class="contact-form" style="display: flex; flex-direction: column; align-items: center;">
+              <div class="contact-form card">
 
                 <?php if (isset($_SESSION['mensajeBD'])) {
-                  echo " <p style='color:red;'> " . $_SESSION['mensajeBD'] . "</p> ";
+                  echo " <p class='alert'> " . $_SESSION['mensajeBD'] . "</p> ";
                   unset($_SESSION['mensajeBD']);
                 } ?>
 
-                <h5 style="text-align: center;">
+                <h5>
                   <?php
                   if ($datosTar['tipo'] == "Visa") { ?>
                     <img src="../img/core-img/visa.png" width="20%" height="20%">
@@ -389,13 +383,13 @@
                 <!-- Data -->
                 <form action="../Controladores/FacturacionControlador.php?eliminar=1" method="post">
                   <?php if (isset($_SESSION['mensajeConf'])) {
-                    echo "<p style='color:red;'>" . $_SESSION['mensajeConf'] . "</p> ";
+                    echo "<p class='alert'>" . $_SESSION['mensajeConf'] . "</p> ";
                     unset($_SESSION['mensajeConf']);
                   } ?>
 
-                  <table style="margin-bottom: 2em;">
+                  <table>
                     <tr>
-                      <td style="padding-right: 15px;"> <b> Número: </b> </td>
+                      <td> <b> Número: </b> </td>
                       <td>
                         <?php echo $datosTar['numero1'] ?> -
                         <?php echo $datosTar['numero2'] ?> -
@@ -422,7 +416,7 @@
                     </tr>
                   </table>
 
-                  <div class="col-12" style="display: flex; justify-content: center;">
+                  <div class="col-12 but">
                     <button type="submit" class="btn world-btnrojo3">
                       Eliminar método depago
                     </button>
@@ -434,13 +428,13 @@
 
           <?php } else { ?>
             <!-- Add payment method -->
-            <div class="col-12 col-md-10 col-lg-8">
+            <div class="col-12 col-md-10 col-lg-8 add">
               <div class="contact-form">
                 <?php if (isset($_SESSION['mensajeBD'])) {
-                  echo " <p style='color:red;text-align:center'> " . $_SESSION['mensajeBD'] . "</p> ";
+                  echo " <p class='alert'> " . $_SESSION['mensajeBD'] . "</p> ";
                   unset($_SESSION['mensajeBD']);
                 } ?>
-                <h5 style="text-align: center;">
+                <h5>
                   <img src="../img/core-img/visa.png" width="20%" height="20%">
                   <img src="../img/core-img/mastercard.png" width="20%" height="20%">
                 </h5>
@@ -448,15 +442,15 @@
                 <!-- Data -->
                 <form action="FacturacionVista.php" method="post">
                   <?php if (isset($_SESSION['mensajeConf'])) {
-                    echo "<p style='color:red;text-align:center'>" . $_SESSION['mensajeConf'] . "</p> ";
+                    echo "<p class='alert'>" . $_SESSION['mensajeConf'] . "</p> ";
                     unset($_SESSION['mensajeConf']);
                   } ?>
 
                   <i>
-                    <p style="text-align: center;">Aún no tienes ningun método de pago</p>
+                    <p>Aún no tienes ningun método de pago</p>
                   </i>
 
-                  <div class="col-12" style="display: flex; justify-content: center;">
+                  <div class="col-12 but">
                     <button type="submit" class="btn world-btn">+ Añadir método de pago</button>
                   </div>
 
