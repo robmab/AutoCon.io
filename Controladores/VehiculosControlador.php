@@ -23,7 +23,7 @@ if (isset($_REQUEST['model'])) {
   $model = $_REQUEST['model'];
 }
 
-//Recoger datos de coches 
+//Collect car data
 $sql = "SELECT count(*) FROM vehiculos";
 $memory = $connection->query($sql);
 
@@ -51,7 +51,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
     $vehicleList[$info['modelo']]['precioRebajado'] = $info['precio'] * $discountM;
     $vehicleList[$info['modelo']]['precio'] = $info['precio'] * 1;
 
-    //Calculo de rebaja de existir
+    //Rebate calculation of existing
     $currentDate = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
     $memi2 = $connection->query($sql2);

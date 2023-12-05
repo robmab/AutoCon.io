@@ -145,7 +145,7 @@
                           unset($_SESSION['mensajeBD2']);
                         } ?>
 
-                        <!-- Datos -->
+                        <!-- Data -->
                         <table>
                           <?php
 
@@ -243,7 +243,7 @@
                 unset($_SESSION['mensajeBD3']);
               } ?>
 
-              <!-- Datos -->
+              <!-- Data -->
               <table>
                 <?php foreach ($_SESSION['datosReparacion'] as $servicio => $num) {
                   foreach ($num as $date => $value) {

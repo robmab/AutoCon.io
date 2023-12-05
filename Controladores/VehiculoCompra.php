@@ -2,7 +2,7 @@
 session_start();
 include '../ConexiónBD.php';
 
-//Control de usuario logeado
+//User logged in control
 if (!isset($_SESSION['user'])) {
   $_SESSION['mensajeBD'] = 'Tienes que registrarte antes de poder comprar o alquilar un vehículo.';
   header("Location:../Vistas/LoginVista.php");
@@ -20,7 +20,7 @@ while ($counter == 0) {
     $counter = 1;
 }
 
-//Control de comprar- alquilar
+//Buy-to-let control
 if (isset($_REQUEST['comprar'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
@@ -62,7 +62,7 @@ if (isset($_REQUEST['comprar'])) {
 
   if ($connection->affected_rows > 0) {
 
-    //Restar vehiculos disponibles
+    //Subtract available vehicles
     $available = $available - 1;
     $sql = "UPDATE vehiculos SET disponibles='" . $available . "' WHERE modelo='" . $model . "'";
     $check = $connection->query($sql);
@@ -81,7 +81,7 @@ if (isset($_REQUEST['comprar'])) {
     $user = $info['id'];
   }
 
-  //Comprobar si tiene datos de facturacion el usuario
+  //Check if the user has billing data
   $sql = "SELECT * FROM usuarios_facturacion WHERE usuario='" . $user . "'";
   $memory = $connection->query($sql);
   if ($memory->num_rows <= 0) {

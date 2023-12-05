@@ -40,14 +40,14 @@ if (isset($_REQUEST['comprar'])) {
     exit;
   }
 
-  //control Login
+  //Control Login
   if (!isset($_SESSION['user'])) {
     $_SESSION['mensajeBD'] = "Necesitas estar logeado para comprar un componente.";
     header("Location:../Vistas/LoginVista.php");
     exit;
   }
 
-  //comprobar si tiene datos de facturacion el usuario
+  //Check if the user has billing data
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
 
@@ -68,7 +68,7 @@ if (isset($_REQUEST['comprar'])) {
   if ($_REQUEST['nombre'])
     $name = $_REQUEST['nombre'];
 
-  //Ingreso en la base de datos.
+  //Database entry
   $sql = "SELECT * FROM componentes WHERE nombre='" . $name . "'  AND tipo='" . $type . "'";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
@@ -76,7 +76,7 @@ if (isset($_REQUEST['comprar'])) {
     $component = $info['id'];
   }
 
-  //Comprobar si ya tenia ese producto.
+  //Check if you already had this product
   $sql = "SELECT * FROM componente_usuario WHERE usuario='" . $user . "'  AND componente='" . $component . "' AND finalizado='No'";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
@@ -87,7 +87,7 @@ if (isset($_REQUEST['comprar'])) {
   } else
     $quantity = 0;
 
-  //Inserción del componente y mensaje
+  //Insertion of the component and message
   if ($quantity > 0) {
     $quantity = $quantity + 1;
     $sql = "UPDATE  componente_usuario SET cantidad='" . $quantity . "' WHERE usuario='" . $user . "'  AND componente='" . $component . "' AND finalizado='No' ";
@@ -114,7 +114,7 @@ if (isset($_REQUEST['comprar'])) {
     $check = $connection->query($sql);
   }
 
-  //Actualizar disponibilidad -->
+  //Update availability
   $sql = "SELECT cantidad FROM componentes WHERE id='" . $component . "'    ";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
@@ -131,7 +131,7 @@ if (isset($_REQUEST['comprar'])) {
   exit;
 }
 
-//Recoger componentes en array de objetos
+//Collect components in array of objects
 $sql = "SELECT count(*) FROM componentes";
 $memory = $connection->query($sql);
 
@@ -156,7 +156,7 @@ for ($cont2 = 0; $cont2 < $num; $cont2++) {
     $componentList[$info['nombre']][$info['tipo']]['precio'] = $info['precio'] * 1;
     $priceR = ((($info['descuento'] / 100) - 1) * -1) * $info['precio'];
 
-    //Calculo de rebaja de existir
+    //Rebate calculation of existing
     $fechaActual = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
     $memi2 = $connection->query($sql2);

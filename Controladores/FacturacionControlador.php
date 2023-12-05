@@ -2,7 +2,7 @@
 session_start();
 include '../ConexiónBD.php';
 
-//Controlador para eliminar tarjeta
+//Controller to remove card
 if (isset($_REQUEST['eliminar'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
@@ -18,7 +18,7 @@ if (isset($_REQUEST['eliminar'])) {
   exit;
 }
 
-// Recoger variables            
+//Collect variables    
 if (isset($_SESSION["tarjetaF"])) {
   $card = $_SESSION["tarjetaF"];
   $card = ucwords($card);
@@ -55,7 +55,7 @@ if (isset($_SESSION["ccvF"])) {
   unset($_SESSION["ccvF"]);
 }
 
-//Insertar datos
+//Insert data
 $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
 $memory = $connection->query($sql);
 

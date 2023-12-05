@@ -2,10 +2,10 @@
 session_start();
 include '../ConexiónBD.php';
 
-//Evitar pasar por la vista antes que el controlador
+//Avoid passing through the view before the controller
 $_SESSION['checkon'] = 1;
 
-//EDICIÓN DE DATOS - P3
+//DATA EDITING - P3
 $cont = 1;
 if (isset($_REQUEST['edicion'])) {
   if (isset($_SESSION['email']) && ($_SESSION['email'] != '')) {
@@ -161,7 +161,7 @@ if (isset($_REQUEST['edicion'])) {
   }
   if (isset($_SESSION['contraseñaActual']) && ($_SESSION['contraseñaActual'] != '')) {
 
-    //Comprobrobar contraseña actual
+    //Check current password
     $password = base64_decode($_SESSION['datosUsu']['contraseña']);
     $currentPassword = $_SESSION['contraseñaActual'];
     unset($_SESSION['contraseñaActual']);
@@ -188,7 +188,7 @@ if (isset($_REQUEST['edicion'])) {
     }
   }
 
-  //Comprobación de si se han editado los datos.
+  //Checking whether the data have been edited
   if ($cont == 0) {
     $_SESSION['mensajeConf'] = 'Se han editado los datos correctamente.';
     header('Location:PerfilControlador.php');
@@ -199,13 +199,13 @@ if (isset($_REQUEST['edicion'])) {
   }
 }
 
-//Paso a sección de editar perfil
+//Go to edit profile section
 if (isset($_REQUEST['editar'])) {
   header("Location:../Vistas/PerfilVista.php?editar=1");
   exit;
 }
 
-//Recoger datos usuario
+//Collect user data
 $userData = array();
 $sql = "SELECT * FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'   ";
 $memory2 = $connection->query($sql);
@@ -229,7 +229,7 @@ if ($memory2 && $memory2->num_rows > 0) {
 
 $_SESSION['datosUsu'] = $userData;
 
-//Comprobación datos facturación
+//Billing data check
 $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
 $memory = $connection->query($sql);
 

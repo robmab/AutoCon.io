@@ -3,7 +3,8 @@ session_start();
 include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
-//Comprar/cancelar
+
+//Buy/cancel
 if (isset($_REQUEST['n'])) {
   if (isset($_REQUEST['editar'])) {
     $sql = "UPDATE reparacion SET precio='" . $_REQUEST['precioE'] . "' WHERE  n='" . $_REQUEST['n'] . "'  ";
@@ -14,7 +15,7 @@ if (isset($_REQUEST['n'])) {
     $sql = "UPDATE reparacion SET aceptado='Si' WHERE  n='" . $_REQUEST['n'] . "'  ";
     $check = $connection->query($sql);
 
-    //Calculo de rebaja de existir
+    //Rebate calculation of existing
     $currentDate = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
     $memory2 = $connection->query($sql2);
@@ -69,7 +70,7 @@ if (isset($_REQUEST['n'])) {
   }
 }
 
-//Recoger servicios en array
+//Collect services in array
 $sql = "SELECT count(*) FROM reparacion";
 $memi = $connection->query($sql);
 
@@ -113,7 +114,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
   }
 }
 
-//Ordenado por estado. 
+//Sorted by state
 function array_sort($array, $on, $order = SORT_ASC)
 {
   $new_array = array();
@@ -146,7 +147,7 @@ function array_sort($array, $on, $order = SORT_ASC)
 $servicesDate = array_sort($servicesDate, 'servicio', SORT_ASC);
 $servicesDate = array_sort($servicesDate, 'aceptado', SORT_ASC);
 
-//Calculo de rebaja de existir
+//Rebate calculation of existing
 $currentDate = date("Y\-m\-d");
 $sql2 = "SELECT count(*) FROM eventos_descuentos";
 $memory2 = $connection->query($sql2);

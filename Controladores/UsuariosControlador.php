@@ -3,7 +3,8 @@ session_start();
 include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
-//Modificación de usuarios
+
+//Modification of users
 if (isset($_REQUEST['nU'])) {
   if (isset($_REQUEST['adm'])) {
     $sql = "UPDATE usuarios SET rol='Admin' WHERE nombreUsuario='" . $_REQUEST['nU'] . "'";
@@ -28,7 +29,7 @@ if (isset($_REQUEST['nU'])) {
   }
 }
 
-//Recoger usuarios en array
+//Collect users in array
 $sql = "SELECT count(*) FROM usuarios";
 $memory = $connection->query($sql);
 
@@ -64,7 +65,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
   }
 }
 
-//Ordenado por nombre.
+//Sorted by name
 function array_sort($array, $on, $order = SORT_ASC)
 {
   $new_array = array();

@@ -3,7 +3,7 @@ session_start();
 include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
-//Comprar/cancelar
+//Buy/cancel
 if (isset($_REQUEST['usuario'])) {
   if (isset($_REQUEST['comprar'])) {
     $sql = "UPDATE vehiculos_usuarios SET reservado='Comprado' WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND n='" . $_REQUEST['n'] . "'";
@@ -41,8 +41,7 @@ if (isset($_REQUEST['usuario'])) {
   }
 }
 
-//Recoger vehiculos en array
-
+//Pick up vehicles in array
 $sql = "SELECT count(*) FROM vehiculos_usuarios";
 $memory = $connection->query($sql);
 
@@ -107,8 +106,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
   }
 }
 
-//Ordenado por estado.
-
+//Sorted by state
 function array_sort($array, $on, $order = SORT_ASC)
 {
   $new_array = array();

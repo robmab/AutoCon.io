@@ -4,7 +4,7 @@ include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
 
-//Modificación de proveedores
+//Modification of suppliers
 if (isset($_REQUEST['proveedor'])) {
   if (isset($_REQUEST['cambiar'])) {
     if ($_REQUEST['cambiar'] == 1) {
@@ -18,7 +18,7 @@ if (isset($_REQUEST['proveedor'])) {
   }
 }
 
-//Recoger proveedores en array
+//Pick up suppliers in array
 $sql = "SELECT count(*) FROM proveedores";
 $memory = $connection->query($sql);
 
@@ -45,7 +45,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
   }
 }
 
-//Ordenado por nombre y disponibilidad 
+//Sorted by name and availability
 function array_sort($array, $on, $order = SORT_ASC)
 {
   $new_array = array();

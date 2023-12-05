@@ -37,7 +37,7 @@
 
 		<!-- Contact Form Area -->
 		<div class="table">
-			<!-- Datos -->
+			<!-- Data -->
 			<table>
 				<thead>
 					<tr>

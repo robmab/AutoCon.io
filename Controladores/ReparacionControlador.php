@@ -2,11 +2,11 @@
 session_start();
 include '../ConexiónBD.php';
 
-//Recoger variable
+//Collect variables
 if (isset($_REQUEST["valor"]))
   $value = $_REQUEST["valor"];
 
-//Requerir que haya iniciado sesión
+//Require you to be logged in
 
 if (!isset($_SESSION['user'])) {
   $_SESSION['mensajeBD'] = 'Necesitas iniciar sesión primero';
@@ -15,7 +15,7 @@ if (!isset($_SESSION['user'])) {
 }
 $userL = $_SESSION['user'];
 
-//funcion para ahorrar código y que se realice la operacion.
+//Function to save code and perform the operation.
 function solicitar_servicio()
 {
   global $userL, $value, $connection;
@@ -27,7 +27,8 @@ function solicitar_servicio()
     $user = $info['id'];
   }
 
-  //Comprobar si se selecciono el mismo servicio anteriormente y validarlo solo en caso de que este en estado de finalizado.    
+  //Check if the same service has been selected before 
+  //and validate it only if it is in a completed status
   $n = rand(1000000000, 9999999999);
   $counter = 0;
 
@@ -40,7 +41,8 @@ function solicitar_servicio()
       $counter = 1;
   }
 
-  //Ahora solo insertara en caso de que aceptado este en finalizado o sea 0, es decir que no hubiera solicitado nunca un servicio de ese tipo este usuario.
+  //Now it will only insert in case that accepted is in finalized or 0,
+  //that is to say that this user has never requested a service of this type
   $sql = "SELECT *  FROM reparacion WHERE  servicio='" . $value . "' AND aceptado='Si' AND usuario='" . $user . "' ";
   $memory = $connection->query($sql);
 
@@ -78,7 +80,7 @@ function solicitar_servicio()
   }
 }
 
-//Según el servicio elegido, ese se añadira a la petición
+//Depending on the service chosen, it will be added to the request
 
 if ($value == 'sustituir')
   solicitar_servicio();

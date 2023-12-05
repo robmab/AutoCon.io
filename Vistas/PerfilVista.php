@@ -37,7 +37,7 @@
             <div class="contact-form">
 
               <p class='msg'><i>Los datos en blanco no serán modificados</i></p>
-              <!-- Datos -->
+              <!-- Data -->
               <form action="../Controladores/ValidarNumero.php?edicion=1#1" method="post"
                 onsubmit="return dobValidate('dn')">
                 <div class="row">

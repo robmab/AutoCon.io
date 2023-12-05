@@ -3,7 +3,8 @@ session_start();
 include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
-//Cancelar vehiculo
+
+//Cancel vehicle
 if (isset($_REQUEST['vehiculo'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
@@ -44,7 +45,7 @@ if (isset($_REQUEST['vehiculo'])) {
   }
 }
 
-//Cancelar componente
+//Cancel component
 if (isset($_REQUEST['nombre'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
@@ -128,7 +129,7 @@ if (isset($_REQUEST['nombre'])) {
   }
 }
 
-//Cancelar reparacion
+//Cancel repair
 if (isset($_REQUEST['servicio'])) {
   $service = $_REQUEST['servicio'];
   $date = $_REQUEST['fecha'];
@@ -174,7 +175,7 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-//Coger id usuario
+//Get user id
 $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
 $memory = $connection->query($sql);
 
@@ -183,7 +184,7 @@ if ($memory->num_rows > 0) {
   $user = $info['id'];
 }
 
-//Recoger datos, si existen, de los vehiculos alquilados o reservados.      
+//Collect data, if available, on rented or reserved vehicles
 $sql = "SELECT count(*) FROM vehiculos_usuarios";
 $memory = $connection->query($sql);
 
@@ -232,7 +233,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 }
 $vehicleDate = array_sort($vehicleDate, 'reservado', SORT_DESC);
 
-//Recoger Componentes
+//Collect Components
 $sql = "SELECT count(*) FROM componente_usuario";
 $memory = $connection->query($sql);
 
@@ -276,7 +277,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 }
 $componentDate = array_sort($componentDate, 'finalizado', SORT_ASC);
 
-// Recoger datos de Reparación
+//Collect repair data
 $sql = "SELECT count(*) FROM reparacion";
 $memory = $connection->query($sql);
 if ($memory->num_rows > 0) {
@@ -306,7 +307,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 }
 $repairDate = array_sort($repairDate, 'aceptado', SORT_DESC);
 
-//Solo guardar a variable en caso de que el array no este vacio.
+//Only save to variable in case the array is not empty
 
 if ($vehicleDate != array())
   $_SESSION['datosVehiculos'] = $vehicleDate;
@@ -317,7 +318,7 @@ if ($componentDate != array())
 if ($repairDate != array())
   $_SESSION['datosReparacion'] = $repairDate;
 
-//Recoger datos de Componentes si existen 
+//Collect Component data if available
 header('Location:../Vistas/SeguimientoVista.php');
 exit;
 

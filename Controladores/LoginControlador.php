@@ -2,13 +2,13 @@
 session_start();
 include '../ConexiónBD.php';
 
-//Recoger variables // Registro - Login
+//Collect variables - Registration - Login
 if (isset($_REQUEST["email"])) {
   $email = ucwords($_REQUEST["email"]);
   if (isset($_REQUEST["pass"]))
     $password = $_REQUEST["pass"];
 
-  //Comprobación de Usuario en la base de datos.
+  //User verification in the database.
   $sql = "SELECT count(*) FROM usuarios";
   $memory = $connection->query($sql);
 
@@ -34,9 +34,8 @@ if (isset($_REQUEST["email"])) {
     }
   }
 
-  /* SQL INYECTION POR FILTRO */
+  // SQL INJECTION BY FILTER 
   $counter = 1;
-
   foreach ($userList as $usu) {
     if ($usu == $email) {
       $sql = "SELECT * FROM usuarios WHERE nombreUsuario='" . $email . "'";
@@ -72,7 +71,7 @@ if (isset($_REQUEST["email"])) {
     exit;
   }
 
-  //Comprobación Contraseña
+  //Password verification
   $sql = "SELECT contraseña FROM usuarios WHERE nombreUsuario='" . $email . "' OR correo='" . $email . "'  ";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
@@ -88,7 +87,7 @@ if (isset($_REQUEST["email"])) {
     }
   }
 
-  //Rol en sesión
+  //Role in session
   $sql = "SELECT rol FROM usuarios WHERE nombreUsuario='" . $email . "' OR correo='" . $email . "'  ";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
@@ -96,7 +95,6 @@ if (isset($_REQUEST["email"])) {
     $_SESSION['rol'] = $info['rol'];
   }
 
-  // unset ( $_SESSION['user']);
   echo $_REQUEST['compraV'];
   if (isset($_REQUEST['compraV'])) {
     header("Location:VehiculosControlador.php");

@@ -3,7 +3,8 @@ session_start();
 include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
-//Comprar/cancelar
+
+//Buy/cancel
 if (isset($_REQUEST['usuario'])) {
 
   if (isset($_REQUEST['comprar'])) {
@@ -17,7 +18,7 @@ if (isset($_REQUEST['usuario'])) {
   }
 }
 
-//Recoger vehiculos en array
+//Pick up vehicles in array
 $sql = "SELECT count(*) FROM componente_usuario";
 $memory = $connection->query($sql);
 
@@ -74,8 +75,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 }
 
 
-//Ordenado por estado.
-
+//Ordenado por estado
 function array_sort($array, $on, $order = SORT_ASC)
 {
   $new_array = array();

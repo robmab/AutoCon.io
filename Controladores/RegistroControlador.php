@@ -2,7 +2,7 @@
 session_start();
 include '../ConexiónBD.php';
 
-//Recoger variables // Registro - Login
+//Collect variables | Register - Login
 if (isset($_SESSION["nombre"])) {
   $name = $_SESSION["nombre"];
   $name = ucwords($name);
@@ -72,7 +72,7 @@ if (isset($_SESSION["nombre"])) {
     unset($_SESSION['movil']);
   }
 
-  //Insertar en la Base de Datos
+  //Insert in Database
   $sql = "INSERT INTO usuarios(nombre,nif,domicilio,fechaNacimiento,contraseña,rol,apellidos,nombreUsuario,correo,provincia,población,codigoPostal,numeroMovil)   VALUES('" . $name . "','" . $nif . "','" . $address . "','" . $bornDate . "','" . $password . "','Usuario','" . $lastName . "','" . $userName . "','" . $email . "','" . $province . "','" . $population . "','" . $zipCode . "','" . $mobile . "')";
   $check = $connection->query($sql);
 

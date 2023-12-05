@@ -2,7 +2,8 @@
 session_start();
 
 $_SESSION['checkon'] = 1;
-//Recoger variables y guardarlas en sesion.
+
+//Collect variables and save them in session
 if (isset($_REQUEST["nombre"])) {
   $name = $_REQUEST["nombre"];
   $name = ucwords($name);
@@ -89,10 +90,10 @@ if (isset($_REQUEST["movil"])) {
   $_SESSION['movil'] = $mobile;
 }
 
-//Funcion validar codigo postal
+//Validate zip code function
 function validaPostal($cadena)
 {
-  //Comrpobamos que realmente se ha añadido el formato correcto
+  //We check that the correct format has actually been added
   if (!preg_match('/^[0-9]{5}$/i', $cadena)) {
     $_SESSION['mensajeBD'] = "Código postal inválido";
     if (isset($_REQUEST['edicion'])) {
@@ -105,7 +106,7 @@ function validaPostal($cadena)
   }
 }
 
-//Funcion para validad edad
+//Age validation function
 function time_date($date1)
 {
   $date2 = date("Y-m-d");
@@ -126,8 +127,7 @@ function time_date($date1)
   }
 }
 
-//Funcion de validar telefono
-
+//Phone validation function
 function validate_phone_number($phone)
 {
   $filtered_phone_number = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
@@ -153,7 +153,7 @@ function validate_phone_number($phone)
   }
 }
 
-//funcion de edad
+//Age function
 validaPostal($zipCode);
 time_date($bornDate);
 validate_phone_number($mobile);

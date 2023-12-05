@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-//Recoger variables y guardarlas en sesion.
+//Collect variables and save them in session
 if (isset($_REQUEST["tarjeta"])) {
   $card = $_REQUEST["tarjeta"];
   $card = ucwords($card);
@@ -40,7 +40,7 @@ if (isset($_REQUEST["ccv"])) {
   $_SESSION['ccvF'] = $ccv;
 }
 
-//Funcion de validar tarjeta
+//Card validation function
 function validateCCMaster($cc_num, $type)
 {
   if ($type == "Mastercard")
