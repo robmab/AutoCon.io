@@ -48,7 +48,7 @@ if ($memory->num_rows > 0) {
 }
 
 $cont = 0;
-$eventDate = array();
+$event_date = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
 	$sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $cont2 . "'";
@@ -57,15 +57,15 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 	if ($memory2 && $memory2->num_rows > 0) {
 		$info = $memory2->fetch_array();
 		$dateI = date("d-m-Y", strtotime($info['fecha_in']));
-		$eventDate[$cont]['fechaI'] = $dateI;
-		$eventDate[$cont]['fechaII'] = $info['fecha_in'];
+		$event_date[$cont]['fechaI'] = $dateI;
+		$event_date[$cont]['fechaII'] = $info['fecha_in'];
 
 		$dateF = date("d-m-Y", strtotime($info['fecha_fin']));
-		$eventDate[$cont]['fechaF'] = $dateF;
-		$eventDate[$cont]['fechaFF'] = $info['fecha_fin'];
-		$eventDate[$cont]['nombre'] = $info['nombre'];
-		$eventDate[$cont]['porciento'] = $info['porciento'];
-		$eventDate[$cont]['banner'] = $info['banner'];
+		$event_date[$cont]['fechaF'] = $dateF;
+		$event_date[$cont]['fechaFF'] = $info['fecha_fin'];
+		$event_date[$cont]['nombre'] = $info['nombre'];
+		$event_date[$cont]['porciento'] = $info['porciento'];
+		$event_date[$cont]['banner'] = $info['banner'];
 
 		$cont++;
 	}
@@ -102,8 +102,8 @@ function array_sort($array, $on, $order = SORT_ASC)
 	return $new_array;
 }
 
-$eventDate = array_sort($eventDate, 'fechaI', SORT_DESC);
-$_SESSION['datosEventos'] = $eventDate;
+$event_date = array_sort($event_date, 'fechaI', SORT_DESC);
+$_SESSION['datosEventos'] = $event_date;
 
 header("Location:../Vistas/EventosVista.php");
 exit;

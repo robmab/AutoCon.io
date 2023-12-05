@@ -18,7 +18,7 @@
 
 <body>
   <?php include "../Tema/Menu.php";
-  $componentList = $_SESSION['listaComponentes'] ?>
+  $component_list = $_SESSION['listaComponentes'] ?>
 
   <!-- ********** HERO ********** -->
   <div class="hero-area bg-img background-overlay mb-4" style="background-image: url(../img/blog-img/componentes.jpg)">
@@ -56,7 +56,7 @@
 
       <?php $cont = "";
 
-      foreach ($componentList as $name => $num) {
+      foreach ($component_list as $name => $num) {
         foreach ($num as $type => $num2) {
 
           if ($cont != $name) { ?>
@@ -69,7 +69,7 @@
                   </h4>
                   <!-- CARD -->
                   <div class="inside-component" style="background-image: linear-gradient(rgba(0, 0, 0, 0.427),rgba(0, 0, 0, 0.9)) ,
-                    url(../img/componentes/<?php echo $componentList[$name][$type]['ruta'] ?>)">
+                    url(../img/componentes/<?php echo $component_list[$name][$type]['ruta'] ?>)">
 
                     <!-- Content display -->
                     <div class="component-content">
@@ -78,11 +78,11 @@
                         <?php
                         $check = false;
 
-                        foreach ($componentList[$name] as $type => $num) { ?>
+                        foreach ($component_list[$name] as $type => $num) { ?>
                           <h6 style="line-height: 5px;">
                             <?php echo $type;
 
-                            if ($componentList[$name][$type]['cantidad'] == 0) { ?>
+                            if ($component_list[$name][$type]['cantidad'] == 0) { ?>
                               <s>- No disponible</s>
                               <button
                                 onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $name ?>&tip=<?php echo $type ?>'">
@@ -90,9 +90,9 @@
                                 <div class="btn-txt">+</div>
                               </button>
 
-                            <?php } elseif ($componentList[$name][$type]['cantidad'] > 0) { ?>
+                            <?php } elseif ($component_list[$name][$type]['cantidad'] > 0) { ?>
                               - <i class="available">
-                                <?php echo $componentList[$name][$type]['cantidad'] ?> disponibles
+                                <?php echo $component_list[$name][$type]['cantidad'] ?> disponibles
                               </i>
                               <button
                                 onclick="window.location='../Controladores/ComponentesControlador.php?Adm=1&a=1&nom=<?php echo $name ?>&tip=<?php echo $type ?>'">

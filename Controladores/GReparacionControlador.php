@@ -16,7 +16,7 @@ if (isset($_REQUEST['n'])) {
     $check = $connection->query($sql);
 
     //Rebate calculation of existing
-    $currentDate = date("Y\-m\-d");
+    $current_date = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
     $memory2 = $connection->query($sql2);
 
@@ -32,8 +32,8 @@ if (isset($_REQUEST['n'])) {
       $memory = $connection->query($sql);
       if ($memory && $memory->num_rows > 0) {
         $info2 = $memory->fetch_array();
-        if ($info2['fecha_in'] <= $currentDate) {
-          if ($info2['fecha_fin'] >= $currentDate) {
+        if ($info2['fecha_in'] <= $current_date) {
+          if ($info2['fecha_fin'] >= $current_date) {
             $percent = $info2['porciento'];
             $percent = $percent / 100;
             $percent = $percent - 1;
@@ -80,7 +80,7 @@ if ($memi->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$servicesDate = array();
+$services_date = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM reparacion WHERE id='" . $cont2 . "'";
@@ -89,26 +89,26 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
   if ($memory && $memory->num_rows > 0) {
     $info = $memory->fetch_array();
     $usuario = $info['usuario'];
-    $servicesDate[$cont]['idU'] = $info['usuario'];
+    $services_date[$cont]['idU'] = $info['usuario'];
 
     $fecha = date("d-m-Y", strtotime($info['fecha']));
-    $servicesDate[$cont]['fecha'] = $fecha;
-    $servicesDate[$cont]['n'] = $info['n'];
-    $servicesDate[$cont]['aceptado'] = $info['aceptado'];
-    $servicesDate[$cont]['precio'] = $info['precio'] * 1;
-    $servicesDate[$cont]['servicio'] = $info['servicio'];
+    $services_date[$cont]['fecha'] = $fecha;
+    $services_date[$cont]['n'] = $info['n'];
+    $services_date[$cont]['aceptado'] = $info['aceptado'];
+    $services_date[$cont]['precio'] = $info['precio'] * 1;
+    $services_date[$cont]['servicio'] = $info['servicio'];
 
     $sql = "SELECT * FROM usuarios WHERE id='" . $usuario . "' ";
     $memi = $connection->query($sql);
 
     if ($memi->num_rows > 0) {
       $info = $memi->fetch_array();
-      $servicesDate[$cont]['nombreUsuario'] = $info['nombreUsuario'];
-      $servicesDate[$cont]['correo'] = $info['correo'];
-      $servicesDate[$cont]['numeroMovil'] = $info['numeroMovil'];
-      $servicesDate[$cont]['nombre'] = $info['nombre'];
-      $servicesDate[$cont]['apellidos'] = $info['apellidos'];
-      $servicesDate[$cont]['nif'] = $info['nif'];
+      $services_date[$cont]['nombreUsuario'] = $info['nombreUsuario'];
+      $services_date[$cont]['correo'] = $info['correo'];
+      $services_date[$cont]['numeroMovil'] = $info['numeroMovil'];
+      $services_date[$cont]['nombre'] = $info['nombre'];
+      $services_date[$cont]['apellidos'] = $info['apellidos'];
+      $services_date[$cont]['nif'] = $info['nif'];
     }
     $cont++;
   }
@@ -144,11 +144,11 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-$servicesDate = array_sort($servicesDate, 'servicio', SORT_ASC);
-$servicesDate = array_sort($servicesDate, 'aceptado', SORT_ASC);
+$services_date = array_sort($services_date, 'servicio', SORT_ASC);
+$services_date = array_sort($services_date, 'aceptado', SORT_ASC);
 
 //Rebate calculation of existing
-$currentDate = date("Y\-m\-d");
+$current_date = date("Y\-m\-d");
 $sql2 = "SELECT count(*) FROM eventos_descuentos";
 $memory2 = $connection->query($sql2);
 
@@ -165,8 +165,8 @@ for ($counter2 = 0; $counter < $num2; $counter2++) {
 
   if ($memory && $memory->num_rows > 0) {
     $info2 = $memory->fetch_array();
-    if ($info2['fecha_in'] <= $currentDate) {
-      if ($info2['fecha_fin'] >= $currentDate) {
+    if ($info2['fecha_in'] <= $current_date) {
+      if ($info2['fecha_fin'] >= $current_date) {
         $_SESSION['rebaja'] = $info2['porciento'];
         $count = 0;
       }
@@ -182,7 +182,7 @@ if (!isset($count)) {
   }
 }
 
-$_SESSION['datosGReparacion'] = $servicesDate;
+$_SESSION['datosGReparacion'] = $services_date;
 header("Location:../Vistas/GReparacionVista.php");
 exit;
 

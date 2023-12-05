@@ -227,13 +227,13 @@
 
     function dobValidate(dni) {
       var dni = document.getElementById('nif').value;
-      numero = dni.substr(0, dni.length - 1);
+      number = dni.substr(0, dni.length - 1);
       let = dni.substr(dni.length - 1, 1);
-      numero = numero % 23;
-      letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
-      letra = letra.substring(numero, numero + 1);
-      if (letra != let) {
-        alert("Dni inválido");
+      number = number % 23;
+      letter = 'TRWAGMYFPDXBNJZSQVHLCKET';
+      letter = letter.substring(number, number + 1);
+      if (letter != let) {
+        alert("Invalid DNI");
         return false;
       }
     }

@@ -19,8 +19,8 @@ if (isset($_REQUEST["email"])) {
   }
 
   $cont = 0;
-  $userList = array();
-  $emailList = array();
+  $user_list = array();
+  $email_list = array();
 
   for ($cont2 = 0; $cont < $num; $cont2++) {
     $sql = "SELECT nombreUsuario,correo  FROM usuarios WHERE ID='" . $cont2 . "'";
@@ -28,15 +28,15 @@ if (isset($_REQUEST["email"])) {
 
     if ($memory2 && $memory2->num_rows > 0) {
       $info = $memory2->fetch_array();
-      $userList[$cont] = $info['nombreUsuario'];
-      $emailList[$cont] = $info['correo'];
+      $user_list[$cont] = $info['nombreUsuario'];
+      $email_list[$cont] = $info['correo'];
       $cont++;
     }
   }
 
   // SQL INJECTION BY FILTER 
   $counter = 1;
-  foreach ($userList as $usu) {
+  foreach ($user_list as $usu) {
     if ($usu == $email) {
       $sql = "SELECT * FROM usuarios WHERE nombreUsuario='" . $email . "'";
       $memory2 = $connection->query($sql);
@@ -49,7 +49,7 @@ if (isset($_REQUEST["email"])) {
     }
   }
 
-  foreach ($emailList as $em) {
+  foreach ($email_list as $em) {
     if ($em == $email) {
       $sql = "SELECT * FROM usuarios WHERE correo='" . $email . "'";
       $memory2 = $connection->query($sql);
@@ -76,9 +76,9 @@ if (isset($_REQUEST["email"])) {
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
-    $decodePassword = base64_decode($info['contraseña']);
+    $decode_password = base64_decode($info['contraseña']);
 
-    if ($decodePassword != $password) {
+    if ($decode_password != $password) {
       $_SESSION['mensajeBD'] = 'La contraseña no coincide';
       unset($_SESSION['user']);
       $counter2 = 0;

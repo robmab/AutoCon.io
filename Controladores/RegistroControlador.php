@@ -9,14 +9,14 @@ if (isset($_SESSION["nombre"])) {
   unset($_SESSION['nombre']);
 
   if (isset($_SESSION["apellidos"])) {
-    $lastName = $_SESSION["apellidos"];
-    $lastName = ucwords($lastName);
+    $lastname = $_SESSION["apellidos"];
+    $lastname = ucwords($lastname);
     unset($_SESSION['apellidos']);
   }
 
   if (isset($_SESSION["nombreUs"])) {
-    $userName = $_SESSION["nombreUs"];
-    $userName = ucwords($userName);
+    $username = $_SESSION["nombreUs"];
+    $username = ucwords($username);
     unset($_SESSION['nombreUs']);
   }
 
@@ -38,7 +38,7 @@ if (isset($_SESSION["nombre"])) {
   }
 
   if (isset($_SESSION["fechaNac"])) {
-    $bornDate = $_SESSION["fechaNac"];
+    $born_date = $_SESSION["fechaNac"];
     unset($_SESSION['fechaNac']);
   }
 
@@ -61,8 +61,8 @@ if (isset($_SESSION["nombre"])) {
   }
 
   if (isset($_SESSION["codigoP"])) {
-    $zipCode = $_SESSION["codigoP"];
-    $zipCode = ucwords($zipCode);
+    $zip_code = $_SESSION["codigoP"];
+    $zip_code = ucwords($zip_code);
     unset($_SESSION['codigoP']);
   }
 
@@ -73,12 +73,12 @@ if (isset($_SESSION["nombre"])) {
   }
 
   //Insert in Database
-  $sql = "INSERT INTO usuarios(nombre,nif,domicilio,fechaNacimiento,contraseña,rol,apellidos,nombreUsuario,correo,provincia,población,codigoPostal,numeroMovil)   VALUES('" . $name . "','" . $nif . "','" . $address . "','" . $bornDate . "','" . $password . "','Usuario','" . $lastName . "','" . $userName . "','" . $email . "','" . $province . "','" . $population . "','" . $zipCode . "','" . $mobile . "')";
+  $sql = "INSERT INTO usuarios(nombre,nif,domicilio,fechaNacimiento,contraseña,rol,apellidos,nombreUsuario,correo,provincia,población,codigoPostal,numeroMovil)   VALUES('" . $name . "','" . $nif . "','" . $address . "','" . $born_date . "','" . $password . "','Usuario','" . $lastname . "','" . $username . "','" . $email . "','" . $province . "','" . $population . "','" . $zip_code . "','" . $mobile . "')";
   $check = $connection->query($sql);
 
   if ($connection->affected_rows > 0) {
-    $_SESSION['mensajeBD'] = "Usuario " . $userName . " creado.";
-    $_SESSION['user'] = $userName;
+    $_SESSION['mensajeBD'] = "Usuario " . $username . " creado.";
+    $_SESSION['user'] = $username;
     $_SESSION['rol'] = 'Usuario';
     header("Location:../Vistas/Index.php");
     exit;

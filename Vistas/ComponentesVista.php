@@ -17,7 +17,7 @@
 
 <body>
   <?php include "../Tema/Menu.php";
-  $componentList = $_SESSION['listaComponentes'] ?>
+  $component_list = $_SESSION['listaComponentes'] ?>
 
   <!-- ********** HERO ********** -->
   <div class="hero-area bg-img background-overlay mb-4" style="background-image: url(../img/blog-img/componentes.jpg)">
@@ -53,7 +53,7 @@
     <div class="row component-panel">
       <?php $cont = "";
 
-      foreach ($componentList as $name => $num) {
+      foreach ($component_list as $name => $num) {
         foreach ($num as $type => $num2) {
 
           if ($cont != $name) { ?>
@@ -66,7 +66,7 @@
                   </h4>
                   <!-- CARD -->
                   <div class="inside-component" style="background-image: linear-gradient(rgba(0, 0, 0, 0.427),rgba(0, 0, 0, 0.9)) ,
-                  url(../img/componentes/<?php echo $componentList[$name][$type]['ruta'] ?>);">
+                  url(../img/componentes/<?php echo $component_list[$name][$type]['ruta'] ?>);">
 
                     <!-- Content display -->
                     <div class="component-content">
@@ -76,28 +76,28 @@
                         <?php
                         $check = false;
 
-                        foreach ($componentList[$name] as $type => $num) { ?>
+                        foreach ($component_list[$name] as $type => $num) { ?>
                           <h6>
-                            <?php if ($componentList[$name][$type]['cantidad'] > 0) { ?>
+                            <?php if ($component_list[$name][$type]['cantidad'] > 0) { ?>
                               <input type=radio name='tipo'
-                                value="<?php echo $type ?>-<?php echo $componentList[$name][$type]['precioR'] ?>">
+                                value="<?php echo $type ?>-<?php echo $component_list[$name][$type]['precioR'] ?>">
                               <?php $check = true;
                             }
                             echo $type;
 
-                            if ($componentList[$name][$type]['cantidad'] == 0) { ?>-
+                            if ($component_list[$name][$type]['cantidad'] == 0) { ?>-
                               <s>No disponible</s>
 
-                            <?php } elseif ($componentList[$name][$type]['descuento'] == 0) { ?>
+                            <?php } elseif ($component_list[$name][$type]['descuento'] == 0) { ?>
                               por <i class="price">
-                                <?php echo $componentList[$name][$type]['precio'] ?> €
+                                <?php echo $component_list[$name][$type]['precio'] ?> €
                               </i>
                             <?php } else { ?>
                               por <s>
-                                <?php echo $componentList[$name][$type]['precioO'] ?> €
+                                <?php echo $component_list[$name][$type]['precioO'] ?> €
                               </s>
                               <i class="discount">
-                                <?php echo $componentList[$name][$type]['precioR'] ?> €
+                                <?php echo $component_list[$name][$type]['precioR'] ?> €
                               </i>
                             <?php } ?>
                           </h6>

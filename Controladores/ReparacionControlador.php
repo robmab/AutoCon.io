@@ -13,13 +13,13 @@ if (!isset($_SESSION['user'])) {
   header('Location:../Vistas/LoginVista.php');
   exit;
 }
-$userL = $_SESSION['user'];
+$user_l = $_SESSION['user'];
 
 //Function to save code and perform the operation.
 function solicitar_servicio()
 {
-  global $userL, $value, $connection;
-  $sql = "SELECT id  FROM usuarios WHERE nombreUsuario='" . $userL . "' OR correo='" . $userL . "' ";
+  global $user_l, $value, $connection;
+  $sql = "SELECT id  FROM usuarios WHERE nombreUsuario='" . $user_l . "' OR correo='" . $user_l . "' ";
   $memory = $connection->query($sql);
 
   if ($memory && $memory->num_rows > 0) {

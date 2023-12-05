@@ -11,15 +11,15 @@ if (isset($_REQUEST["nombre"])) {
 }
 
 if (isset($_REQUEST["apellidos"])) {
-  $lastName = $_REQUEST["apellidos"];
-  $lastName = ucwords($lastName);
-  $_SESSION['apellidos'] = $lastName;
+  $lastname = $_REQUEST["apellidos"];
+  $lastname = ucwords($lastname);
+  $_SESSION['apellidos'] = $lastname;
 }
 
 if (isset($_REQUEST["nombreUs"])) {
-  $userName = $_REQUEST["nombreUs"];
-  $userName = ucwords($userName);
-  $_SESSION['nombreUs'] = $userName;
+  $username = $_REQUEST["nombreUs"];
+  $username = ucwords($username);
+  $_SESSION['nombreUs'] = $username;
 }
 
 if (isset($_REQUEST["email"])) {
@@ -36,16 +36,16 @@ if (isset($_REQUEST["direccion"])) {
 
 if (isset($_REQUEST['edicion'])) {
   if (isset($_REQUEST["contraseñaActual"])) {
-    $currentPassword = $_REQUEST["contraseñaActual"];
-    $_SESSION['contraseñaActual'] = $currentPassword;
+    $current_password = $_REQUEST["contraseñaActual"];
+    $_SESSION['contraseñaActual'] = $current_password;
   }
   if (isset($_REQUEST["contraseñaNueva"])) {
-    $newPassword = $_REQUEST["contraseñaNueva"];
-    $_SESSION['contraseñaNueva'] = $newPassword;
+    $new_password = $_REQUEST["contraseñaNueva"];
+    $_SESSION['contraseñaNueva'] = $new_password;
   }
   if (isset($_REQUEST["contraseñaNueva2"])) {
-    $newPassword2 = $_REQUEST["contraseñaNueva2"];
-    $_SESSION['contraseñaNueva2'] = $newPassword2;
+    $new_password2 = $_REQUEST["contraseñaNueva2"];
+    $_SESSION['contraseñaNueva2'] = $new_password2;
   }
 } else {
   if (isset($_REQUEST["contraseña"])) {
@@ -56,8 +56,8 @@ if (isset($_REQUEST['edicion'])) {
 }
 
 if (isset($_REQUEST["fechaNac"])) {
-  $bornDate = $_REQUEST["fechaNac"];
-  $_SESSION['fechaNac'] = $bornDate;
+  $born_date = $_REQUEST["fechaNac"];
+  $_SESSION['fechaNac'] = $born_date;
 }
 
 if (isset($_REQUEST["nif"])) {
@@ -79,9 +79,9 @@ if (isset($_REQUEST["poblacion"])) {
 }
 
 if (isset($_REQUEST["codigoP"])) {
-  $zipCode = $_REQUEST["codigoP"];
-  $zipCode = ucwords($zipCode);
-  $_SESSION['codigoP'] = $zipCode;
+  $zip_code = $_REQUEST["codigoP"];
+  $zip_code = ucwords($zip_code);
+  $_SESSION['codigoP'] = $zip_code;
 }
 
 if (isset($_REQUEST["movil"])) {
@@ -113,9 +113,9 @@ function time_date($date1)
   $date1 = new DateTime($date1);
   $date2 = new DateTime($date2);
   $interval = $date1->diff($date2);
-  $myage = $interval->y;
+  $my_age = $interval->y;
 
-  if ($myage < 18) {
+  if ($my_age < 18) {
     $_SESSION['mensajeBD'] = "Debes tener al menos 18 años.";
     if (isset($_REQUEST['edicion'])) {
       header("Location:../Vistas/PerfilVista.php?editar=1#1");
@@ -154,8 +154,8 @@ function validate_phone_number($phone)
 }
 
 //Age function
-validaPostal($zipCode);
-time_date($bornDate);
+validaPostal($zip_code);
+time_date($born_date);
 validate_phone_number($mobile);
 
 ?>

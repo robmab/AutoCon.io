@@ -28,7 +28,7 @@ if ($memory->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$providersData = array();
+$providers_data = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM proveedores WHERE id='" . $cont2 . "'";
@@ -36,10 +36,10 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();
-    $providersData[$info['nombre']]['disponibilidad'] = $info['disponibilidad'];
-    $providersData[$info['nombre']]['numero'] = $info['numero'];
-    $providersData[$info['nombre']]['correo'] = $info['correo'];
-    $providersData[$info['nombre']]['logo'] = $info['logo'];
+    $providers_data[$info['nombre']]['disponibilidad'] = $info['disponibilidad'];
+    $providers_data[$info['nombre']]['numero'] = $info['numero'];
+    $providers_data[$info['nombre']]['correo'] = $info['correo'];
+    $providers_data[$info['nombre']]['logo'] = $info['logo'];
 
     $cont++;
   }
@@ -76,10 +76,10 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-ksort($providersData);
-$providersData = array_sort($providersData, 'disponibilidad', SORT_DESC);
+ksort($providers_data);
+$providers_data = array_sort($providers_data, 'disponibilidad', SORT_DESC);
 
-$_SESSION['datosProveedores'] = $providersData;
+$_SESSION['datosProveedores'] = $providers_data;
 header("Location:../Vistas/ProveedoresVista.php");
 exit;
 

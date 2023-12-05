@@ -51,7 +51,7 @@ if ($memory->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$vehicleDate = array();
+$vehicle_date = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM vehiculos_usuarios WHERE id='" . $cont2 . "'";
@@ -59,48 +59,48 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();
     $user = $info['usuario'];
-    $vehicleDate[$cont]['idU'] = $info['usuario'];
+    $vehicle_date[$cont]['idU'] = $info['usuario'];
     $vehicle = $info['vehiculo'];
-    $vehicleDate[$cont]['idV'] = $info['vehiculo'];
+    $vehicle_date[$cont]['idV'] = $info['vehiculo'];
     $leased = $info['alquilado'];
     $reserved = $info['reservado'];
 
     $date = date("d-m-Y", strtotime($info['fecha']));
-    $vehicleDate[$cont]['fecha'] = $date;
-    $vehicleDate[$cont]['n'] = $info['n'];
-    $vehicleDate[$cont]['precio'] = $info['precio'] * 1;
+    $vehicle_date[$cont]['fecha'] = $date;
+    $vehicle_date[$cont]['n'] = $info['n'];
+    $vehicle_date[$cont]['precio'] = $info['precio'] * 1;
 
     $sql = "SELECT * FROM usuarios WHERE id='" . $user . "' ";
     $memory = $connection->query($sql);
 
     if ($memory->num_rows > 0) {
       $info = $memory->fetch_array();
-      $vehicleDate[$cont]['nombreUsuario'] = $info['nombreUsuario'];
-      $vehicleDate[$cont]['correo'] = $info['correo'];
-      $vehicleDate[$cont]['numeroMovil'] = $info['numeroMovil'];
-      $vehicleDate[$cont]['nombre'] = $info['nombre'];
-      $vehicleDate[$cont]['apellidos'] = $info['apellidos'];
-      $vehicleDate[$cont]['nif'] = $info['nif'];
+      $vehicle_date[$cont]['nombreUsuario'] = $info['nombreUsuario'];
+      $vehicle_date[$cont]['correo'] = $info['correo'];
+      $vehicle_date[$cont]['numeroMovil'] = $info['numeroMovil'];
+      $vehicle_date[$cont]['nombre'] = $info['nombre'];
+      $vehicle_date[$cont]['apellidos'] = $info['apellidos'];
+      $vehicle_date[$cont]['nif'] = $info['nif'];
     }
     $sql = "SELECT * FROM vehiculos WHERE id='" . $vehicle . "' ";
     $memory = $connection->query($sql);
 
     if ($memory->num_rows > 0) {
       $info = $memory->fetch_array();
-      $vehicleDate[$cont]['modelo'] = $info['modelo'];
-      $vehicleDate[$cont]['precioAlquiler'] = $info['precioAlquiler'];
-      $vehicleDate[$cont]['img'] = $info['img'];
+      $vehicle_date[$cont]['modelo'] = $info['modelo'];
+      $vehicle_date[$cont]['precioAlquiler'] = $info['precioAlquiler'];
+      $vehicle_date[$cont]['img'] = $info['img'];
       $price = $info['precio'];
       $discount = $info['rebaja'];
 
       if ($leased == 'Si') {
         $discount = (($discount / 100) - 1) * -1;
         $price = $price * $discount;
-        $vehicleDate[$cont]['precio'] = $price;
+        $vehicle_date[$cont]['precio'] = $price;
       }
     }
-    $vehicleDate[$cont]['alquilado'] = $leased;
-    $vehicleDate[$cont]['reservado'] = $reserved;
+    $vehicle_date[$cont]['alquilado'] = $leased;
+    $vehicle_date[$cont]['reservado'] = $reserved;
 
     $cont++;
   }
@@ -137,8 +137,8 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-$vehicleDate = array_sort($vehicleDate, 'reservado', SORT_DESC);
-$_SESSION['datosGVehiculos'] = $vehicleDate;
+$vehicle_date = array_sort($vehicle_date, 'reservado', SORT_DESC);
+$_SESSION['datosGVehiculos'] = $vehicle_date;
 header("Location:../Vistas/GVehiculosVista.php");
 exit;
 

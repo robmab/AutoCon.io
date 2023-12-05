@@ -39,7 +39,7 @@ if ($memory->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$userDate = array();
+$user_date = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM usuarios WHERE id='" . $cont2 . "'";
@@ -47,19 +47,19 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();
-    $userDate[$info['nombreUsuario']]['nombre'] = $info['nombre'];
-    $userDate[$info['nombreUsuario']]['nif'] = $info['nif'];
-    $userDate[$info['nombreUsuario']]['domicilio'] = $info['domicilio'];
+    $user_date[$info['nombreUsuario']]['nombre'] = $info['nombre'];
+    $user_date[$info['nombreUsuario']]['nif'] = $info['nif'];
+    $user_date[$info['nombreUsuario']]['domicilio'] = $info['domicilio'];
     $info['fechaNacimiento'] = date("d-m-Y", strtotime($info['fechaNacimiento']));
-    $userDate[$info['nombreUsuario']]['fechaNacimiento'] = $info['fechaNacimiento'];
-    $userDate[$info['nombreUsuario']]['rol'] = $info['rol'];
-    $userDate[$info['nombreUsuario']]['apellidos'] = $info['apellidos'];
-    $userDate[$info['nombreUsuario']]['codigoPostal'] = $info['codigoPostal'];
-    $userDate[$info['nombreUsuario']]['correo'] = $info['correo'];
-    $userDate[$info['nombreUsuario']]['provincia'] = $info['provincia'];
-    $userDate[$info['nombreUsuario']]['población'] = $info['población'];
-    $userDate[$info['nombreUsuario']]['numeroMovil'] = $info['numeroMovil'];
-    $userDate[$info['nombreUsuario']]['id'] = $info['id'];
+    $user_date[$info['nombreUsuario']]['fechaNacimiento'] = $info['fechaNacimiento'];
+    $user_date[$info['nombreUsuario']]['rol'] = $info['rol'];
+    $user_date[$info['nombreUsuario']]['apellidos'] = $info['apellidos'];
+    $user_date[$info['nombreUsuario']]['codigoPostal'] = $info['codigoPostal'];
+    $user_date[$info['nombreUsuario']]['correo'] = $info['correo'];
+    $user_date[$info['nombreUsuario']]['provincia'] = $info['provincia'];
+    $user_date[$info['nombreUsuario']]['población'] = $info['población'];
+    $user_date[$info['nombreUsuario']]['numeroMovil'] = $info['numeroMovil'];
+    $user_date[$info['nombreUsuario']]['id'] = $info['id'];
 
     $cont++;
   }
@@ -95,8 +95,8 @@ function array_sort($array, $on, $order = SORT_ASC)
   return $new_array;
 }
 
-$userDate = array_sort($userDate, 'nombre', SORT_ASC);
-$_SESSION['datosUsuarios'] = $userDate;
+$user_date = array_sort($user_date, 'nombre', SORT_ASC);
+$_SESSION['datosUsuarios'] = $user_date;
 header("Location:../Vistas/UsuariosVista.php");
 exit;
 

@@ -195,7 +195,7 @@ if ($memory->num_rows > 0) {
 }
 
 $cont = 0;
-$vehicleDate = array();
+$vehicle_date = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM vehiculos_usuarios WHERE id='" . $cont2 . "'";
@@ -206,7 +206,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
     if ($info['usuario'] == $user) {
       $leased = $info['alquilado'];
       $reserved = $info['reservado'];
-      $vehicleDate[$cont]['precio'] = $info['precio'] * 1;
+      $vehicle_date[$cont]['precio'] = $info['precio'] * 1;
       $n = $info['n'];
       $date = $info['fecha'];
 
@@ -215,23 +215,23 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
 
       if ($memory2 && $memory2->num_rows > 0) {
         $info = $memory2->fetch_array();
-        $vehicleDate[$cont]['img'] = $info['img'];
-        $vehicleDate[$cont]['vehiculo'] = $info['modelo'];
+        $vehicle_date[$cont]['img'] = $info['img'];
+        $vehicle_date[$cont]['vehiculo'] = $info['modelo'];
       }
       if ($leased == 'Si') {
-        $vehicleDate[$cont]['alquilado'] = 'Si';
-        $vehicleDate[$cont]['reservado'] = 'No';
+        $vehicle_date[$cont]['alquilado'] = 'Si';
+        $vehicle_date[$cont]['reservado'] = 'No';
       }
       if ($reserved == 'Si' or $reserved == 'Comprado') {
-        $vehicleDate[$cont]['reservado'] = $reserved;
+        $vehicle_date[$cont]['reservado'] = $reserved;
       }
-      $vehicleDate[$cont]['n'] = $n;
-      $vehicleDate[$cont]['fecha'] = $date;
+      $vehicle_date[$cont]['n'] = $n;
+      $vehicle_date[$cont]['fecha'] = $date;
     }
     $cont++;
   }
 }
-$vehicleDate = array_sort($vehicleDate, 'reservado', SORT_DESC);
+$vehicle_date = array_sort($vehicle_date, 'reservado', SORT_DESC);
 
 //Collect Components
 $sql = "SELECT count(*) FROM componente_usuario";
@@ -244,7 +244,7 @@ if ($memory->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$componentDate = array();
+$component_date = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM componente_usuario WHERE id='" . $cont2 . "'";
@@ -254,7 +254,7 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
     $info = $memory2->fetch_array();
     if ($info['usuario'] == $user) {
       $quantity = $info['cantidad'];
-      $finalizado = $info['finalizado'];
+      $ended = $info['finalizado'];
       $price = $info['precio'];
       $date = $info['fecha'];
       $n = $info['n'];
@@ -262,20 +262,20 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
       $memory2 = $connection->query($sql);
       if ($memory2 && $memory2->num_rows > 0) {
         $info = $memory2->fetch_array();
-        $componentDate[$cont]['ruta'] = $info['ruta'];
-        $componentDate[$cont]['nombre'] = $info['nombre'];
-        $componentDate[$cont]['tipo'] = $info['tipo'];
-        $componentDate[$cont]['cantidad'] = $quantity;
-        $componentDate[$cont]['finalizado'] = $finalizado;
-        $componentDate[$cont]['precio'] = $price * 1;
-        $componentDate[$cont]['fecha'] = $date;
-        $componentDate[$cont]['n'] = $n;
+        $component_date[$cont]['ruta'] = $info['ruta'];
+        $component_date[$cont]['nombre'] = $info['nombre'];
+        $component_date[$cont]['tipo'] = $info['tipo'];
+        $component_date[$cont]['cantidad'] = $quantity;
+        $component_date[$cont]['finalizado'] = $ended;
+        $component_date[$cont]['precio'] = $price * 1;
+        $component_date[$cont]['fecha'] = $date;
+        $component_date[$cont]['n'] = $n;
       }
     }
     $cont++;
   }
 }
-$componentDate = array_sort($componentDate, 'finalizado', SORT_ASC);
+$component_date = array_sort($component_date, 'finalizado', SORT_ASC);
 
 //Collect repair data
 $sql = "SELECT count(*) FROM reparacion";
@@ -286,7 +286,7 @@ if ($memory->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$repairDate = array();
+$repair_date = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM reparacion WHERE id='" . $cont2 . "'";
@@ -295,28 +295,28 @@ for ($cont2 = 0; $cont < $num; $cont2++) {
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();
     if ($info['usuario'] == $user) {
-      $repairDate[$cont]['servicio'] = $info['servicio'];
+      $repair_date[$cont]['servicio'] = $info['servicio'];
       $date = date("d-m-Y", strtotime($info['fecha']));
-      $repairDate[$cont]['fecha'] = $date;
-      $repairDate[$cont]['aceptado'] = $info['aceptado'];
-      $repairDate[$cont]['precio'] = $info['precio'] * 1;
-      $repairDate[$cont]['n'] = $info['n'];
+      $repair_date[$cont]['fecha'] = $date;
+      $repair_date[$cont]['aceptado'] = $info['aceptado'];
+      $repair_date[$cont]['precio'] = $info['precio'] * 1;
+      $repair_date[$cont]['n'] = $info['n'];
     }
     $cont++;
   }
 }
-$repairDate = array_sort($repairDate, 'aceptado', SORT_DESC);
+$repair_date = array_sort($repair_date, 'aceptado', SORT_DESC);
 
 //Only save to variable in case the array is not empty
 
-if ($vehicleDate != array())
-  $_SESSION['datosVehiculos'] = $vehicleDate;
+if ($vehicle_date != array())
+  $_SESSION['datosVehiculos'] = $vehicle_date;
 
-if ($componentDate != array())
-  $_SESSION['datosComponentes'] = $componentDate;
+if ($component_date != array())
+  $_SESSION['datosComponentes'] = $component_date;
 
-if ($repairDate != array())
-  $_SESSION['datosReparacion'] = $repairDate;
+if ($repair_date != array())
+  $_SESSION['datosReparacion'] = $repair_date;
 
 //Collect Component data if available
 header('Location:../Vistas/SeguimientoVista.php');

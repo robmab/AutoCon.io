@@ -29,18 +29,18 @@ if (isset($_REQUEST['edicion'])) {
   }
 
   if (isset($_SESSION['nombreUs']) && ($_SESSION['nombreUs'] != '')) {
-    $nombreUs = $_SESSION["nombreUs"];
-    $nombreUs = ucwords($nombreUs);
+    $user_name = $_SESSION["nombreUs"];
+    $user_name = ucwords($user_name);
     unset($_SESSION['nombreUs']);
 
-    $sql = "UPDATE usuarios SET nombreUsuario='" . $nombreUs . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
+    $sql = "UPDATE usuarios SET nombreUsuario='" . $user_name . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
     $check = $connection->query($sql);
-    if ($_SESSION['user'] == $nombreUs) {
+    if ($_SESSION['user'] == $user_name) {
     } elseif ($connection->affected_rows > 0) {
-      $_SESSION['user'] = $nombreUs;
+      $_SESSION['user'] = $user_name;
       $cont = 0;
     } else {
-      $_SESSION['mensajeBD'] = 'El usuario ' . $nombreUs . ' ya existe, prueba con otro.';
+      $_SESSION['mensajeBD'] = 'El usuario ' . $user_name . ' ya existe, prueba con otro.';
       header('Location:../Vistas/PerfilVista.php?editar=1');
       exit;
     }
@@ -106,10 +106,10 @@ if (isset($_REQUEST['edicion'])) {
   }
 
   if (isset($_SESSION['fechaNac']) && ($_SESSION['fechaNac'] != '')) {
-    $bornDate = $_SESSION["fechaNac"];
+    $born_date = $_SESSION["fechaNac"];
     unset($_SESSION['fechaNac']);
 
-    $sql = "UPDATE usuarios SET fechaNacimiento='" . $bornDate . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
+    $sql = "UPDATE usuarios SET fechaNacimiento='" . $born_date . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
     $check = $connection->query($sql);
 
     if ($connection->affected_rows > 0)
@@ -139,10 +139,10 @@ if (isset($_REQUEST['edicion'])) {
   }
 
   if (isset($_SESSION['codigoP']) && ($_SESSION['codigoP'] != '')) {
-    $zipCode = $_SESSION["codigoP"];
+    $zip_code = $_SESSION["codigoP"];
     unset($_SESSION['codigoP']);
 
-    $sql = "UPDATE usuarios SET codigoPostal='" . $zipCode . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
+    $sql = "UPDATE usuarios SET codigoPostal='" . $zip_code . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
     $check = $connection->query($sql);
 
     if ($connection->affected_rows > 0)
@@ -163,10 +163,10 @@ if (isset($_REQUEST['edicion'])) {
 
     //Check current password
     $password = base64_decode($_SESSION['datosUsu']['contraseña']);
-    $currentPassword = $_SESSION['contraseñaActual'];
+    $current_password = $_SESSION['contraseñaActual'];
     unset($_SESSION['contraseñaActual']);
 
-    if ($password != $currentPassword) {
+    if ($password != $current_password) {
       $_SESSION['errC'] = 'No coincide la contraseña actual';
       header('Location:../Vistas/PerfilVista.php?editar=1');
       exit;
@@ -174,12 +174,12 @@ if (isset($_REQUEST['edicion'])) {
 
     if (isset($_SESSION['contraseñaNueva']) && ($_SESSION['contraseñaNueva'] != '')) {
       if (isset($_SESSION['contraseñaNueva2']) && ($_SESSION['contraseñaNueva2'] != '')) {
-        $newPassword = $_SESSION['contraseñaNueva'];
+        $new_password = $_SESSION['contraseñaNueva'];
         unset($_SESSION['contraseñaNueva']);
         unset($_SESSION['contraseñaNueva2']);
-        $newPassword = base64_encode($newPassword);
+        $new_password = base64_encode($new_password);
 
-        $sql = "UPDATE usuarios SET contraseña='" . $newPassword . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
+        $sql = "UPDATE usuarios SET contraseña='" . $new_password . "' WHERE nombreusuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'";
         $check = $connection->query($sql);
 
         if ($connection->affected_rows > 0)
@@ -206,28 +206,28 @@ if (isset($_REQUEST['editar'])) {
 }
 
 //Collect user data
-$userData = array();
+$user_data = array();
 $sql = "SELECT * FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' OR correo='" . $_SESSION['user'] . "'   ";
 $memory2 = $connection->query($sql);
 
 if ($memory2 && $memory2->num_rows > 0) {
   $info = $memory2->fetch_array();
-  $userData['nombreUsuario'] = $info['nombreUsuario'];
-  $userData['correo'] = $info['correo'];
-  $userData['apellidos'] = $info['apellidos'];
-  $userData['contraseña'] = $info['contraseña'];
-  $userData['fechaNacimiento'] = $info['fechaNacimiento'];
-  $userData['domicilio'] = $info['domicilio'];
-  $userData['nif'] = $info['nif'];
-  $userData['nombre'] = $info['nombre'];
-  $userData['codigoPostal'] = $info['codigoPostal'];
-  $userData['poblacion'] = $info['población'];
-  $userData['provincia'] = $info['provincia'];
-  $userData['numeroMovil'] = $info['numeroMovil'];
-  $userData['codigoPostal'] = $info['codigoPostal'];
+  $user_data['nombreUsuario'] = $info['nombreUsuario'];
+  $user_data['correo'] = $info['correo'];
+  $user_data['apellidos'] = $info['apellidos'];
+  $user_data['contraseña'] = $info['contraseña'];
+  $user_data['fechaNacimiento'] = $info['fechaNacimiento'];
+  $user_data['domicilio'] = $info['domicilio'];
+  $user_data['nif'] = $info['nif'];
+  $user_data['nombre'] = $info['nombre'];
+  $user_data['codigoPostal'] = $info['codigoPostal'];
+  $user_data['poblacion'] = $info['población'];
+  $user_data['provincia'] = $info['provincia'];
+  $user_data['numeroMovil'] = $info['numeroMovil'];
+  $user_data['codigoPostal'] = $info['codigoPostal'];
 }
 
-$_SESSION['datosUsu'] = $userData;
+$_SESSION['datosUsu'] = $user_data;
 
 //Billing data check
 $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
@@ -243,16 +243,16 @@ $memory = $connection->query($sql);
 
 if ($memory->num_rows > 0) {
   $info = $memory->fetch_array();
-  $cardData['numero1'] = substr($info['numero'], -16, 4);
-  $cardData['numero2'] = substr($info['numero'], -12, 4);
-  $cardData['numero3'] = substr($info['numero'], -8, 4);
-  $cardData['numero4'] = substr($info['numero'], -4, 4);
-  $cardData['titular'] = $info['titular'];
-  $cardData['tipo'] = $info['tipo'];
-  $cardData['ccv'] = $info['ccv'];
-  $cardData['fechaM'] = $info['fechaM'];
-  $cardData['fechaA'] = $info['fechaA'];
-  $_SESSION['datosTar'] = $cardData;
+  $card_data['numero1'] = substr($info['numero'], -16, 4);
+  $card_data['numero2'] = substr($info['numero'], -12, 4);
+  $card_data['numero3'] = substr($info['numero'], -8, 4);
+  $card_data['numero4'] = substr($info['numero'], -4, 4);
+  $card_data['titular'] = $info['titular'];
+  $card_data['tipo'] = $info['tipo'];
+  $card_data['ccv'] = $info['ccv'];
+  $card_data['fechaM'] = $info['fechaM'];
+  $card_data['fechaA'] = $info['fechaA'];
+  $_SESSION['datosTar'] = $card_data;
   $_SESSION['tarjeta'] = 1;
 }
 

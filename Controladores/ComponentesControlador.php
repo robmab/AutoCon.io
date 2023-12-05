@@ -142,18 +142,18 @@ if ($memory->num_rows > 0) {
 }
 
 $cont2 = 0;
-$componentList = array();
+$component_list = array();
 
 for ($cont2 = 0; $cont2 < $num; $cont2++) {
   $sql = "SELECT *  FROM componentes WHERE ID='" . $cont2 . "'";
   $mem = $connection->query($sql);
   if ($mem && $mem->num_rows > 0) {
     $info = $mem->fetch_array();
-    $componentList[$info['nombre']][$info['tipo']]['cantidad'] = $info['cantidad'];
-    $componentList[$info['nombre']][$info['tipo']]['ruta'] = $info['ruta'];
-    $componentList[$info['nombre']][$info['tipo']]['descuento'] = $info['descuento'];
-    $componentList[$info['nombre']][$info['tipo']]['precioO'] = $info['precio'] * 1;
-    $componentList[$info['nombre']][$info['tipo']]['precio'] = $info['precio'] * 1;
+    $component_list[$info['nombre']][$info['tipo']]['cantidad'] = $info['cantidad'];
+    $component_list[$info['nombre']][$info['tipo']]['ruta'] = $info['ruta'];
+    $component_list[$info['nombre']][$info['tipo']]['descuento'] = $info['descuento'];
+    $component_list[$info['nombre']][$info['tipo']]['precioO'] = $info['precio'] * 1;
+    $component_list[$info['nombre']][$info['tipo']]['precio'] = $info['precio'] * 1;
     $priceR = ((($info['descuento'] / 100) - 1) * -1) * $info['precio'];
 
     //Rebate calculation of existing
@@ -174,26 +174,26 @@ for ($cont2 = 0; $cont2 < $num; $cont2++) {
         $info2 = $mem->fetch_array();
         if ($info2['fecha_in'] <= $fechaActual) {
           if ($info2['fecha_fin'] >= $fechaActual) {
-            $multiplier = $componentList[$info['nombre']][$info['tipo']]['descuento'] / 100;
+            $multiplier = $component_list[$info['nombre']][$info['tipo']]['descuento'] / 100;
             $multiplier = ($multiplier - 1) * -1;
             $multiplier2 = $info2['porciento'] * $multiplier;
-            $componentList[$info['nombre']][$info['tipo']]['descuento'] = $componentList[$info['nombre']][$info['tipo']]['descuento'] + $multiplier2;
+            $component_list[$info['nombre']][$info['tipo']]['descuento'] = $component_list[$info['nombre']][$info['tipo']]['descuento'] + $multiplier2;
             $percent = (($info2['porciento'] / 100) - 1) * -1;
-            $componentList[$info['nombre']][$info['tipo']]['precio'] = $componentList[$info['nombre']][$info['tipo']]['precio'] * $percent;
+            $component_list[$info['nombre']][$info['tipo']]['precio'] = $component_list[$info['nombre']][$info['tipo']]['precio'] * $percent;
             $priceR = round(($priceR * $percent), 2);
           }
         }
         $cont++;
       }
     }
-    $componentList[$info['nombre']][$info['tipo']]['precioR'] = $priceR;
-    $componentList[$info['nombre']][$info['tipo']]['precioR'] = round($componentList[$info['nombre']][$info['tipo']]['precioR'], 2);
+    $component_list[$info['nombre']][$info['tipo']]['precioR'] = $priceR;
+    $component_list[$info['nombre']][$info['tipo']]['precioR'] = round($component_list[$info['nombre']][$info['tipo']]['precioR'], 2);
 
     $cont2++;
   }
 }
 
-$_SESSION['listaComponentes'] = $componentList;
+$_SESSION['listaComponentes'] = $component_list;
 
 if (isset($_REQUEST['Adm']))
   header("Location:../Vistas/ComponentesVistaAdm.php#$nom");

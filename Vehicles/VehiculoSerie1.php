@@ -18,12 +18,12 @@
           <div class="col-12 col-md-8 col-lg-6">
             <div class="single-blog-title text-center pb-5">
               <?php
-              $vehicleModel = 'BMW Serie 1 cinco puertas';
-              $_SESSION['ModeloVeh'] = $vehicleModel;
-              if ($_SESSION['listaVeh'][$vehicleModel]['rebaja'] > 0) { ?>
+              $vehicle_model = 'BMW Serie 1 cinco puertas';
+              $_SESSION['ModeloVeh'] = $vehicle_model;
+              if ($_SESSION['listaVeh'][$vehicle_model]['rebaja'] > 0) { ?>
                 <div class="post-cta p-0 m-0">
                   <a>
-                    <?php echo $_SESSION['listaVeh'][$vehicleModel]['rebaja'] ?>%
+                    <?php echo $_SESSION['listaVeh'][$vehicle_model]['rebaja'] ?>%
                     Descuento
                   </a>
                 </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="col-12">
                       <button type="submit" class="btn world-btn">Reservalo en tienda por
-                        <?php echo $_SESSION['listaVeh'][$vehicleModel]['precioRebajado'] ?>
+                        <?php echo $_SESSION['listaVeh'][$vehicle_model]['precioRebajado'] ?>
                         €
                       </button>
                     </div>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-12">
                       <button type="submit" class="btn world-btn">O Alquilalo por
-                        <?php echo $_SESSION['listaVeh'][$vehicleModel]['precioAlquiler'] ?> € al
+                        <?php echo $_SESSION['listaVeh'][$vehicle_model]['precioAlquiler'] ?> € al
                         mes
                       </button>
                     </div>

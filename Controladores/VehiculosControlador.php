@@ -33,62 +33,62 @@ if ($memory->num_rows > 0) {
   $num = (int) $num;
 }
 $cont = 0;
-$vehicleList = array();
+$vehicle_list = array();
 
 for ($cont2 = 0; $cont < $num; $cont2++) {
   $sql = "SELECT *  FROM vehiculos WHERE ID='" . $cont2 . "'";
   $memory2 = $connection->query($sql);
   if ($memory2 && $memory2->num_rows > 0) {
     $info = $memory2->fetch_array();
-    $vehicleList[$info['modelo']]['vendidos'] = $info['vendidos'];
-    $vehicleList[$info['modelo']]['disponibles'] = $info['disponibles'];
-    $vehicleList[$info['modelo']]['rebaja'] = $info['rebaja'];
-    $vehicleList[$info['modelo']]['img'] = $info['img'];
-    $vehicleList[$info['modelo']]['alquilados'] = $info['alquilados'];
-    $vehicleList[$info['modelo']]['ruta'] = $info['ruta'];
+    $vehicle_list[$info['modelo']]['vendidos'] = $info['vendidos'];
+    $vehicle_list[$info['modelo']]['disponibles'] = $info['disponibles'];
+    $vehicle_list[$info['modelo']]['rebaja'] = $info['rebaja'];
+    $vehicle_list[$info['modelo']]['img'] = $info['img'];
+    $vehicle_list[$info['modelo']]['alquilados'] = $info['alquilados'];
+    $vehicle_list[$info['modelo']]['ruta'] = $info['ruta'];
 
     $discountM = (($info['rebaja'] / 100) - 1) * -1;
-    $vehicleList[$info['modelo']]['precioRebajado'] = $info['precio'] * $discountM;
-    $vehicleList[$info['modelo']]['precio'] = $info['precio'] * 1;
+    $vehicle_list[$info['modelo']]['precioRebajado'] = $info['precio'] * $discountM;
+    $vehicle_list[$info['modelo']]['precio'] = $info['precio'] * 1;
 
     //Rebate calculation of existing
-    $currentDate = date("Y\-m\-d");
+    $current_date = date("Y\-m\-d");
     $sql2 = "SELECT count(*) FROM eventos_descuentos";
-    $memi2 = $connection->query($sql2);
+    $memory3 = $connection->query($sql2);
 
-    if ($memi2->num_rows > 0) {
-      $info2 = $memi2->fetch_array();
-      $num0 = $info2[0];
-      $num0 = (int) $num0;
+    if ($memory3->num_rows > 0) {
+      $info2 = $memory3->fetch_array();
+      $num1 = $info2[0];
+      $num1 = (int) $num1;
     }
     $cont0 = 0;
 
-    for ($cont20 = 0; $cont0 < $num0; $cont20++) {
-      $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $cont20 . "'";
+    for ($counter = 0; $cont0 < $num1; $counter++) {
+      $sql = "SELECT *  FROM eventos_descuentos WHERE id='" . $counter . "'";
       $memory2 = $connection->query($sql);
       if ($memory2 && $memory2->num_rows > 0) {
         $info2 = $memory2->fetch_array();
-        if ($info2['fecha_in'] <= $currentDate) {
-          if ($info2['fecha_fin'] >= $currentDate) {
-            $multipler = $vehicleList[$info['modelo']]['rebaja'] / 100;
+        if ($info2['fecha_in'] <= $current_date) {
+          if ($info2['fecha_fin'] >= $current_date) {
+            $multipler = $vehicle_list[$info['modelo']]['rebaja'] / 100;
             $multipler = ($multipler - 1) * -1;
             $multipler2 = $info2['porciento'] * $multipler;
-            $vehicleList[$info['modelo']]['rebaja'] = $vehicleList[$info['modelo']]['rebaja'] + $multipler2;
+            $vehicle_list[$info['modelo']]['rebaja'] = $vehicle_list[$info['modelo']]['rebaja'] + $multipler2;
 
             $percent = (($info2['porciento'] / 100) - 1) * -1;
-            $vehicleList[$info['modelo']]['precioRebajado'] = $vehicleList[$info['modelo']]['precioRebajado'] * $percent;
-            $vehicleList[$info['modelo']]['precioRebajado'] = round($vehicleList[$info['modelo']]['precioRebajado'], 2);
+            $vehicle_list[$info['modelo']]['precioRebajado'] = $vehicle_list[$info['modelo']]['precioRebajado'] * $percent;
+            $vehicle_list[$info['modelo']]['precioRebajado'] = round($vehicle_list[$info['modelo']]['precioRebajado'], 2);
           }
         }
         $cont0++;
       }
     }
-    $vehicleList[$info['modelo']]['precioAlquiler'] = $info['precioAlquiler'] * 1;
+    $vehicle_list[$info['modelo']]['precioAlquiler'] = $info['precioAlquiler'] * 1;
     $cont++;
   }
 }
 
-$_SESSION['listaVeh'] = $vehicleList;
+$_SESSION['listaVeh'] = $vehicle_list;
 header("Location:../Vistas/VehiculosVista.php#$model");
 exit;
 
