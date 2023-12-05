@@ -3,19 +3,19 @@ session_start();
 include '../ConexiónBD.php';
 
 //Collect variables | Register - Login
-if (isset($_SESSION["nombre"])) {
-  $name = $_SESSION["nombre"];
+if (isset($_SESSION["name"])) {
+  $name = $_SESSION["name"];
   $name = ucwords($name);
-  unset($_SESSION['nombre']);
+  unset($_SESSION['name']);
 
-  if (isset($_SESSION["apellidos"])) {
-    $lastname = $_SESSION["apellidos"];
+  if (isset($_SESSION["lastname"])) {
+    $lastname = $_SESSION["lastname"];
     $lastname = ucwords($lastname);
-    unset($_SESSION['apellidos']);
+    unset($_SESSION['lastname']);
   }
 
-  if (isset($_SESSION["nombreUs"])) {
-    $username = $_SESSION["nombreUs"];
+  if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
     $username = ucwords($username);
     unset($_SESSION['nombreUs']);
   }
@@ -26,20 +26,20 @@ if (isset($_SESSION["nombre"])) {
     unset($_SESSION['email']);
   }
 
-  if (isset($_SESSION["direccion"])) {
-    $address = $_SESSION["direccion"];
+  if (isset($_SESSION["address"])) {
+    $address = $_SESSION["address"];
     $address = ucwords($address);
-    unset($_SESSION['direccion']);
+    unset($_SESSION['address']);
   }
 
-  if (isset($_SESSION["contraseña"])) {
-    $password = $_SESSION["contraseña"];
-    unset($_SESSION['contraseña']);
+  if (isset($_SESSION["password"])) {
+    $password = $_SESSION["password"];
+    unset($_SESSION['password']);
   }
 
-  if (isset($_SESSION["fechaNac"])) {
-    $born_date = $_SESSION["fechaNac"];
-    unset($_SESSION['fechaNac']);
+  if (isset($_SESSION["bornDate"])) {
+    $born_date = $_SESSION["bornDate"];
+    unset($_SESSION['bornDate']);
   }
 
   if (isset($_SESSION["nif"])) {
@@ -48,28 +48,28 @@ if (isset($_SESSION["nombre"])) {
     unset($_SESSION['nif']);
   }
 
-  if (isset($_SESSION["provincia"])) {
-    $province = $_SESSION["provincia"];
+  if (isset($_SESSION["province"])) {
+    $province = $_SESSION["province"];
     $province = ucwords($province);
-    unset($_SESSION['provincia']);
+    unset($_SESSION['province']);
   }
 
-  if (isset($_SESSION["poblacion"])) {
-    $population = $_SESSION["poblacion"];
+  if (isset($_SESSION["population"])) {
+    $population = $_SESSION["population"];
     $population = ucwords($population);
-    unset($_SESSION['poblacion']);
+    unset($_SESSION['population']);
   }
 
-  if (isset($_SESSION["codigoP"])) {
-    $zip_code = $_SESSION["codigoP"];
+  if (isset($_SESSION["zipCode"])) {
+    $zip_code = $_SESSION["zipCode"];
     $zip_code = ucwords($zip_code);
-    unset($_SESSION['codigoP']);
+    unset($_SESSION['zipCode']);
   }
 
-  if (isset($_SESSION["movil"])) {
-    $mobile = $_SESSION["movil"];
+  if (isset($_SESSION["mobile"])) {
+    $mobile = $_SESSION["mobile"];
     $mobile = ucwords($mobile);
-    unset($_SESSION['movil']);
+    unset($_SESSION['mobile']);
   }
 
   //Insert in Database

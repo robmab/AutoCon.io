@@ -33,7 +33,7 @@
               <div class="row">
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="text" name="nombreUs" id="nombreUs" required autocomplete="off" minlength='3'>
+                    <input type="text" name="username" id="username" required autocomplete="off" minlength='3'>
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Nombre de Usuario</label>
@@ -51,7 +51,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="text" name="nombre" id="nombre" required autocomplete="off">
+                    <input type="text" name="name" id="name" required autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Nombre</label>
@@ -60,7 +60,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="text" name="apellidos" id="apellidos" required autocomplete="off">
+                    <input type="text" name="lastname" id="lastname" required autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Apellidos</label>
@@ -69,7 +69,7 @@
 
                 <div class="col-12">
                   <div class="group">
-                    <input type="text" name="direccion" id="direccion" required autocomplete="off">
+                    <input type="text" name="address" id="address" required autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Dirección</label>
@@ -87,7 +87,7 @@
 
                 <div class="col-12 col-md-6 date">
                   <div class="group">
-                    <input type="date" name="fechaNac" id="fechaNac" autocomplete="off">
+                    <input type="date" name="bornDate" id="bornDate" autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Fecha de Nacimiento</label>
@@ -97,7 +97,7 @@
                 <div class="col-12 col-md-6 select">
                   <div class="group">
                     <p>Provincia </p>
-                    <select name="provincia" id="provincia">
+                    <select name="province" id="province">
                       <option selected="true" disabled="disabled">-</option>
                       <option value='alava'>Álava</option>
                       <option value='albacete'>Albacete</option>
@@ -159,7 +159,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="text" name="poblacion" id="poblacion" required autocomplete="off">
+                    <input type="text" name="population" id="population" required autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Población</label>
@@ -168,7 +168,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="number" name="codigoP" id="codigoP" required autocomplete="off">
+                    <input type="number" name="zipCode" id="zipCode" required autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Código postal</label>
@@ -177,7 +177,7 @@
 
                 <div class="col-12 col-md-6 tlf">
                   <div class="group">
-                    <input type="number" name="movil" id="movil" required autocomplete="off">
+                    <input type="number" name="mobile" id="mobile" required autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Número de móvil o telefono</label>
@@ -186,7 +186,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="password" name="contraseña" id="contraseña" required autocomplete="off">
+                    <input type="password" name="password" id="password" required autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Contraseña</label>
@@ -195,7 +195,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="password" name="contraseña2" id="contraseña2" required oninput="check(this)"
+                    <input type="password" name="password2" id="password2" required oninput="check(this)"
                       autocomplete="off">
                     <span class="highlight"></span>
                     <span class="bar"></span>
