@@ -207,11 +207,10 @@
               <div class="col-12 but">
                 <button type="submit" class="btn world-btn">Registro</button>
               </div>
+            </form>
           </div>
         </div>
-
       </div>
-      </form>
     </div>
   </section>
 
