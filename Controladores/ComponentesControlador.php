@@ -27,9 +27,9 @@ if (isset($_REQUEST['nom'])) {
 
 //Collecting variables and inserting data into the database
 
-if (isset($_REQUEST['comprar'])) {
-  if ($_REQUEST['tipo']) {
-    $type = $_REQUEST['tipo'];
+if (isset($_REQUEST['buy'])) {
+  if ($_REQUEST['type']) {
+    $type = $_REQUEST['type'];
     $portions = explode("-", $type);
     $type = $portions[0];
     $price2 = $portions[1];
@@ -65,8 +65,8 @@ if (isset($_REQUEST['comprar'])) {
     exit;
   }
 
-  if ($_REQUEST['nombre'])
-    $name = $_REQUEST['nombre'];
+  if ($_REQUEST['name'])
+    $name = $_REQUEST['name'];
 
   //Database entry
   $sql = "SELECT * FROM componentes WHERE nombre='" . $name . "'  AND tipo='" . $type . "'";

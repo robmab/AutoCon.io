@@ -8,7 +8,7 @@
   if (isset($_SESSION['chekonn']))
     unset($_SESSION['chekonn']);
   else
-    header("Location:../Controladores/ComponentesControlador.php"); ?>
+    header("Locaid=tion:../Controladores/ComponentesControlador.php"); ?>
 
   <link rel="stylesheet" href="../css/views/components.css">
   <link href='../Tema/Button/on.css' rel='stylesheet' type='text/css'>
@@ -70,7 +70,7 @@
 
                     <!-- Content display -->
                     <div class="component-content">
-                      <form action="../Controladores/ComponentesControlador.php?comprar=1&nombre=<?php echo $name ?>#1"
+                      <form action="../Controladores/ComponentesControlador.php?buy=1&name=<?php echo $name ?>#1"
                         method="post">
 
                         <?php
@@ -79,7 +79,7 @@
                         foreach ($component_list[$name] as $type => $num) { ?>
                           <h6>
                             <?php if ($component_list[$name][$type]['cantidad'] > 0) { ?>
-                              <input type=radio name='tipo'
+                              <input type=radio name='type'
                                 value="<?php echo $type ?>-<?php echo $component_list[$name][$type]['precioR'] ?>">
                               <?php $check = true;
                             }

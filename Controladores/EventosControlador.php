@@ -4,9 +4,9 @@ session_start();
 include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
-if (isset($_REQUEST['añadir'])) {
+if (isset($_REQUEST['add'])) {
 	//Check that the start date is not greater than the end date.
-	if ($_REQUEST['fechaI'] > $_REQUEST['fechaF']) {
+	if ($_REQUEST['dateI'] > $_REQUEST['dateF']) {
 
 		$_SESSION['mensajeBD'] = 'La fecha inicial no puede ser mayor que la final.';
 		header("Location:../Vistas/EventosVista.php#1");
@@ -14,9 +14,9 @@ if (isset($_REQUEST['añadir'])) {
 	}
 
 	//Add Event
-	$name = $_REQUEST['nombre'];
+	$name = $_REQUEST['name'];
 	$banner = $_REQUEST['banner'];
-	$sql = "INSERT INTO eventos_descuentos(nombre,fecha_in,fecha_fin,porciento,banner)   VALUES('" . $name . "','" . $_REQUEST['fechaI'] . "','" . $_REQUEST['fechaF'] . "','" . $_REQUEST['porciento'] . "','" . $banner . "')";
+	$sql = "INSERT INTO eventos_descuentos(nombre,fecha_in,fecha_fin,porciento,banner)   VALUES('" . $name . "','" . $_REQUEST['dateI'] . "','" . $_REQUEST['dateF'] . "','" . $_REQUEST['percent'] . "','" . $banner . "')";
 	$check = $connection->query($sql);
 
 	if (!($connection->affected_rows > 0)) {
@@ -26,13 +26,13 @@ if (isset($_REQUEST['añadir'])) {
 	}
 }
 
-if (isset($_REQUEST['editar'])) {
+if (isset($_REQUEST['edite'])) {
 	$sql = "UPDATE eventos_descuentos SET banner='" . $_REQUEST['banner'] . "' WHERE  fecha_in='" . $_REQUEST['fi'] . "'   AND fecha_fin='" . $_REQUEST['ff'] . "'  ";
 	$check = $connection->query($sql);
 }
 
 
-if (isset($_REQUEST['eliminar'])) {
+if (isset($_REQUEST['delete'])) {
 	$sql = "DELETE FROM eventos_descuentos WHERE fecha_in='" . $_REQUEST['fi'] . "'   AND fecha_fin='" . $_REQUEST['ff'] . "' ";
 	$check = $connection->query($sql);
 }

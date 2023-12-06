@@ -70,7 +70,7 @@
               </td>
 
               <form method="post"
-                action="../Controladores/EventosControlador.php?editar=1&fi=<?php echo $num['fechaII'] ?>&ff=<?php echo $num['fechaFF'] ?>#1">
+                action="../Controladores/EventosControlador.php?edite=1&fi=<?php echo $num['fechaII'] ?>&ff=<?php echo $num['fechaFF'] ?>#1">
                 <td>
                   <input name="banner" type="text" class="banner" required="" value="<?php echo $num['banner'] ?>" />
                 </td>
@@ -79,7 +79,7 @@
                 </td>
               </form>
               <td>
-                <a href="../Controladores/EventosControlador.php?eliminar=1&fi=<?php echo $num['fechaII']
+                <a href="../Controladores/EventosControlador.php?delete=1&fi=<?php echo $num['fechaII']
                   ?>&ff=<?php echo $num['fechaFF']
                   ?>#1" class="delete">Cancelar</a>
               </td>
@@ -90,11 +90,11 @@
             <td colspan="7"></td>
           </tr>
           <tr>
-            <form method="post" action="../Controladores/EventosControlador.php?añadir=1#1">
-              <td><input class="banner" name="nombre" type="text" required="" /></td>
-              <td><input class="fecha" name="fechaI" type="date" required="" /></td>
-              <td><input class="fecha" name="fechaF" type="date" required="" /></td>
-              <td><input class="porciento" name="porciento" type="number" step="0.01" required="" min="0.01" /></td>
+            <form method="post" action="../Controladores/EventosControlador.php?add=1#1">
+              <td><input class="banner" name="name" type="text" required="" /></td>
+              <td><input class="date" name="dateI" type="date" required="" /></td>
+              <td><input class="date" name="dateF" type="date" required="" /></td>
+              <td><input class="percent" name="percent" type="number" step="0.01" required="" min="0.01" /></td>
               <td><input name="banner" type="text" class="banner" required="" /></td>
               <td>
                 <button type="submit" class="btn ">Añadir</button>
