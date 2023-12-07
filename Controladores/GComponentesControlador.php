@@ -5,15 +5,15 @@ include '../ConexiónBD.php';
 $_SESSION['chekon'] = 1;
 
 //Buy/cancel
-if (isset($_REQUEST['usuario'])) {
+if (isset($_REQUEST['user'])) {
 
-  if (isset($_REQUEST['comprar'])) {
-    $sql = "UPDATE componente_usuario SET finalizado='Si' WHERE usuario='" . $_REQUEST['usuario'] . "' AND componente='" . $_REQUEST['componente'] . "'";
+  if (isset($_REQUEST['buy'])) {
+    $sql = "UPDATE componente_usuario SET finalizado='Si' WHERE usuario='" . $_REQUEST['user'] . "' AND componente='" . $_REQUEST['component'] . "'";
     $check = $connection->query($sql);
   }
 
-  if (isset($_REQUEST['cancelar'])) {
-    $sql = "DELETE FROM componente_usuario WHERE usuario='" . $_REQUEST['usuario'] . "' AND componente='" . $_REQUEST['componente'] . "' AND n='" . $_REQUEST['n'] . "' ";
+  if (isset($_REQUEST['cancel'])) {
+    $sql = "DELETE FROM componente_usuario WHERE usuario='" . $_REQUEST['user'] . "' AND componente='" . $_REQUEST['component'] . "' AND n='" . $_REQUEST['n'] . "' ";
     $check = $connection->query($sql);
   }
 }

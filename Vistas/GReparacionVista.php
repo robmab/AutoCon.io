@@ -57,7 +57,7 @@
         </thead>
 
         <tbody>
-          <?php foreach ($_SESSION['datosGReparacion'] as $num) {
+          <?php foreach ($_SESSION['servicesDate'] as $num) {
             if ($num['aceptado'] != "Finalizado") { ?>
               <tr>
                 <td>
@@ -126,8 +126,8 @@
                     <?php if ($num['aceptado'] == "Si") { ?>
 
                       <form method="post"
-                        action="../Controladores/GReparacionControlador.php?editar=1&n=<?php echo $num['n'] ?>#1">
-                        <input class="services" name="precioE" type="number" required step="0.01"
+                        action="../Controladores/GReparacionControlador.php?edit=1&n=<?php echo $num['n'] ?>#1">
+                        <input class="services" name="priceE" type="number" required step="0.01"
                           value="<?php echo $num['precio'] ?>" />
 
                         <?php if (isset($_SESSION['rebaja'])) { ?>
@@ -171,15 +171,15 @@
                     <?php if ($num['aceptado'] == "Espera") { ?>
 
                       <form method="post"
-                        action="../Controladores/GReparacionControlador.php?aceptar=1&n=<?php echo $num['n'] ?>#1">
+                        action="../Controladores/GReparacionControlador.php?accept=1&n=<?php echo $num['n'] ?>#1">
                         <div class="align">
-                          <input class="services" name="precio" type="number" required step="0.01" />
+                          <input class="services" name="price" type="number" required step="0.01" />
                           <button type="submit" class="btn ">Aplicar Precio €</button>
                         </div>
                       </form>
 
                     <?php } elseif ($num['aceptado'] == "Si") { ?>
-                      <a href="../Controladores/GReparacionControlador.php?finalizar=1&n=<?php echo
+                      <a href="../Controladores/GReparacionControlador.php?end=1&n=<?php echo
                         $num['n'] ?>#1" class="accepted text-center"> &ltFinalizar&gt
                       </a>
                     <?php } ?>
@@ -187,7 +187,7 @@
 
                   <td>
                     <?php if ($num['aceptado'] != "Finalizado") { ?>
-                      <a href="../Controladores/GReparacionControlador.php?cancelar=1&n=<?php echo $num['n'] ?>#1"
+                      <a href="../Controladores/GReparacionControlador.php?cancel=1&n=<?php echo $num['n'] ?>#1"
                         class="delete">Cancelar</a>
                     <?php } ?>
                   </td>
@@ -195,7 +195,7 @@
             <?php }
           }
 
-          foreach ($_SESSION['datosGReparacion'] as $num) {
+          foreach ($_SESSION['servicesDate'] as $num) {
             if ($num['aceptado'] == "Finalizado") { ?>
               <tr>
                 <td>

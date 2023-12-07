@@ -6,12 +6,12 @@ $_SESSION['chekon'] = 1;
 
 //Buy/cancel
 if (isset($_REQUEST['n'])) {
-  if (isset($_REQUEST['editar'])) {
-    $sql = "UPDATE reparacion SET precio='" . $_REQUEST['precioE'] . "' WHERE  n='" . $_REQUEST['n'] . "'  ";
+  if (isset($_REQUEST['edit'])) {
+    $sql = "UPDATE reparacion SET precio='" . $_REQUEST['priceE'] . "' WHERE  n='" . $_REQUEST['n'] . "'  ";
     $check = $connection->query($sql);
   }
 
-  if (isset($_REQUEST['aceptar'])) {
+  if (isset($_REQUEST['accept'])) {
     $sql = "UPDATE reparacion SET aceptado='Si' WHERE  n='" . $_REQUEST['n'] . "'  ";
     $check = $connection->query($sql);
 
@@ -39,8 +39,8 @@ if (isset($_REQUEST['n'])) {
             $percent = $percent - 1;
             $percent = $percent * -1;
 
-            $_REQUEST['precio'] = $_REQUEST['precio'] * $percent;
-            $_REQUEST['precio'] = round($_REQUEST['precio'], 2);
+            $_REQUEST['price'] = $_REQUEST['price'] * $percent;
+            $_REQUEST['price'] = round($_REQUEST['price'], 2);
             $_SESSION['rebaja'] = $info2['porciento'];
 
             $count = 0;
@@ -55,16 +55,16 @@ if (isset($_REQUEST['n'])) {
         unset($_SESSION['rebaja']);
       }
     }
-    $sql = "UPDATE reparacion SET precio='" . $_REQUEST['precio'] . "' WHERE  n='" . $_REQUEST['n'] . "'  ";
+    $sql = "UPDATE reparacion SET precio='" . $_REQUEST['price'] . "' WHERE  n='" . $_REQUEST['n'] . "'  ";
     $check = $connection->query($sql);
   }
 
-  if (isset($_REQUEST['finalizar'])) {
+  if (isset($_REQUEST['end'])) {
     $sql = "UPDATE reparacion SET aceptado='Finalizado' WHERE n='" . $_REQUEST['n'] . "'";
     $check = $connection->query($sql);
   }
 
-  if (isset($_REQUEST['cancelar'])) {
+  if (isset($_REQUEST['cancel'])) {
     $sql = "DELETE FROM reparacion WHERE n='" . $_REQUEST['n'] . "' ";
     $check = $connection->query($sql);
   }
@@ -182,7 +182,7 @@ if (!isset($count)) {
   }
 }
 
-$_SESSION['datosGReparacion'] = $services_date;
+$_SESSION['servicesDate'] = $services_date;
 header("Location:../Vistas/GReparacionVista.php");
 exit;
 

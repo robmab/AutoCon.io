@@ -36,7 +36,7 @@
 
                 <div class="col-12" col-md-6">
                   <div class="group">
-                    <select name="tarjeta">
+                    <select name="card">
                       <option value="visa">Visa</option>
                       <option value="mastercard">MasterCard</option>
                     </select>
@@ -45,7 +45,7 @@
 
                 <div class="col-12">
                   <div class="group">
-                    <input type="text" name="numero" id="numero" required maxlength="16" minlength="16">
+                    <input type="text" name="number" id="number" required maxlength="16" minlength="16">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Número de tarjeta</label>
@@ -54,7 +54,7 @@
 
                 <div class="col-12">
                   <div class="group">
-                    <input type="text" name="titular" id="titular" required autocomplete="off" maxlength="50">
+                    <input type="text" name="owner" id="owner" required autocomplete="off" maxlength="50">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Titular</label>
@@ -63,7 +63,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="number" name="mes" id="mes" required autocomplete="off" min="1" max="12">
+                    <input type="number" name="month" id="month" required autocomplete="off" min="1" max="12">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Mes</label>
@@ -72,7 +72,7 @@
 
                 <div class="col-12 col-md-6">
                   <div class="group">
-                    <input type="text" name="año" id="año" required autocomplete="off" maxlength="2" minlength="2">
+                    <input type="text" name="year" id="year" required autocomplete="off" maxlength="2" minlength="2">
                     <span class="highlight"></span>
                     <span class="bar"></span>
                     <label>Año</label>

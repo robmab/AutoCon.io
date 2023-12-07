@@ -107,16 +107,16 @@
 
 							<td>
 								<?php if ($num['finalizado'] != "Si") { ?>
-									<a href="../Controladores/GComponentesControlador.php?comprar=1&usuario=<?php echo $num['idU']
-										?>&componente=<?php echo $num['idC']
+									<a href="../Controladores/GComponentesControlador.php?buy=1&user=<?php echo $num['idU']
+										?>&component=<?php echo $num['idC']
 										?>#1" class="<?php if ($num['finalizado'] == "No") { ?>reserved <?php } else { ?>rented <?php } ?>">
 										&ltPasar a comprado&gt</a>
 								<?php } ?>
 							</td>
 
 							<td>
-								<?php if ($num['finalizado'] != "Si") { ?><a href="../Controladores/GComponentesControlador.php?cancelar=1&usuario=<?php echo $num['idU']
-										 	?>&componente=<?php echo $num['idC']
+								<?php if ($num['finalizado'] != "Si") { ?><a href="../Controladores/GComponentesControlador.php?cancel=1&user=<?php echo $num['idU']
+										 	?>&component=<?php echo $num['idC']
 										 	?>&n=<?php echo $num['n']
 										 	?>#1" class="delete">Cancelar</a>
 								<?php } ?>

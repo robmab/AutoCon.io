@@ -38,7 +38,6 @@
           <?php foreach ($_SESSION['listaVeh'] as $vehicle => $num) { ?>
             <div class="col-12 col-md-6">
               <div id="<?php echo $vehicle ?>" class="single-blog-post">
-$
                 <!-- Post Thumbnail -->
                 <div class="post-thumbnail">
                   <img <?php

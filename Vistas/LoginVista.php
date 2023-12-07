@@ -26,7 +26,7 @@
             <!-- Contact Form -->
             <form action="../Controladores/LoginControlador.php<?php if (isset($_SESSION['mensajeBD'])) {
               if ($_SESSION['mensajeBD'] == 'Tienes que registrarte antes de poder comprar o alquilar un vehículo.') {
-                echo "?compraV=1";
+                echo "?buyV=1";
               }
             } ?>" method="post">
 

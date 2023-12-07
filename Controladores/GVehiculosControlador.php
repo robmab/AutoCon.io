@@ -4,18 +4,18 @@ include '../ConexiónBD.php';
 
 $_SESSION['chekon'] = 1;
 //Buy/cancel
-if (isset($_REQUEST['usuario'])) {
-  if (isset($_REQUEST['comprar'])) {
-    $sql = "UPDATE vehiculos_usuarios SET reservado='Comprado' WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND n='" . $_REQUEST['n'] . "'";
+if (isset($_REQUEST['user'])) {
+  if (isset($_REQUEST['buy'])) {
+    $sql = "UPDATE vehiculos_usuarios SET reservado='Comprado' WHERE usuario='" . $_REQUEST['user'] . "' AND vehiculo='" . $_REQUEST['vehicle'] . "' AND n='" . $_REQUEST['n'] . "'";
     $check = $connection->query($sql);
 
-    $sql = "UPDATE vehiculos_usuarios SET precio='" . $_REQUEST['precio'] . "' WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND n='" . $_REQUEST['n'] . "'";
+    $sql = "UPDATE vehiculos_usuarios SET precio='" . $_REQUEST['price'] . "' WHERE usuario='" . $_REQUEST['user'] . "' AND vehiculo='" . $_REQUEST['vehicle'] . "' AND n='" . $_REQUEST['n'] . "'";
     $check = $connection->query($sql);
 
-    $sql = "UPDATE vehiculos_usuarios SET alquilado='No' WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND n='" . $_REQUEST['n'] . "'";
+    $sql = "UPDATE vehiculos_usuarios SET alquilado='No' WHERE usuario='" . $_REQUEST['user'] . "' AND vehiculo='" . $_REQUEST['vehicle'] . "' AND n='" . $_REQUEST['n'] . "'";
     $check = $connection->query($sql);
 
-    $sql = "SELECT * FROM vehiculos WHERE id='" . $_REQUEST['vehiculo'] . "' ";
+    $sql = "SELECT * FROM vehiculos WHERE id='" . $_REQUEST['vehicle'] . "' ";
     $memory = $connection->query($sql);
 
     if ($memory->num_rows > 0) {
@@ -29,14 +29,14 @@ if (isset($_REQUEST['usuario'])) {
     $sql = "UPDATE vehiculos SET vendidos='" . $selled . "' WHERE modelo='" . $model . "'";
     $check = $connection->query($sql);
 
-    if (isset($_REQUEST['alquilar'])) {
+    if (isset($_REQUEST['rent'])) {
       $sql = "UPDATE vehiculos SET alquilados='" . $rented . "' WHERE modelo='" . $model . "'";
       $check = $connection->query($sql);
     }
   }
 
-  if (isset($_REQUEST['cancelar'])) {
-    $sql = "DELETE FROM vehiculos_usuarios WHERE usuario='" . $_REQUEST['usuario'] . "' AND vehiculo='" . $_REQUEST['vehiculo'] . "' AND  n='" . $_REQUEST['n'] . "' ";
+  if (isset($_REQUEST['cancel'])) {
+    $sql = "DELETE FROM vehiculos_usuarios WHERE usuario='" . $_REQUEST['user'] . "' AND vehiculo='" . $_REQUEST['vehicle'] . "' AND  n='" . $_REQUEST['n'] . "' ";
     $check = $connection->query($sql);
   }
 }
@@ -138,7 +138,7 @@ function array_sort($array, $on, $order = SORT_ASC)
 }
 
 $vehicle_date = array_sort($vehicle_date, 'reservado', SORT_DESC);
-$_SESSION['datosGVehiculos'] = $vehicle_date;
+$_SESSION['$vehicleDate'] = $vehicle_date;
 header("Location:../Vistas/GVehiculosVista.php");
 exit;
 

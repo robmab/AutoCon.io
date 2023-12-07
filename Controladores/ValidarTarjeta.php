@@ -2,34 +2,34 @@
 session_start();
 
 //Collect variables and save them in session
-if (isset($_REQUEST["tarjeta"])) {
-  $card = $_REQUEST["tarjeta"];
+if (isset($_REQUEST["card"])) {
+  $card = $_REQUEST["card"];
   $card = ucwords($card);
   $_SESSION['tarjetaF'] = $card;
   $type = $card;
 }
 
-if (isset($_REQUEST["numero"])) {
-  $number = $_REQUEST["numero"];
+if (isset($_REQUEST["number"])) {
+  $number = $_REQUEST["number"];
   $number = ucwords($number);
   $_SESSION['numeroF'] = $number;
   $cc_num = $number;
 }
 
-if (isset($_REQUEST["titular"])) {
-  $owner = $_REQUEST["titular"];
+if (isset($_REQUEST["owner"])) {
+  $owner = $_REQUEST["owner"];
   $owner = ucwords($owner);
   $_SESSION['titularF'] = $owner;
 }
 
-if (isset($_REQUEST["mes"])) {
-  $month = $_REQUEST["mes"];
+if (isset($_REQUEST["month"])) {
+  $month = $_REQUEST["month"];
   $month = ucwords($month);
   $_SESSION['mesF'] = $month;
 }
 
-if (isset($_REQUEST["año"])) {
-  $year = $_REQUEST["año"];
+if (isset($_REQUEST["year"])) {
+  $year = $_REQUEST["year"];
   $year = ucwords($year);
   $_SESSION['añoF'] = $year;
 }

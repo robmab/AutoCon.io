@@ -95,8 +95,8 @@ if (isset($_REQUEST["email"])) {
     $_SESSION['rol'] = $info['rol'];
   }
 
-  echo $_REQUEST['compraV'];
-  if (isset($_REQUEST['compraV'])) {
+  echo $_REQUEST['buyV'];
+  if (isset($_REQUEST['buyV'])) {
     header("Location:VehiculosControlador.php");
     exit;
   } else {

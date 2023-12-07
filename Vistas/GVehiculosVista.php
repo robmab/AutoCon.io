@@ -58,7 +58,7 @@
         </thead>
 
         <tbody>
-          <?php foreach ($_SESSION['datosGVehiculos'] as $num) { ?>
+          <?php foreach ($_SESSION['$vehicleDate'] as $num) { ?>
             <tr>
               <td>
                 <img height="200%" width="200%" src="../img/bmw<?php echo $num['img'] ?>">
@@ -107,11 +107,11 @@
               <td>
                 <?php if ($num['reservado'] != "Comprado") { ?>
                   <a href="../Controladores/GVehiculosControlador.php?<?php if ($num['alquilado'] == "Si") {
-                    echo "alquilar=1&";
+                    echo "rent=1&";
                   }
-                  ?>comprar=1&usuario=<?php echo $num['idU']
-                    ?>&vehiculo=<?php echo $num['idV'] ?>&n=<?php echo $num['n']
-                       ?>&precio=<?php echo $num['precio']
+                  ?>buy=1&user=<?php echo $num['idU']
+                    ?>&vehicle=<?php echo $num['idV'] ?>&n=<?php echo $num['n']
+                       ?>&price=<?php echo $num['precio']
                        ?>#1" class="<?php if ($num['reservado'] == "Si") {
                        ?>reserved <?php } else {
                        ?>rented   <?php } ?>  ">
@@ -120,8 +120,8 @@
               </td>
               <td>
                 <?php if ($num['reservado'] != "Comprado") { ?>
-                  <a href="../Controladores/GVehiculosControlador.php?cancelar=1&usuario=<?php echo $num['idU']
-                    ?>&vehiculo=<?php echo $num['idV']
+                  <a href="../Controladores/GVehiculosControlador.php?cancel=1&user=<?php echo $num['idU']
+                    ?>&vehicle=<?php echo $num['idV']
                     ?>&n=<?php echo $num['n']
                     ?>#1" class="delete">Cancelar</a>
                 <?php } ?>
