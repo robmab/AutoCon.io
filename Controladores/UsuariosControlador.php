@@ -15,7 +15,7 @@ if (isset($_REQUEST['nU'])) {
     $check = $connection->query($sql);
   }
 
-  if (isset($_REQUEST['eliminar']) and $_REQUEST['nU'] != "Rob") {
+  if (isset($_REQUEST['delete']) and $_REQUEST['nU'] != "Rob") {
     $sql = "DELETE FROM componente_usuario WHERE usuario='" . $_REQUEST['id'] . "' ";
     $check = $connection->query($sql);
     $sql = "DELETE FROM vehiculos_usuarios WHERE usuario='" . $_REQUEST['id'] . "' ";

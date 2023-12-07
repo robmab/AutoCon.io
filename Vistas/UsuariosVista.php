@@ -107,7 +107,7 @@
 								<?php } ?>
 							</td>
 							<td>
-								<a href="../Controladores/UsuariosControlador.php?id=<?php echo $num['id'] ?>&nU=<?php echo $nombreUsuario ?>&eliminar=1#1"
+								<a href="../Controladores/UsuariosControlador.php?id=<?php echo $num['id'] ?>&nU=<?php echo $nombreUsuario ?>&delete=1#1"
 									class="delete">Eliminar
 								</a>
 							</td>

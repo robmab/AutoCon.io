@@ -7,7 +7,7 @@ $_SESSION['checkon'] = 1;
 
 //DATA EDITING - P3
 $cont = 1;
-if (isset($_REQUEST['edicion'])) {
+if (isset($_REQUEST['edite'])) {
   if (isset($_SESSION['email']) && ($_SESSION['email'] != '')) {
     $email = $_SESSION["email"];
     unset($_SESSION['email']);

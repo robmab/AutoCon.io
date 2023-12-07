@@ -42,7 +42,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=sustituir#1"
+										<a href="../Controladores/ReparacionControlador.php?value=sustituir#1"
 											class="button turquoise"><span>➣</span>Sustituir piezas defectuosas</a>
 									</div>
 									<!-- Post Meta -->
@@ -59,7 +59,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=neumatico#1"
+										<a href="../Controladores/ReparacionControlador.php?value=neumatico#1"
 											class="button turquoise"><span>➣</span>Cambio de neumáticos</a>
 									</div>
 								</div>
@@ -75,7 +75,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=llanta#1"
+										<a href="../Controladores/ReparacionControlador.php?value=llanta#1"
 											class="button turquoise"><span>➣</span>Revisión de llantas</a>
 									</div>
 								</div>
@@ -91,7 +91,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=aceite#1"
+										<a href="../Controladores/ReparacionControlador.php?value=aceite#1"
 											class="button turquoise"><span>➣</span>Aceite y Líquidos</a>
 									</div>
 								</div>
@@ -107,7 +107,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=pintura#1"
+										<a href="../Controladores/ReparacionControlador.php?value=pintura#1"
 											class="button turquoise"><span>➣</span>Renovación de pinturas y arañazos</a>
 									</div>
 								</div>
@@ -123,7 +123,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=carroceria#1"
+										<a href="../Controladores/ReparacionControlador.php?value=carroceria#1"
 											class="button turquoise"><span>➣</span>Reparación carrocería</a>
 									</div>
 								</div>
@@ -138,7 +138,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=bateria#1"
+										<a href="../Controladores/ReparacionControlador.php?value=bateria#1"
 											class="button turquoise"><span>➣</span>Baterías y arranque</a>
 									</div>
 								</div>
@@ -153,7 +153,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=bombilla#1"
+										<a href="../Controladores/ReparacionControlador.php?value=bombilla#1"
 											class="button turquoise"><span>➣</span>Bombillas</a>
 									</div>
 								</div>
@@ -168,7 +168,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=parabrisas#1"
+										<a href="../Controladores/ReparacionControlador.php?value=parabrisas#1"
 											class="button turquoise"><span>➣</span>Limpia parabrisas y escobillas</a>
 									</div>
 								</div>
@@ -183,7 +183,7 @@
 								<div class="post-content">
 									<br>
 									<div class="container">
-										<a href="../Controladores/ReparacionControlador.php?valor=limpieza#1"
+										<a href="../Controladores/ReparacionControlador.php?value=limpieza#1"
 											class="button turquoise"><span>➣</span>Limpieza</a>
 									</div>
 								</div>

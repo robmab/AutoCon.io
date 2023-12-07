@@ -5,7 +5,7 @@ include '../ConexiónBD.php';
 $_SESSION['chekon'] = 1;
 
 //Cancel vehicle
-if (isset($_REQUEST['vehiculo'])) {
+if (isset($_REQUEST['vehicle'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
@@ -13,7 +13,7 @@ if (isset($_REQUEST['vehiculo'])) {
     $user = $info['id'];
   }
 
-  $sql = "SELECT id FROM vehiculos WHERE modelo='" . $_REQUEST['vehiculo'] . "'";
+  $sql = "SELECT id FROM vehiculos WHERE modelo='" . $_REQUEST['vehicle'] . "'";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
@@ -22,7 +22,7 @@ if (isset($_REQUEST['vehiculo'])) {
 
   $sql = "DELETE FROM vehiculos_usuarios WHERE n='" . $_REQUEST['n'] . "' ";
   $check = $connection->query($sql);
-  $sql = "SELECT * FROM vehiculos WHERE modelo='" . $_REQUEST['vehiculo'] . "'";
+  $sql = "SELECT * FROM vehiculos WHERE modelo='" . $_REQUEST['vehicle'] . "'";
   $memory = $connection->query($sql);
   if ($memory->num_rows > 0) {
     $info = $memory->fetch_array();
@@ -46,7 +46,7 @@ if (isset($_REQUEST['vehiculo'])) {
 }
 
 //Cancel component
-if (isset($_REQUEST['nombre'])) {
+if (isset($_REQUEST['name'])) {
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
 
@@ -54,8 +54,8 @@ if (isset($_REQUEST['nombre'])) {
     $info = $memory->fetch_array();
     $user = $info['id'];
   }
-  $name = $_REQUEST['nombre'];
-  $type = $_REQUEST['tipo'];
+  $name = $_REQUEST['name'];
+  $type = $_REQUEST['type'];
   $sql = "SELECT id FROM componentes WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
   $memory = $connection->query($sql);
 
@@ -64,7 +64,7 @@ if (isset($_REQUEST['nombre'])) {
     $componente = $info['id'];
   }
 
-  if (isset($_REQUEST['unico'])) {
+  if (isset($_REQUEST['unique'])) {
     $sql = "DELETE FROM componente_usuario WHERE n='" . $_REQUEST['n'] . "' ";
     $check = $connection->query($sql);
     $sql = "SELECT * FROM componentes WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
@@ -78,7 +78,7 @@ if (isset($_REQUEST['nombre'])) {
     $sql = "UPDATE componentes SET cantidad='" . $quantity . "' WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
     $check = $connection->query($sql);
     $_SESSION['mensajeBD2'] = $name . ' de tipo ' . $type . ' cancelado.';
-  } elseif (isset($_REQUEST['uno'])) {
+  } elseif (isset($_REQUEST['one'])) {
     $sql = "SELECT * FROM componente_usuario WHERE n='" . $_REQUEST['n'] . "' ";
     $memory = $connection->query($sql);
     if ($memory->num_rows > 0) {
@@ -110,7 +110,7 @@ if (isset($_REQUEST['nombre'])) {
     $check = $connection->query($sql);
     $_SESSION['mensajeBD2'] = '1 ' . $name . " de tipo " . $type . " cancelado.";
 
-  } elseif (isset($_REQUEST['todos'])) {
+  } elseif (isset($_REQUEST['all'])) {
     $sql = "DELETE FROM componente_usuario WHERE n='" . $_REQUEST['n'] . "' ";
     $check = $connection->query($sql);
 
@@ -121,18 +121,18 @@ if (isset($_REQUEST['nombre'])) {
       $info = $memory->fetch_array();
       $quantity = $info['cantidad'];
     }
-    $quantity = $quantity + $_REQUEST['cantidad'];
+    $quantity = $quantity + $_REQUEST['amount'];
 
     $sql = "UPDATE componentes SET cantidad='" . $quantity . "' WHERE nombre='" . $name . "' AND tipo='" . $type . "'";
     $check = $connection->query($sql);
-    $_SESSION['mensajeBD2'] = $_REQUEST['cantidad'] . ' ' . $name . ' de tipo ' . $type . ' cancelados.';
+    $_SESSION['mensajeBD2'] = $_REQUEST['amount'] . ' ' . $name . ' de tipo ' . $type . ' cancelados.';
   }
 }
 
 //Cancel repair
-if (isset($_REQUEST['servicio'])) {
-  $service = $_REQUEST['servicio'];
-  $date = $_REQUEST['fecha'];
+if (isset($_REQUEST['service'])) {
+  $service = $_REQUEST['service'];
+  $date = $_REQUEST['date'];
   $sql = "SELECT id FROM usuarios WHERE nombreUsuario='" . $_SESSION['user'] . "' or correo='" . $_SESSION['user'] . "'";
   $memory = $connection->query($sql);
 

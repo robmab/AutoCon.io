@@ -69,12 +69,12 @@
 
 									<input class="switch-input" type="checkbox" <?php if ($num['disponibilidad'] == 'Si') { ?>checked <?php } ?> />
 
-									<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
-									echo $name ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
+									<span onclick="window.location='../Controladores/ProveedoresControlador.php?provider=<?php
+									echo $name ?>&change=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
 											?>2<?php } ?>#1'" class="switch-label" data-on="Si" data-off="No"></span>
 
-									<span onclick="window.location='../Controladores/ProveedoresControlador.php?proveedor=<?php
-									echo $name ?>&cambiar=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
+									<span onclick="window.location='../Controladores/ProveedoresControlador.php?provider=<?php
+									echo $name ?>&change=<?php if ($num['disponibilidad'] == 'Si') { ?>1<?php } else {
 											?>2<?php } ?>#1'" class="switch-handle"></span>
 
 								</label>

@@ -5,14 +5,14 @@ include '../ConexiónBD.php';
 $_SESSION['chekon'] = 1;
 
 //Modification of suppliers
-if (isset($_REQUEST['proveedor'])) {
-  if (isset($_REQUEST['cambiar'])) {
-    if ($_REQUEST['cambiar'] == 1) {
-      $sql = "UPDATE proveedores SET disponibilidad='No' WHERE nombre='" . $_REQUEST['proveedor'] . "'";
+if (isset($_REQUEST['provider'])) {
+  if (isset($_REQUEST['change'])) {
+    if ($_REQUEST['change'] == 1) {
+      $sql = "UPDATE proveedores SET disponibilidad='No' WHERE nombre='" . $_REQUEST['provider'] . "'";
       $check = $connection->query($sql);
     }
-    if ($_REQUEST['cambiar'] == 2) {
-      $sql = "UPDATE proveedores SET disponibilidad='Si' WHERE nombre='" . $_REQUEST['proveedor'] . "'";
+    if ($_REQUEST['change'] == 2) {
+      $sql = "UPDATE proveedores SET disponibilidad='Si' WHERE nombre='" . $_REQUEST['provider'] . "'";
       $check = $connection->query($sql);
     }
   }

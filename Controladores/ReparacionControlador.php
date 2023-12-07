@@ -3,8 +3,8 @@ session_start();
 include '../ConexiónBD.php';
 
 //Collect variables
-if (isset($_REQUEST["valor"]))
-  $value = $_REQUEST["valor"];
+if (isset($_REQUEST["value"]))
+  $value = $_REQUEST["value"];
 
 //Require you to be logged in
 

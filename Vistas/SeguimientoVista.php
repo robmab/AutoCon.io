@@ -72,7 +72,7 @@
                             <h6>
                               <?php echo " por €" . $num['precio'] . " " ?>
                             </h6>
-                            <a href="../Controladores/SeguimientoControlador.php?R=1&vehiculo=<?php echo $num['vehiculo']
+                            <a href="../Controladores/SeguimientoControlador.php?R=1&vehicle=<?php echo $num['vehiculo']
                               ?>& n=<?php echo $num['n'] ?>#1">
                               Cancelar X
                             </a>
@@ -99,7 +99,7 @@
                             <?php echo " por ";
                             echo $num['precio'] . " € al mes." ?>
                           </h6>
-                          <a href="../Controladores/SeguimientoControlador.php?A=1&vehiculo=<?php echo $num['vehiculo']
+                          <a href="../Controladores/SeguimientoControlador.php?A=1&vehicle=<?php echo $num['vehiculo']
                             ?>& n=<?php echo $num['n'] ?>#1"">
                             Cancelar X
                           </a>
@@ -174,20 +174,20 @@
                                       <?php echo $num['precio'] ?> €
                                     </h6>
                                     <?php if ($value > 1) { ?>
-                                      <a href="../Controladores/SeguimientoControlador.php?uno=1&nombre=<?php echo $num['nombre']
-                                        ?>&tipo=<?php echo $num['tipo'] ?>& n=<?php echo $num['n'] ?>#2">
+                                      <a href="../Controladores/SeguimientoControlador.php?one=1&name=<?php echo $num['nombre']
+                                        ?>&type=<?php echo $num['tipo'] ?>& n=<?php echo $num['n'] ?>#2">
                                         Cancelar 1
                                       </a>
                                       <a> | </a>
-                                      <a href="../Controladores/SeguimientoControlador.php?todos=1&nombre=<?php echo $num['nombre'] ?>&tipo=<?php echo $num['tipo']
-                                           ?>&cantidad=<?php echo $num['cantidad'] ?>& n=<?php echo $num['n'] ?>#2">
+                                      <a href="../Controladores/SeguimientoControlador.php?all=1&name=<?php echo $num['nombre'] ?>&type=<?php echo $num['tipo']
+                                           ?>&amount=<?php echo $num['cantidad'] ?>& n=<?php echo $num['n'] ?>#2">
                                         CancelarTodos
                                       </a>
                                       <p>____________________________</p>
                                     </td>
                                   <?php } else { ?>
-                                    <a href="../Controladores/SeguimientoControlador.php?unico=1&nombre=<?php echo $num['nombre']
-                                      ?>&tipo=<?php echo $num['tipo'] ?>& n=<?php echo $num['n'] ?>#2">
+                                    <a href="../Controladores/SeguimientoControlador.php?unique=1&name=<?php echo $num['nombre']
+                                      ?>&type=<?php echo $num['tipo'] ?>& n=<?php echo $num['n'] ?>#2">
                                       Cancelar X
                                     </a>
                                     <p>____________________________</p>
@@ -344,8 +344,8 @@
                             </h6>
 
                             <?php if ($num['aceptado'] != 'Finalizado') { ?>
-                              <a href="../Controladores/SeguimientoControlador.php?fecha=<?php echo $num['fecha']
-                                ?>&servicio=<?php echo $num['servicio'] ?>&n=<?php echo $num['n'] ?>#3">
+                              <a href="../Controladores/SeguimientoControlador.php?date=<?php echo $num['fecha']
+                                ?>&service=<?php echo $num['servicio'] ?>&n=<?php echo $num['n'] ?>#3">
                                 Cancelar X
                               </a>
                               <p>________________</p>
@@ -467,8 +467,8 @@
                             <p class="a">________________</p>
 
                             <?php if ($num['aceptado'] != 'Finalizado') { ?>
-                              <a href="../Controladores/SeguimientoControlador.php?fecha=<?php echo $num['fecha']
-                                ?>&servicio=<?php echo $num['servicio'] ?>">
+                              <a href="../Controladores/SeguimientoControlador.php?date=<?php echo $num['fecha']
+                                ?>&service=<?php echo $num['servicio'] ?>">
                                 Cancelar X
                               </a>
                             <?php } ?>
