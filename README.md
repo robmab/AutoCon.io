@@ -35,4 +35,4 @@ As we see, if you log in as an administrator user, you will have a number of pri
 - **Services**: You can both cancel and accept booked services, as well as change the status to completed.
 
 ## Responsive
-<br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/b9daec91-1369-4388-82bb-3c3fc5235054" width=50% height=50%><br>
+<br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/b9daec91-1369-4388-82bb-3c3fc5235054" width=20% height=20%><br>
