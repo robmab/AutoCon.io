@@ -37,3 +37,9 @@ As we see, if you log in as an administrator user, you will have a number of pri
 ## Responsive
 This website has been designed for both desktop and tablet/mobile thanks to bootstrap.
 <br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/b9daec91-1369-4388-82bb-3c3fc5235054" width=20% height=20%><br>
+
+## Technologies
+-  SQLInjection Protection
+> Technology made with manual PHP code to prevent hackers from using login inputs to perform unauthorised SQL operations, such as deleting users.
+- Frontend & Backend
+> PHP, Javascript Vanilla, CSS, Oracle SQL. No framework
