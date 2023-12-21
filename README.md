@@ -26,4 +26,4 @@ Web dealership where you can buy BMW vehicles and their components, in addition 
 ## Admin Features
 As we see, if you log in as an administrator user, you will have a number of privileges in the main views. But in addition to what we have already seen, you will have a unique view accessible from the navbar.
 <br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/f43fff52-ce27-4ed3-b297-99382c3553b3" width=30% height=30%><br>
-- Usuarios: 
+- **Users**: Lista de usuarios registrados en la página, con opción de dar **privilegios de adm** a cualquiera de ellos, adeás de datos personales.
