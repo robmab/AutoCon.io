@@ -26,4 +26,10 @@ Web dealership where you can buy BMW vehicles and their components, in addition 
 ## Admin Features
 As we see, if you log in as an administrator user, you will have a number of privileges in the main views. But in addition to what we have already seen, you will have a unique view accessible from the navbar.
 <br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/f43fff52-ce27-4ed3-b297-99382c3553b3" width=30% height=30%><br>
-- **Users**: Lista de usuarios registrados en la página, con opción de dar **privilegios de adm** a cualquiera de ellos, adeás de datos personales.
+- **Users**: List of registered users on the site, with option to give **Adm Privileges** to any of them, in addition to personal data.
+- **Suppliers**: List of suppliers' details for all products, with the possibility of **updating their availability**.
+  <br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/509bf106-8cb1-4132-b1d6-725cede88d9a" width=30% height=30%><br>
+- **Vehicle management**: List of all purchased/reserved/rented vehicles of all users, from where you can **cancel** any reserved/rented vehicle, as well as **change it to a purchased vehicle**.
+- **Discount events**: You can manage dates on which to add/edit **events with a discount that will be automatically applied to all products**, as well as the banner that will appear.
+- **Components**: As with vehicles, it is possible to cancel a product reserved by a user, as well as to upgrade it to a purchased product.
+- **Services**: You can both cancel and accept booked services, as well as change the status to completed.
