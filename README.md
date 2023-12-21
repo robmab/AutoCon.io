@@ -33,3 +33,6 @@ As we see, if you log in as an administrator user, you will have a number of pri
 - **Discount events**: You can manage dates on which to add/edit **events with a discount that will be automatically applied to all products**, as well as the banner that will appear.
 - **Components**: As with vehicles, it is possible to cancel a product reserved by a user, as well as to upgrade it to a purchased product.
 - **Services**: You can both cancel and accept booked services, as well as change the status to completed.
+
+## Responsive
+<br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/b9daec91-1369-4388-82bb-3c3fc5235054" width=50% height=50%><br>
