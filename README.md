@@ -12,6 +12,8 @@ Web dealership where you can buy BMW vehicles and their components, in addition 
   - If you log in as **Administrator**, you will also have a preview of how many vehicles of each type are **available, as well as rented and sold vehicles**. You will also have a couple of buttons to manually **control the number of vehicles available**.
 <img src="https://github.com/robmab/AutoCon.io/assets/56076087/98ace6d8-1d92-4a2c-87ed-c7e3ccb1f4b4" width=30% height=30%><br>
   - Each of the vehicles will have an individual view describing all the details of the vehicle, as well as the possibility to rent or buy the vehicle, only if you are a registered user with a registered card.
--
-
+- Vista de Componentes disponibles para su compra. Cada tipo de componente podra estar dividido en distintos subtipos. Igual que con los vehiculos, se podran ver los precios rebajados.
+  - Si se entra como administrador, aparecerá un boton para cambiar la vista a Gestion de componentes, donde se podran añadir o quitar los mismos.
+<img src="https://github.com/robmab/AutoCon.io/assets/56076087/a0909fa8-45c1-4a8b-82be-ed3b39daf0e7" width=30% height=30%>
+<img src="https://github.com/robmab/AutoCon.io/assets/56076087/e1b20b7c-e280-4088-9ec4-2e0518c3a1ab" width=30% height=30%><br>
 
