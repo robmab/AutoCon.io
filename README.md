@@ -18,12 +18,12 @@ Web dealership where you can buy BMW vehicles and their components, in addition 
   <img src="https://github.com/robmab/AutoCon.io/assets/56076087/e1b20b7c-e280-4088-9ec4-2e0518c3a1ab" width=30% height=30%><br>
 - **View of Services available for booking**, for registered users only.
 - **Profile** where you can view/edit your **personal details**, as well as add/delete your **bank card**.
-  <img src="https://github.com/robmab/AutoCon.io/assets/56076087/5e8a4963-6101-44f0-b184-3df219006080" width=30% height=30%><br>
+  <br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/5e8a4963-6101-44f0-b184-3df219006080" width=30% height=30%><br>
 - **Tracking list**, where you can see your **list of purchased/rented/reserved vehicles**, your **list of components** ordered and purchased, and your **list of booked/completed services**.
   -In all cases you can cancel at any time any product(s) booked).
 -**User management system**, being able to register, login and logout
 
 ## Admin Features
 As we see, if you log in as an administrator user, you will have a number of privileges in the main views. But in addition to what we have already seen, you will have a unique view accessible from the navbar.
-<img src="https://github.com/robmab/AutoCon.io/assets/56076087/f43fff52-ce27-4ed3-b297-99382c3553b3" width=30% height=30%><br>
+<br><img src="https://github.com/robmab/AutoCon.io/assets/56076087/f43fff52-ce27-4ed3-b297-99382c3553b3" width=30% height=30%><br>
 - Usuarios: 
